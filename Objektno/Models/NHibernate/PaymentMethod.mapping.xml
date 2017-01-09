@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="PaymentMethodModel" table="Payment_Method" batch-size="25">
+    <id name="IDPaymentMethod">
+      <generator class="increment" />
+    </id>
+    <property name="TypePaymentMethod" not-null="true" />
+
+    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDPaymentMethod" />
+      <one-to-many class="ReceiptModel" />
+    </bag>
+
+  </class>
+</hibernate-mapping>

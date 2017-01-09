@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="ArticleModel" table="Article" batch-size="25">
+    <id name="IDArticle">
+      <generator class="increment" />
+    </id>
+    <property name="IDArticle" not-null="true" />
+    <property name="Name" not-null="true" />
+    <property name="Price" not-null="true" />
+
+    <bag name="ArtRec" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDArticle" />
+      <one-to-many class="ArticleReceiptModel" />
+    </bag>
+    <bag name="ArtCaf" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDArticle" />
+      <one-to-many class="ArticleInCaffeModel" />
+    </bag>
+  </class>
+</hibernate-mapping>

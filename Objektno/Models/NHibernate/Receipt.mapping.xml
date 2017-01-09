@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="ReceiptModel" table="Receipt" batch-size="25">
+    <id name="IDReceipt">
+      <generator class="increment" />
+    </id>
+    <property name="IDWaiter" not-null="true" />
+    <property name="IDUser" />
+    <property name="Date" not-null="true" />
+    <property name="IDPaymentMethod" not-null="true" />
+    <property name="TotalCost" not-null="true" />
+    <property name="Discount" />
+
+    <bag name="ArtRec" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDRecept" />
+      <one-to-many class="ArticleReceiptModel" />
+    </bag>
+    <many-to-one name="User" class="UserModel" column="IDUser" />
+    <many-to-one name="Waiter" class="WaiterModel" column="IDWaiter" />
+    <many-to-one name="PaymentMethod" class="PaymentMethodModel" column="IDPaymentMethod" />
+
+  </class>
+</hibernate-mapping>

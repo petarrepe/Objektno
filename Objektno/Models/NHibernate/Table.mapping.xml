@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="TableModel" table="Table" batch-size="25">
+    <id name="IDTable">
+      <generator class="increment" />
+    </id>
+    <property name="IDCaffe" not-null="true" />
+    <property name="IsOccupied" />
+    <many-to-one name="Caffe" class="CaffeModel" column="IDCaffe" />
+  </class>
+</hibernate-mapping>

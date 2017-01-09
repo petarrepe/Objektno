@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="ArticleReceiptModel" table="Article_Receipt" batch-size="25">
+    <id name="ID">
+      <generator class="increment" />
+    </id>
+    <property name="IDArticle" not-null="true" />
+    <property name="IDReceipt" not-null="true" />
+    <property name="Quantity" not-null="true" />
+    <property name="PriceOfOne" not-null="true" />
+
+    <many-to-one name="Receipt" class="ReceiptModel" column="IDReceipt" />
+    <many-to-one name="Article" class="ArticleModel" column="IDArticle" />
+
+  </class>
+</hibernate-mapping>

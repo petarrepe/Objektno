@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
+assembly="Objektno" namespace="Objektno.Models">
+  <class name="CaffeModel" table="Caffe" dynamic-update="true" batch-size="25">
+    <cache usage="read-write"/>
+    <id name="IDCaffe" column="IDCaffe" type="int">
+      <generator class="increment" />
+    </id>
+    <property name="Name" />
+    <property name="Adress" />
+    <property name="IsOpen" />
+    
+    <bag name="Tables" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDCaffe" />
+      <one-to-many class="TableModel" />
+    </bag>
+    <bag name="Waiters" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDCaffe" />
+      <one-to-many class="WaiterModel" />
+    </bag>
+    <bag name="ArticlesInCaffe" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDCaffe" />
+      <one-to-many class="ArticleInCaffeModel" />
+    </bag>
+  </class>
+</hibernate-mapping>
