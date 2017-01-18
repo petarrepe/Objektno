@@ -29,5 +29,7 @@ namespace Objektno.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Objektno.Models.CaffeModel> CaffeModels { get; set; }
     }
 }

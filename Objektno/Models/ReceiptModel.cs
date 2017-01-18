@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace Objektno.Models
 {
     public class ReceiptModel
     {
+        [Key]
         public virtual int IDReceipt { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual int IDWaiter { get; set; }
