@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+assembly="Objektno"
+namespace="Objektno.Models">
+  <class name="CategoryModel" table="Category" batch-size="25">
+    <id name="IDCategory">
+      <generator class="increment" />
+    </id>
+    <property name="Name" not-null="true" />
+
+    <bag name="Articles" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+      <key column="IDCategory" />
+      <one-to-many class="ArticleModel" />
+    </bag>
+
+  </class>
+</hibernate-mapping>
+

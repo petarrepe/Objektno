@@ -43,6 +43,9 @@ namespace Objektno.Models
             var userConfigurationFile = HttpContext.Current.Server.MapPath
             (@"~\Models\NHibernate\User.mapping.xml");
             configuration.AddFile(userConfigurationFile);
+            var categoryConfigurationFile = HttpContext.Current.Server.MapPath
+            (@"~\Models\NHibernate\Category.mapping.xml");
+            configuration.AddFile(categoryConfigurationFile);
 
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();
