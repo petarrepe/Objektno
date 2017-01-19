@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8A47AE88-FE47-43BD-9F74-60E3B27F4DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Objektno.Framework", "Objektno.Framework\Objektno.Framework.csproj", "{9A974F0D-A01D-4C75-A73C-26C23159DECE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.Framework", "Objektno.Framework\KonobApp.Framework.csproj", "{9A974F0D-A01D-4C75-A73C-26C23159DECE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
