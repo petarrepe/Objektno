@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +49,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade.cs" />
+    <Compile Include="Models\ArticleInCaffeModel.cs" />
+    <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticleReceiptModel.cs" />
+    <Compile Include="Models\CaffeModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\OpenNHibernateSession.cs" />
+    <Compile Include="Models\PaymentMethodModel.cs" />
+    <Compile Include="Models\ReceiptModel.cs" />
+    <Compile Include="Models\TableModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WaiterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\NHibernate\Article.mapping.xml" />
+    <Content Include="Models\NHibernate\ArticleInCaffe.mapping.xml" />
+    <Content Include="Models\NHibernate\ArticleReceipt.mapping.xml" />
+    <Content Include="Models\NHibernate\Caffe.mapping.xml" />
+    <Content Include="Models\NHibernate\Category.mapping.xml" />
+    <Content Include="Models\NHibernate\PaymentMethod.mapping.xml" />
+    <Content Include="Models\NHibernate\Receipt.mapping.xml" />
+    <Content Include="Models\NHibernate\Table.mapping.xml" />
+    <Content Include="Models\NHibernate\User.mapping.xml" />
+    <Content Include="Models\NHibernate\Waiter.mapping.xml" />
+    <EmbeddedResource Include="Models\NHibernate\hibernate.cfg.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
