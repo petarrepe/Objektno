@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
-assembly="Objektno" namespace="Objektno.Models">
+assembly="DAL" namespace="DAL.Models">
   <class name="CaffeModel" table="Caffe" dynamic-update="true" batch-size="25">
     <cache usage="read-write"/>
     <id name="IDCaffe" column="IDCaffe" type="int">

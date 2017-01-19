@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAL.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using NHibernate.Linq;
-using NHibernate;
-using Objektno.Models;
 
 namespace Objektno.Controllers
 {
@@ -14,9 +9,9 @@ namespace Objektno.Controllers
         // GET: PROBA
         public ActionResult Index()
         {
-            using (ISession session = OpenNHibertnateSession.OpenSession())
+            using (DAL.Facade facade = new DAL.Facade())
             {
-                var employees = session.Query<CaffeModel>().ToList();
+                var employees = facade.FetchAll<CaffeModel>();
                 return View(employees);
             }
 
