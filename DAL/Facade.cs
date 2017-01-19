@@ -3,6 +3,7 @@ using System.Linq;
 using NHibernate.Linq;
 using NHibernate;
 using System;
+using System.Linq.Expressions;
 
 namespace DAL
 {
@@ -13,12 +14,13 @@ namespace DAL
         public Facade()
         {
             _session = OpenNHibernateSession.OpenSession();
+            _session.BeginTransaction();
         }
 
 
         public List<T> FetchAll<T>() where T : class // : BuisnessClass
         {
-            List<T> retrievedObjects = _session.Query<T>().ToList(); ;
+            List<T> retrievedObjects = _session.Query<T>().ToList();
 
             return retrievedObjects;
         }
@@ -30,12 +32,62 @@ namespace DAL
             return retrievedObjects;
         }
 
-        //public bool Exists<T>(int id) where T : class //bll
-        //{
-        //    var itemExists = _session.Query<T>().Where(t => t.id == id).First();
+        public dynamic FetchByAttributeValue<T>(Expression<Func<T, bool>> whereFilter) where T : class // : BuisnessClass
+        {
+            IList<Models.AbstractModel> retrievedObjects = _session.QueryOver<T>().Where(whereFilter).List<Models.AbstractModel>();
 
-        //    return (itemExists != null) ? true : false;
-        //}
+            return  retrievedObjects.ToList();
+        }
+
+        public bool Exists<T>(int id) where T : Models.AbstractModel
+        {
+            var itemExists = _session.QueryOver<T>().List<T>().Where(t => t._id == id);
+  
+            return (itemExists.Count() != 0) ? true : false;
+        }
+
+        public void Insert(Models.AbstractModel obj)
+        {
+            _session.Save(obj);
+        }
+
+        public void Insert(List<Models.AbstractModel> obj)
+        {
+            for (int i = 0; i < obj.Count; i++)
+            {
+                _session.Save(obj);
+            }
+        }
+
+        public void Update(List<Models.AbstractModel> obj)
+        {
+            for (int i = 0; i < obj.Count; i++)
+            {
+                _session.Update(obj);
+            }
+        }
+        public void Update(Models.AbstractModel obj)
+        {
+                _session.Update(obj);
+        }
+
+        /// <summary>
+        ///  FIXME: Delete ne radi kako treba zbog (pretpostavljam) toga što je tablica "Tables" prazna (u bazi).
+        ///  Trebalo bi na SQL Profileru vidjeti kakav upit se generira u donje dvije metode.
+        /// </summary>
+        /// <param name="obj"></param>
+        public void Delete(Models.AbstractModel obj)
+        {
+            _session.Delete(obj);
+        }
+
+        public void Delete(List<Models.AbstractModel> obj)
+        {
+            for (int i = 0; i < obj.Count; i++)
+            {
+                _session.Delete(obj);
+            }
+        }
 
         public uint ItemsCount<T>() where T : class //bll
         {
@@ -46,6 +98,7 @@ namespace DAL
 
         public void Dispose()
         {
+            _session.Transaction.Commit();
             _session.Close();
         }
     }

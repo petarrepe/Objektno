@@ -3,8 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
-    public class CaffeModel
+    public class CaffeModel : AbstractModel
     {
+        protected internal override int _id { get { return IDCaffe; } set { _id = IDCaffe; } }
+
         [Key]
         public virtual int IDCaffe { get; set; }
         public virtual string Name { get; set; }

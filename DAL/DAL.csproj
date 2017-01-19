@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade.cs" />
+    <Compile Include="Models\AbstractModel.cs" />
     <Compile Include="Models\ArticleInCaffeModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\ArticleReceiptModel.cs" />

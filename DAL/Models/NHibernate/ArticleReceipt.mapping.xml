@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="DAL.Models">
   <class name="ArticleReceiptModel" table="Article_Receipt" batch-size="25">
     <id name="ID">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
     <property name="IDArticle" not-null="true" />
     <property name="IDReceipt" not-null="true" />

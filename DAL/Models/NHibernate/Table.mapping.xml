@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="DAL.Models">
   <class name="TableModel" table="Table" batch-size="25">
     <id name="IDTable">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
     <property name="IDCaffe" not-null="true" />
     <property name="IsOccupied" />
