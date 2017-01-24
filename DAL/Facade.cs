@@ -4,6 +4,7 @@ using NHibernate.Linq;
 using NHibernate;
 using System;
 using System.Linq.Expressions;
+using DAL.Models;
 
 namespace DAL
 {
@@ -18,40 +19,40 @@ namespace DAL
         }
 
 
-        public List<T> FetchAll<T>() where T : class // : BuisnessClass
+        public List<T> FetchAll<T>() where T : AbstractModel // : BuisnessClass
         {
             List<T> retrievedObjects = _session.Query<T>().ToList();
 
             return retrievedObjects;
         }
 
-        public List<T> FetchFromPosition<T>(int position, int count) where T : class // : BuisnessClass
+        public List<T> FetchFromPosition<T>(int position, int count) where T : AbstractModel // : BuisnessClass
         {
             List<T> retrievedObjects = _session.Query<T>().Skip(position).Take(count).ToList();
 
             return retrievedObjects;
         }
 
-        public dynamic FetchByAttributeValue<T>(Expression<Func<T, bool>> whereFilter) where T : class // : BuisnessClass
+        public dynamic FetchByAttributeValue<T>(Expression<Func<T, bool>> whereFilter) where T : AbstractModel // : BuisnessClass
         {
-            IList<Models.AbstractModel> retrievedObjects = _session.QueryOver<T>().Where(whereFilter).List<Models.AbstractModel>();
+            IList<T> retrievedObjects = _session.QueryOver<T>().Where(whereFilter).List<T>();
 
             return  retrievedObjects.ToList();
         }
 
-        public bool Exists<T>(int id) where T : Models.AbstractModel
+        public bool Exists<T>(int id) where T : AbstractModel
         {
             var itemExists = _session.QueryOver<T>().List<T>().Where(t => t._id == id);
   
             return (itemExists.Count() != 0) ? true : false;
         }
 
-        public void Insert(Models.AbstractModel obj)
+        public void Insert(AbstractModel obj)
         {
             _session.Save(obj);
         }
 
-        public void Insert(List<Models.AbstractModel> obj)
+        public void Insert(List<AbstractModel> obj)
         {
             for (int i = 0; i < obj.Count; i++)
             {
@@ -59,14 +60,14 @@ namespace DAL
             }
         }
 
-        public void Update(List<Models.AbstractModel> obj)
+        public void Update(List<AbstractModel> obj)
         {
             for (int i = 0; i < obj.Count; i++)
             {
                 _session.Update(obj);
             }
         }
-        public void Update(Models.AbstractModel obj)
+        public void Update(AbstractModel obj)
         {
                 _session.Update(obj);
         }
@@ -76,12 +77,12 @@ namespace DAL
         ///  Trebalo bi na SQL Profileru vidjeti kakav upit se generira u donje dvije metode.
         /// </summary>
         /// <param name="obj"></param>
-        public void Delete(Models.AbstractModel obj)
+        public void Delete(AbstractModel obj)
         {
             _session.Delete(obj);
         }
 
-        public void Delete(List<Models.AbstractModel> obj)
+        public void Delete(List<AbstractModel> obj)
         {
             for (int i = 0; i < obj.Count; i++)
             {
@@ -89,7 +90,7 @@ namespace DAL
             }
         }
 
-        public uint ItemsCount<T>() where T : class //bll
+        public uint ItemsCount<T>() where T : AbstractModel //bll
         {
             uint count = (uint) _session.Query<T>().Count();
 
