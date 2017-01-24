@@ -51,17 +51,17 @@
   <ItemGroup>
     <Compile Include="Facade.cs" />
     <Compile Include="Models\AbstractModel.cs" />
-    <Compile Include="Models\ArticleInCaffeModel.cs" />
-    <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\ArticleReceiptModel.cs" />
-    <Compile Include="Models\CaffeModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ArticleInCaffe.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleReceipt.cs" />
+    <Compile Include="Models\Caffe.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\OpenNHibernateSession.cs" />
-    <Compile Include="Models\PaymentMethodModel.cs" />
-    <Compile Include="Models\ReceiptModel.cs" />
-    <Compile Include="Models\TableModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\WaiterModel.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\Receipt.cs" />
+    <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Waiter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -67,6 +67,12 @@ namespace DAL
                 _session.Update(obj);
             }
         }
+
+        public void Save(AbstractModel obj)
+        {
+                _session.SaveOrUpdate(obj);
+        }
+
         public void Update(AbstractModel obj)
         {
                 _session.Update(obj);

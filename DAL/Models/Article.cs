@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
-    public class ArticleModel : AbstractModel
+    public class Article : AbstractModel
     {
         protected internal override int _id { get { return IDArticle; } set { _id = IDArticle; } }
 
@@ -12,7 +12,7 @@ namespace DAL.Models
         public virtual string Name { get; set; }
         public virtual float Price { get; set; } //trebat ce se prilagoditi tipu SmallMoney
 
-        public virtual IList<ArticleReceiptModel> ArtRec { get; set; }
-        public virtual IList<ArticleInCaffeModel> ArtCaf { get; set; }
+        public virtual IList<ArticleReceipt> ArtRec { get; set; }
+        public virtual IList<ArticleInCaffe> ArtCaf { get; set; }
     }
 }

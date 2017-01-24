@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
-    public class PaymentMethodModel
+    public class PaymentMethod
     {
         [Key]
         public virtual int IDPaymentMethod { get; set; }
         public virtual string TypePaymentMethod { get; set; }
 
-        public virtual IList<ReceiptModel> Receipts { get; set; }
+        public virtual IList<Receipt> Receipts { get; set; }
     }
 }

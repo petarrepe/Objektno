@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
-    public class CaffeModel : AbstractModel
+    public class Caffe : AbstractModel
     {
         protected internal override int _id { get { return IDCaffe; } set { _id = IDCaffe; } }
 
@@ -13,8 +13,8 @@ namespace DAL.Models
         public virtual string Adress { get; set; }
         public virtual bool IsOpen { get; set; }
 
-        public virtual IList<TableModel> Tables { get; set; }
-        public virtual IList<WaiterModel> Waiters { get; set; }
-        public virtual IList<ArticleInCaffeModel> ArticlesInCaffe { get; set; }
+        public virtual IList<Table> Tables { get; set; }
+        public virtual IList<Waiter> Waiters { get; set; }
+        public virtual IList<ArticleInCaffe> ArticlesInCaffe { get; set; }
     }
 }

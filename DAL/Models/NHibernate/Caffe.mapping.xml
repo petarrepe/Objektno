@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
 assembly="DAL" namespace="DAL.Models">
-  <class name="CaffeModel" table="Caffe" dynamic-update="true" batch-size="25">
+  <class name="Caffe" table="Caffe" dynamic-update="true" batch-size="25">
     <cache usage="read-write"/>
     <id name="IDCaffe" column="IDCaffe" type="int">
       <generator class="native" />
@@ -12,15 +12,15 @@ assembly="DAL" namespace="DAL.Models">
     
     <bag name="Tables" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDCaffe" />
-      <one-to-many class="TableModel" />
+      <one-to-many class="Table" />
     </bag>
     <bag name="Waiters" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDCaffe" />
-      <one-to-many class="WaiterModel" />
+      <one-to-many class="Waiter" />
     </bag>
     <bag name="ArticlesInCaffe" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDCaffe" />
-      <one-to-many class="ArticleInCaffeModel" />
+      <one-to-many class="ArticleInCaffe" />
     </bag>
   </class>
 </hibernate-mapping>

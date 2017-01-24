@@ -15,8 +15,10 @@ namespace ObjektnoForms
         static void Main()
         {
             Application.EnableVisualStyles();
+            //app.MapSignalR();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
         }
     }
 }

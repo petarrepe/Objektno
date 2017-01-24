@@ -2,6 +2,6 @@
 {
     public abstract class AbstractModel
     {
-        protected internal abstract int _id { get; set; }
+        protected internal virtual int _id { get; set; }
     }
 }

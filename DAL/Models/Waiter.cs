@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
-    public class UserModel
+    public class Waiter
     {
         [Key]
-        public virtual int IDUser { get; set; }
+        public virtual int IDWaiter { get; set; }
+        public virtual int IDCaffe { get; set; }
         public virtual string Name { get; set; }
         public virtual string Surname { get; set; }
-        public virtual string Email { get; set; }
+        public virtual string Username { get; set; }
         public virtual string Password { get; set; }
-        public virtual string CardNumber { get; set; } //NULLABLE
 
-        public virtual IList<ReceiptModel> Receipts { get; set; }
-
+        public virtual IList<Receipt> Receipts { get; set; }
+        public virtual Caffe Caffe { get; set; }
     }
 }

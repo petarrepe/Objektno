@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
 assembly="DAL"
 namespace="DAL.Models">
-  <class name="PaymentMethodModel" table="Payment_Method" batch-size="25">
+  <class name="PaymentMethod" table="Payment_Method" batch-size="25">
     <id name="IDPaymentMethod">
       <generator class="native" />
     </id>
@@ -10,7 +10,7 @@ namespace="DAL.Models">
 
     <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDPaymentMethod" />
-      <one-to-many class="ReceiptModel" />
+      <one-to-many class="Receipt" />
     </bag>
 
   </class>

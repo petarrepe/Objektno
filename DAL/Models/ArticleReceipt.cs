@@ -2,7 +2,7 @@
 
 namespace DAL.Models
 {
-    public class ArticleReceiptModel
+    public class ArticleReceipt
     {
         [Key]
         public virtual int ID { get; set; }
@@ -11,7 +11,7 @@ namespace DAL.Models
         public virtual int Quantity { get; set; }
         public virtual float PriceOfOne { get; set; } //prilagoditi typu SmallMoney
 
-        public virtual ReceiptModel Receipt { get; set; }
-        public virtual ArticleModel Article { get; set; }
+        public virtual Receipt Receipt { get; set; }
+        public virtual Article Article { get; set; }
     }
 }

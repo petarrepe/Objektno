@@ -2,7 +2,7 @@
 
 namespace DAL.Models
 {
-    public class ArticleInCaffeModel
+    public class ArticleInCaffe
     {
         [Key]
         public virtual int ID { get; set; }
@@ -10,7 +10,7 @@ namespace DAL.Models
         public virtual int IDArticle { get; set; }
         public virtual bool IsAvailable { get; set; }
 
-        public virtual CaffeModel Caffe { get; set; }
-        public virtual ArticleModel Article { get; set; }
+        public virtual Caffe Caffe { get; set; }
+        public virtual Article Article { get; set; }
     }
 }
