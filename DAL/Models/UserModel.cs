@@ -12,6 +12,7 @@ namespace DAL.Models
         public virtual string Email { get; set; }
         public virtual string Password { get; set; }
         public virtual string CardNumber { get; set; } //NULLABLE
+        public virtual bool IsAdmin { get; set; }
 
         public virtual IList<ReceiptModel> Receipts { get; set; }
 

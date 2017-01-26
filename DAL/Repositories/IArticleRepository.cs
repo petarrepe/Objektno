@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class IArticleRepository
+    public interface IArticleRepository
     {
+
     }
 }

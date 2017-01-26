@@ -11,6 +11,7 @@ namespace="DAL.Models">
     <property name="Email" not-null="true" />
     <property name="Password" not-null="true" />
     <property name="CardNumber" />
+    <property name="Password" not-null="true" />
 
     <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDUser" />
