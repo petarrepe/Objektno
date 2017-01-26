@@ -1,5 +1,4 @@
 ﻿using KonobApp.Interfaces;
-using KonobApp.Model.Models;
 using KonobApp.Model;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,61 @@ namespace DAL.Repositories
 {
     class ReceiptRepository : Subject, IReceiptRepository
     {
-        private IList<Receipt>
+        private IList<Receipt> _receipts;
+
+        public IList<Article> Articles
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Receipt CurrentReceipt
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public User CurrentUser
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Waiter CurrentWaiter
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public IList<Receipt> Receipts
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void LoadAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadArticles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadReceipts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
