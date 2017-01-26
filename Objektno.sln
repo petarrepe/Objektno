@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.DesktopInit", "Kon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.Controller", "KonobApp.Controller\KonobApp.Controller.csproj", "{3E9F636B-71D4-4F4C-9316-67E0DC8385D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.Interfaces", "KonobApp.Interfaces\KonobApp.Interfaces.csproj", "{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3E9F636B-71D4-4F4C-9316-67E0DC8385D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E9F636B-71D4-4F4C-9316-67E0DC8385D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E9F636B-71D4-4F4C-9316-67E0DC8385D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
