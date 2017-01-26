@@ -5,16 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KonobApp.Model.Repositories
+namespace KonobApp.Model
 {
     public interface IReceiptRepository
     {
-        IList<ReceiptModel> Receipts { get; }
-        ReceiptModel CurrentReceipt { get; }
-        UserModel CurrentUser { get; }
-        WaiterModel CurrentWaiter { get; }
+        IList<Receipt> Receipts { get; }
+        IList<Article> Articles { get; }
+        Receipt CurrentReceipt { get; }
+        User CurrentUser { get; }
+        Waiter CurrentWaiter { get; }
 
         void LoadAll();
         void LoadArticles();
+        void LoadReceipts();
     }
 }
