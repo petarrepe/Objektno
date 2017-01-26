@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Model.Models
 {
-    class PaymentMethod
+    public class PaymentMethod
     {
         private int _idPaymentMethod;
         private string _paymentMethodName;
