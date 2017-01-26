@@ -12,7 +12,11 @@ namespace DAL.Repositories
         ArticleModel Article { get; }
         CategoryModel Category { get; }
 
+        void LoadAll();
+        void LoadArticle();
+        void LoadCategory();
 
+        void AddArticle(string lal);
 
     }
 }
