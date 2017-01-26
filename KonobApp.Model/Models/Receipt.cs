@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Model.Models
 {
-    class Receipt
+    public class Receipt
     {
         private int _idReceipt;
         private DateTime _date;

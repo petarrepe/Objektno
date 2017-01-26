@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Model.Models
 {
-    class User
+    public class User
     {
     }
 }

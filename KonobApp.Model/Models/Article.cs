@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Model.Models
 {
-    class Article
+    public class Article
     {
         public double Price;
     }
