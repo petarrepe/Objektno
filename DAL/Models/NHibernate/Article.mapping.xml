@@ -9,8 +9,10 @@ namespace="DAL.Models">
     <property name="IDArticle" not-null="true" />
     <property name="Name" not-null="true" />
     <property name="Price" not-null="true" />
+    <property name="IDCategory" not-null="true" />
 
     <many-to-one name="Category" class="CategoryModel" column="IDCategory" />
+    
     <bag name="ArtRec" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDArticle" />
       <one-to-many class="ArticleReceiptModel" />
