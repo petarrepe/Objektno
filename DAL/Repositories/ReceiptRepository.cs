@@ -1,5 +1,6 @@
-﻿using KonobApp.Interfaces;
-using KonobApp.Model;
+﻿using KonobApp.Model;
+using KonobApp.Model.Models;
+using KonobApp.Interfaces;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -13,18 +14,18 @@ namespace DAL.Repositories
     {
         private static ReceiptRepository _instance = null;
 
-        private IList<Receipt> _receipts = new List<Receipt>();
-        private IList<Article> _articles = new List<Article>();
-        private Receipt _currentReceipt;
-        private User _currentUser;
-        private Waiter _currentWaiter;
+        private IList<ReceiptModel> _receipts = new List<ReceiptModel>();
+        private IList<ArticleModel> _articles = new List<ArticleModel>();
+        private ReceiptModel _currentReceipt;
+        private UserModel _currentUser;
+        private WaiterModel _currentWaiter;
 
-        public IList<Article> Articles { get { return _articles; } }
+        public IList<ArticleModel> Articles { get { return _articles; } }
 
-        public Receipt CurrentReceipt { get { return _currentReceipt; } }
-        public User CurrentUser { get { return _currentUser; } }
-        public Waiter CurrentWaiter { get { return _currentWaiter; } }
-        public IList<Receipt> Receipts { get { return _receipts; } }
+        public ReceiptModel CurrentReceipt { get { return _currentReceipt; } }
+        public UserModel CurrentUser { get { return _currentUser; } }
+        public WaiterModel CurrentWaiter { get { return _currentWaiter; } }
+        public IList<ReceiptModel> Receipts { get { return _receipts; } }
 
         private ISession nhibernateSession;
 
@@ -50,19 +51,19 @@ namespace DAL.Repositories
 
         public void LoadArticles()
         {
-            using (ISession nhibernateSession = NHibernateService.OpenSession())
+            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
                 IQuery query = nhibernateSession.CreateQuery("from Article");
-                _articles = query.List<Article>();
+                _articles = query.List<ArticleModel>();
             }
         }
 
         public void LoadReceipts()
         {
-            using (ISession nhibernateSession = NHibernateService.OpenSession())
+            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
                 IQuery query = nhibernateSession.CreateQuery("from Receipt");
-                _receipts = query.List<Receipt>();
+                _receipts = query.List<ReceiptModel>();
             }
         }
     }
