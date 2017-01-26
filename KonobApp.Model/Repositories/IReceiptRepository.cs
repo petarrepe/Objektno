@@ -10,6 +10,6 @@ namespace KonobApp.Model.Repositories
     class IReceiptRepository
     {
         IList<Receipt> Receipts { get; }
-        IList<>
+        
     }
 }
