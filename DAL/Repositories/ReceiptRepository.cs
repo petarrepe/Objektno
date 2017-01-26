@@ -1,5 +1,6 @@
 ﻿using KonobApp.Interfaces;
 using KonobApp.Model;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,62 +11,59 @@ namespace DAL.Repositories
 {
     class ReceiptRepository : Subject, IReceiptRepository
     {
-        private IList<Receipt> _receipts;
-        private IList<Article> _articles;
+        private static ReceiptRepository _instance = null;
 
-        public IList<Article> Articles
+        private IList<Receipt> _receipts = new List<Receipt>();
+        private IList<Article> _articles = new List<Article>();
+        private Receipt _currentReceipt;
+        private User _currentUser;
+        private Waiter _currentWaiter;
+
+        public IList<Article> Articles { get { return _articles; } }
+
+        public Receipt CurrentReceipt { get { return _currentReceipt; } }
+        public User CurrentUser { get { return _currentUser; } }
+        public Waiter CurrentWaiter { get { return _currentWaiter; } }
+        public IList<Receipt> Receipts { get { return _receipts; } }
+
+        private ISession nhibernateSession;
+
+        private ReceiptRepository()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+
         }
 
-        public Receipt CurrentReceipt
+        public static ReceiptRepository GetInstance()
         {
-            get
+            if (_instance == null)
             {
-                throw new NotImplementedException();
+                _instance = new ReceiptRepository();
             }
-        }
-
-        public User CurrentUser
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public Waiter CurrentWaiter
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public IList<Receipt> Receipts
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            return _instance;
         }
 
         public void LoadAll()
         {
-            throw new NotImplementedException();
+            LoadArticles();
+            LoadReceipts();
         }
 
         public void LoadArticles()
         {
-            throw new NotImplementedException();
+            using (ISession nhibernateSession = NHibernateService.OpenSession())
+            {
+                IQuery query = nhibernateSession.CreateQuery("from Article");
+                _articles = query.List<Article>();
+            }
         }
 
         public void LoadReceipts()
         {
-            throw new NotImplementedException();
+            using (ISession nhibernateSession = NHibernateService.OpenSession())
+            {
+                IQuery query = nhibernateSession.CreateQuery("from Receipt");
+                _receipts = query.List<Receipt>();
+            }
         }
     }
 }
