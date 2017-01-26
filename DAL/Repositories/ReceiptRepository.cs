@@ -11,6 +11,7 @@ namespace DAL.Repositories
     class ReceiptRepository : Subject, IReceiptRepository
     {
         private IList<Receipt> _receipts;
+        private IList<Article> _articles;
 
         public IList<Article> Articles
         {
