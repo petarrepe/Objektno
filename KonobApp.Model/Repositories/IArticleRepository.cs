@@ -9,7 +9,7 @@ namespace KonobApp.Model.Repositories
 {
     public interface IArticleRepository
     {
-        ArticleModel Article { get; }
+        ArticleModel CurrentArticle { get; }
         CategoryModel Category { get; }
 
         void LoadAll();

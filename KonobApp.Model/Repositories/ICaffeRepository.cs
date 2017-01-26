@@ -24,6 +24,19 @@ namespace KonobApp.Model.Repositories
         void UpdateCaffe(int caffeID, string name, string address, bool isOpen);
         void DeleteCaffe(int caffeID);
 
-        void AddArticleInCaffe(int articleID, int caffeID, bool isAvailabe);
+        void AddArticleInCaffe(int articleID, int caffeID);
+        void UpdateArticleInCaffe(int ID, int articleID, int caffeID, bool IsAvailable); //možda samo update IsAvailable?
+        void DeleteArticleInCaffe(int ID);
+
+        void AddTable(int tableID, int caffeID);
+        void UpdateTable(int tableID, int caffeID, bool IsOccupied);
+        void DeleteTable(int tableID);
+        
+        IList<ArticleModel> ListArticlesInCaffe(int caffeID);
+        IList<TableModel> ListAllTablesInCaffe(int caffeID);
+        IList<TableModel> ListFreeTablesInCaffe(int caffeID);
+        CaffeModel FindCaffeByID(int caffeID);
+        CaffeModel FindCaffeByName(string name);
+        CaffeModel FindCaffeByAddress(string address);
     }
 }
