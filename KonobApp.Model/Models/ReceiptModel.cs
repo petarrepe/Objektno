@@ -31,15 +31,8 @@ namespace KonobApp.Model.Models
     //private double _discount;
         private IList<ArticleModel> _articles;
 
-
-    //public int IdReceipt { get { return _idReceipt; } set { _idReceipt = value; } }
-    //public DateTime Date { get { return _date; } set { _date = value; } }
-    //public Waiter Waiter { get { return _waiter; } set { _waiter = value; } }
-    //public User User { get { return _user; } set { _user = value; } }
-    //public PaymentMethod IdPaymentMethod { get { return _paymentMethod; } }
-    //public double Total { get { return _total; } set { _total = value; } }
-    //public double Discount { get { return _discount; } set { _discount = value; } }
-    //public IList<Article> Articles { get { return _articles; }  set { SetTotal(); _articles = value; } }
+        public virtual IList<ArticleModel> Articles { get; set; }
+    
 
     public virtual double SetTotal()
         {
