@@ -9,10 +9,10 @@ namespace KonobApp.Model.Repositories
 {
     public interface IReceiptRepository
     {
-        IList<Receipt> Receipts { get; }
-        Receipt CurrentReceipt { get; }
-        User CurrentUser { get; }
-        Waiter CurrentWaiter { get; }
+        IList<ReceiptModel> Receipts { get; }
+        ReceiptModel CurrentReceipt { get; }
+        UserModel CurrentUser { get; }
+        WaiterModel CurrentWaiter { get; }
 
         void LoadAll();
         void LoadArticles();

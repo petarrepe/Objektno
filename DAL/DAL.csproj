@@ -50,20 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade.cs" />
-    <Compile Include="Models\ArticleInCaffeModel.cs" />
-    <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\ArticleReceiptModel.cs" />
-    <Compile Include="Models\CaffeModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\OpenNHibernateSession.cs" />
-    <Compile Include="Models\PaymentMethodModel.cs" />
-    <Compile Include="Models\ReceiptModel.cs" />
-    <Compile Include="Models\TableModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\WaiterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IArticleRepository.cs" />
-    <Compile Include="Repositories\ICaffeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -80,6 +68,12 @@
     <Content Include="Models\NHibernate\User.mapping.xml" />
     <Content Include="Models\NHibernate\Waiter.mapping.xml" />
     <EmbeddedResource Include="Models\NHibernate\hibernate.cfg.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KonobApp.Model\KonobApp.Model.csproj">
+      <Project>{443e97fb-6175-4dd8-b909-ba9f734144d3}</Project>
+      <Name>KonobApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

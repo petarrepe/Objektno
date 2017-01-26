@@ -1,6 +1,6 @@
-﻿using DAL.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+using KonobApp.Model.Models;
 
 namespace Objektno.Controllers
 {

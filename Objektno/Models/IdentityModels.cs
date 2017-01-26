@@ -30,6 +30,6 @@ namespace Objektno.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<DAL.Models.CaffeModel> CaffeModels { get; set; }
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.CaffeModel> CaffeModels { get; set; }
     }
 }

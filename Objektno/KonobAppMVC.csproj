@@ -252,6 +252,10 @@
       <Project>{8a47ae88-fe47-43bd-9f74-60e3b27f4df5}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Model\KonobApp.Model.csproj">
+      <Project>{443e97fb-6175-4dd8-b909-ba9f734144d3}</Project>
+      <Name>KonobApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

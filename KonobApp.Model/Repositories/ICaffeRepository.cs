@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Models;
+using KonobApp.Model.Models;
 
-namespace DAL.Repositories
+
+namespace KonobApp.Model.Repositories
 {
     public interface ICaffeRepository
     {
