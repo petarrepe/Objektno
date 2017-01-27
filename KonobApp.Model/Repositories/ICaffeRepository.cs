@@ -19,16 +19,17 @@ namespace KonobApp.Model.Repositories
         void LoadTables();
         void LoadWaiters();
         void LoadArticlesInCaffe();
+        void LoadArticles();
 
         void AddCaffe(string name, string address, bool isOpen);
         void UpdateCaffe(int caffeID, string name, string address, bool isOpen);
         void DeleteCaffe(int caffeID);
 
         void AddArticleInCaffe(int articleID, int caffeID);
-        void UpdateArticleInCaffe(int ID, int articleID, int caffeID, bool IsAvailable); //možda samo update IsAvailable?
+        void UpdateArticleInCaffe(int ID, bool IsAvailable);
         void DeleteArticleInCaffe(int ID);
 
-        void AddTable(int tableID, int caffeID);
+        void AddTable(int caffeID);
         void UpdateTable(int tableID, int caffeID, bool IsOccupied);
         void DeleteTable(int tableID);
         
@@ -38,5 +39,7 @@ namespace KonobApp.Model.Repositories
         CaffeModel FindCaffeByID(int caffeID);
         CaffeModel FindCaffeByName(string name);
         CaffeModel FindCaffeByAddress(string address);
+        ArticleInCaffeModel FindArtInCaffByID(int ID);
+        TableModel FindTableByID(int tableID);
     }
 }
