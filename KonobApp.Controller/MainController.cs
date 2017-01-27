@@ -84,7 +84,7 @@ namespace KonobApp.Controller
 
         public void DeleteReceipt(int receiptId)
         {
-            throw new NotImplementedException();
+            _receiptRepository.Receipts.Remove(_receiptRepository.Receipts.Where(t => t.IDReceipt == receiptId).First());
         }
 
         public void ShowArticles()
