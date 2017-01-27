@@ -148,7 +148,9 @@ namespace DAL.Repositories
 
         public BindingList<ArticleModel> GetArticlesBindingList()
         {
-            throw new NotImplementedException();
+            LoadArticle();
+            BindingList<ArticleModel> ArticlesBL = new BindingList<ArticleModel>(_articles);
+            return ArticlesBL;
         }
     }
 }
