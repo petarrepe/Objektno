@@ -52,7 +52,8 @@
     <Compile Include="Facade.cs" />
     <Compile Include="Models\OpenNHibernateSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\CaffeRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
   </ItemGroup>
   <ItemGroup>

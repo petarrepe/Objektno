@@ -9,7 +9,7 @@ namespace KonobApp.Model.Repositories
 {
     public interface IArticleRepository
     {
-        ArticleModel Article { get; }
+        ArticleModel CurrentArticle { get; }
         CategoryModel Category { get; }
 
         void LoadAll();
@@ -22,7 +22,8 @@ namespace KonobApp.Model.Repositories
 
         ArticleModel FindArticleByID(int ID);
         ArticleModel FindArticleByName(string name);
-        ArticleModel FindArticleByCategory(int categoryID);
+        IList<ArticleModel> FindArticlesByCategory(int categoryID);
+        CategoryModel FindCategoryByID(int categoryID);
 
     }
 }
