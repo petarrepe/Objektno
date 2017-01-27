@@ -10,22 +10,26 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class ReceiptRepository : Subject, IReceiptRepository
+    public class ReceiptRepository : Subject, IReceiptRepository
     {
         private static ReceiptRepository _instance = null;
 
         private IList<ReceiptModel> _receipts = new List<ReceiptModel>();
         private IList<ArticleModel> _articles = new List<ArticleModel>();
+        private IList<PaymentMethodModel> _paymentMethods = new List<PaymentMethodModel>();
+
         private ReceiptModel _currentReceipt;
         private UserModel _currentUser;
         private WaiterModel _currentWaiter;
 
+        public IList<ReceiptModel> Receipts { get { return _receipts; } }
         public IList<ArticleModel> Articles { get { return _articles; } }
+        public IList<PaymentMethodModel> PaymentMethods { get { return _paymentMethods; } }
 
         public ReceiptModel CurrentReceipt { get { return _currentReceipt; } }
         public UserModel CurrentUser { get { return _currentUser; } }
         public WaiterModel CurrentWaiter { get { return _currentWaiter; } }
-        public IList<ReceiptModel> Receipts { get { return _receipts; } }
+        
 
         private ISession nhibernateSession;
 
@@ -45,26 +49,83 @@ namespace DAL.Repositories
 
         public void LoadAll()
         {
-            LoadArticles();
+            // Nije potrebno ucitati articles i payment method jer ce se
+            // ucitavanjem racuna automatski ucitati i ostale stvari.
             LoadReceipts();
-        }
-
-        public void LoadArticles()
-        {
-            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
-            {
-                IQuery query = nhibernateSession.CreateQuery("from Article");
-                _articles = query.List<ArticleModel>();
-            }
         }
 
         public void LoadReceipts()
         {
-            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
+            IList<ArticleReceiptModel> artRecList = null;
+            using (Facade facade = new Facade())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Receipt");
-                _receipts = query.List<ReceiptModel>();
+                _receipts = facade.FetchAll<ReceiptModel>();
+                artRecList = facade.FetchAll<ArticleReceiptModel>();
             }
+
+            if (_articles == null) LoadArticles();
+            if (_paymentMethods == null) LoadPaymentMethods();
+
+            // punjenje podataka o articlima:
+            foreach(ReceiptModel receipt in _receipts)
+            {
+                receipt.ArtRec = artRecList.Where(t => t.IDReceipt == receipt.IDReceipt).ToList();
+                foreach(ArticleReceiptModel artRec in receipt.ArtRec)
+                {
+                    artRec.Article = _articles.FirstOrDefault(t => t.IDArticle == artRec.IDArticle);
+                }
+            }
+        }
+
+        public void LoadArticles()
+        {
+            using (Facade facade = new Facade())
+            {
+                _articles = facade.FetchAll<ArticleModel>();
+            }
+        }
+
+        public void LoadPaymentMethods()
+        {
+            using (Facade facade = new Facade())
+            {
+                _paymentMethods = facade.FetchAll<PaymentMethodModel>();
+            }
+        }
+
+        public void addArticleToCurrentReceipt(int articleId)
+        {
+            if (_articles == null)
+            {
+                LoadArticles();
+            }
+            if (_currentReceipt == null)
+            {
+                return;
+            }
+            ArticleModel articleToAdd = _articles.FirstOrDefault(t => t.IDArticle == articleId);
+            if (articleToAdd == null)
+            {
+                return;
+            }
+            _currentReceipt.Articles.Add(articleToAdd);
+        }
+
+        public void removeArticleFromCurrentReceipt(int articleId)
+        {
+            if (_currentReceipt == null) return;
+
+            ArticleModel articleToRemove = _currentReceipt.Articles.FirstOrDefault(t => t.IDArticle == articleId);
+            if (articleToRemove == null)
+            {
+                return;
+            }
+            _currentReceipt.Articles.Remove(articleToRemove);
+        }
+
+        public void setPaymentMethodToCurrentReceipt(int paymentMethodId)
+        {
+            if (_paymentMethods == null) LoadPaymentMethods();
         }
     }
 }

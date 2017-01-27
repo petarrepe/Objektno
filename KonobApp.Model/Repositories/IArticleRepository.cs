@@ -22,7 +22,8 @@ namespace KonobApp.Model.Repositories
 
         ArticleModel FindArticleByID(int ID);
         ArticleModel FindArticleByName(string name);
-        ArticleModel FindArticleByCategory(int categoryID);
+        IList<ArticleModel> FindArticlesByCategory(int categoryID);
+        CategoryModel FindCategoryByID(int categoryID);
 
     }
 }

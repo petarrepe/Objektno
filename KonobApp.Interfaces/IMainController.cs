@@ -14,6 +14,13 @@ namespace KonobApp.Interfaces
         void Login();
         bool CheckCredentials(Form form, string username, string password);
 
+        void ShowReceipts();
+        void AddReceipt();
+        void UpdateReceipt(int receiptId);
+        void DeleteReceipt(int receiptId);
 
+        void ShowArticles();
+        void SetArticleAvailable(int articleId);
+        void SetArticleUnavailable(int articleId);
     }
 }

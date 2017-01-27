@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8A47AE88-FE47-43BD-9F74-60E3B27F4DF5}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Forms\KonobApp.Forms.csproj">
+      <Project>{28F9CED9-CD4F-40C5-A4BB-618482D50F50}</Project>
+      <Name>KonobApp.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Interfaces\KonobApp.Interfaces.csproj">
+      <Project>{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}</Project>
+      <Name>KonobApp.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Model\KonobApp.Model.csproj">
+      <Project>{443e97fb-6175-4dd8-b909-ba9f734144d3}</Project>
+      <Name>KonobApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

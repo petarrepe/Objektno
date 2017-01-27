@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Model.Repositories
 {
-    interface IAccountRepository
+    public interface IAccountRepository
     {
     }
 }

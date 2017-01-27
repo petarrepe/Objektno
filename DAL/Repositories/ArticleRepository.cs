@@ -43,47 +43,106 @@ namespace DAL.Repositories
 
         public void LoadAll()
         {
-
+            LoadArticle();
+            LoadCategory();
         }
 
         public void LoadArticle()
         {
-
+            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
+            {
+                IQuery query = nhibernateSession.CreateQuery("from Article");
+                _articles = query.List<ArticleModel>();
+            }
         }
 
         public void LoadCategory()
         {
-
+            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
+            {
+                IQuery query = nhibernateSession.CreateQuery("from Category");
+                _categories = query.List<CategoryModel>();
+            }
         }
 
         public void AddArticle(string name, float price, int categoryID)
         {
+            ArticleModel article = new ArticleModel();
 
+            article.Category = FindCategoryByID(categoryID);
+            article.IDCategory = categoryID;
+            article.Price = price;
+            article.Name = name;
+
+            using (ISession session = OpenNHibernateSession.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(article);
+                    transaction.Commit();
+                }
+            }
+
+            _articles.Add(article);
+            NotifyObservers();
         }
 
         public void UpdateArticle(int articleID, string name, float price, int categoryID)
         {
+            ArticleModel article = FindArticleByID(articleID);
 
+            article.Category = FindCategoryByID(categoryID);
+            article.Name = name;
+            article.Price = price;
+            article.IDCategory = categoryID;
+
+            using (ISession session = OpenNHibernateSession.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Update(article);
+                    transaction.Commit();
+                }
+            }
+
+            NotifyObservers();
         }
 
         public void DeleteArticle(int articleID)
         {
+            ArticleModel article = FindArticleByID(articleID);
 
+            using (ISession session = OpenNHibernateSession.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Delete(article);
+                    transaction.Commit();
+                }
+            }
+
+            _articles.Remove(article);
+            NotifyObservers();
         }
 
         public ArticleModel FindArticleByID(int ID)
         {
-            return null;
+            return Articles.Where(a => a.IDArticle == ID).First();
         }
 
         public ArticleModel FindArticleByName(string name)
         {
-            return null;
+            return Articles.Where(a => a.Name == name).First();
         }
 
-        public ArticleModel FindArticleByCategory(int categoryID)
+        public IList<ArticleModel> FindArticlesByCategory(int categoryID)
         {
-            return null;
+            return Articles.Where(a => a.IDCategory == categoryID).ToList();
+        }
+
+        public CategoryModel FindCategoryByID(int categoryID)
+        {
+            return Categories.Where(c => c.IDCategory == categoryID).First();
         }
     }
 }

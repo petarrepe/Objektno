@@ -88,6 +88,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KonobApp.Interfaces\KonobApp.Interfaces.csproj">
+      <Project>{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}</Project>
+      <Name>KonobApp.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Model\KonobApp.Model.csproj">
+      <Project>{443e97fb-6175-4dd8-b909-ba9f734144d3}</Project>
+      <Name>KonobApp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
