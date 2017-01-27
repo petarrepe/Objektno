@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KonobApp.Interfaces;
+using KonobApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,54 @@ namespace KonobApp.Forms
 {
     public partial class FormNewReceipt : Form
     {
-        public FormNewReceipt()
+        IMainController _mainController;
+        IReceiptRepository _receiptRepository;
+
+        public FormNewReceipt(IMainController mainController, IReceiptRepository receiptRepository)
         {
+            _mainController = mainController;
+            _receiptRepository = receiptRepository;
             InitializeComponent();
+        }
+
+        private void FormNewReceipt_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            string errorMessage = _receiptRepository.ValidateCurrentReceipt();
+            if (!String.IsNullOrEmpty(errorMessage))
+            {
+                MessageBox.Show(errorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            _receiptRepository.SaveCurrentReceiptChanges();
+        }
+
+        private void btnNewArticle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAmountPlus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAmountMinus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

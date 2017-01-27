@@ -102,8 +102,18 @@ namespace DAL.Repositories
         {
             _currentReceipt = _receipts.FirstOrDefault(t => t.IDReceipt == receiptId);
         }
+        
+        public void SetNewCurrentReceipt()
+        {
+            _currentReceipt = new ReceiptModel
+            {
+                Date = DateTime.Now,
+                Waiter = _currentWaiter,
+                PaymentMethod = _paymentMethods.FirstOrDefault(t => t.TypePaymentMethod.ToLower() == "gotovina")
+            };
+        }
 
-        public void AddArticleToCurrentReceipt(int articleId)
+        public void AddArticleToCurrentReceipt(int articleId, int amount)
         {
             if (_articles == null)
             {
@@ -111,7 +121,11 @@ namespace DAL.Repositories
             }
             if (_currentReceipt == null)
             {
-                return;
+                throw new Exception("Current receipt not initialised.");
+            }
+            if (amount < 1)
+            {
+                throw new ArgumentException("Amount of articles in receipt cannot be less than 1.");
             }
             ArticleModel articleToAdd = _articles.FirstOrDefault(t => t.IDArticle == articleId);
             if (articleToAdd == null)
@@ -136,6 +150,15 @@ namespace DAL.Repositories
         public void SetPaymentMethodToCurrentReceipt(int paymentMethodId)
         {
             if (_paymentMethods == null) LoadPaymentMethods();
+        }
+
+        public string ValidateCurrentReceipt()
+        {
+            if(_currentReceipt.ArtRec.Count < 1)
+            {
+                return "Račun mora imati najmanje jedan artikl!";
+            }
+            return string.Empty;
         }
 
         public void SaveCurrentReceiptChanges()
