@@ -14,6 +14,7 @@ namespace KonobApp.Controller
     public class MainController : IMainController
     {
         public bool LoginSuccessful = false;
+        private bool _notificationConnectionActive = false;
 
         readonly ReceiptRepository _receiptRepository = ReceiptRepository.GetInstance();
         readonly AccountRepository _accountRepository = AccountRepository.GetInstance();
@@ -61,6 +62,16 @@ namespace KonobApp.Controller
 
         }
 
+        public void NewReceipt()
+        {
+
+        }
+
+        public void NewReceipt(ReceiptModel receipt)
+        {
+
+        }
+
         public void AddReceipt()
         {
             throw new NotImplementedException();
@@ -92,5 +103,25 @@ namespace KonobApp.Controller
         }
 
         #endregion
+
+        #region Options
+
+        public void ShowOptions()
+        {
+
+        }
+
+        public void ChangeNotificationState()
+        {
+
+        }
+
+        public bool IsNotificationConnectionActive()
+        {
+            return _notificationConnectionActive;
+        }
+
+        #endregion
+
     }
 }
