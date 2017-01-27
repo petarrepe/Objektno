@@ -52,5 +52,26 @@ namespace KonobApp.Forms
         {
             _mainController.ChangeNotificationState();
         }
+
+        private void btnViewReceipts_Click(object sender, EventArgs e)
+        {
+            _mainController.ShowReceipts();
+        }
+
+        private void FormMainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.I:
+                    _mainController.ShowArticles();
+                    break;
+                case Keys.R:
+                    _mainController.NewReceipt();
+                    break;
+                case Keys.P:
+                    _mainController.ShowReceipts();
+                    break;
+            }
+        }
     }
 }

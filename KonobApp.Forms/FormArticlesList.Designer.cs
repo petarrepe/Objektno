@@ -30,6 +30,7 @@
         {
             this.dgvArticles = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnCloseAndSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,23 +40,35 @@
             this.dgvArticles.Location = new System.Drawing.Point(12, 12);
             this.dgvArticles.Name = "dgvArticles";
             this.dgvArticles.RowTemplate.Height = 24;
-            this.dgvArticles.Size = new System.Drawing.Size(354, 274);
+            this.dgvArticles.Size = new System.Drawing.Size(355, 350);
             this.dgvArticles.TabIndex = 0;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(121, 292);
+            this.btnClose.Location = new System.Drawing.Point(187, 368);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(128, 41);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Zatvori";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnCloseAndSave
+            // 
+            this.btnCloseAndSave.Location = new System.Drawing.Point(53, 368);
+            this.btnCloseAndSave.Name = "btnCloseAndSave";
+            this.btnCloseAndSave.Size = new System.Drawing.Size(128, 41);
+            this.btnCloseAndSave.TabIndex = 2;
+            this.btnCloseAndSave.Text = "Spremi i zatvori";
+            this.btnCloseAndSave.UseVisualStyleBackColor = true;
+            this.btnCloseAndSave.Click += new System.EventHandler(this.btnCloseAndSave_Click);
             // 
             // FormArticlesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 421);
+            this.ClientSize = new System.Drawing.Size(379, 421);
+            this.Controls.Add(this.btnCloseAndSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvArticles);
             this.Name = "FormArticlesList";
@@ -69,5 +82,6 @@
 
         private System.Windows.Forms.DataGridView dgvArticles;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnCloseAndSave;
     }
 }

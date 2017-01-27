@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KonobApp.Model.Models;
+using System.ComponentModel;
 
 namespace KonobApp.Model.Repositories
 {
@@ -24,6 +25,6 @@ namespace KonobApp.Model.Repositories
         ArticleModel FindArticleByName(string name);
         IList<ArticleModel> FindArticlesByCategory(int categoryID);
         CategoryModel FindCategoryByID(int categoryID);
-
+        BindingList<ArticleModel> GetArticlesBindingList();
     }
 }

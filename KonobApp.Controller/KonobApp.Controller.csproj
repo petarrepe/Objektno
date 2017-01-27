@@ -50,7 +50,7 @@
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\KonobApp.Forms\KonobApp.Forms.csproj">
-      <Project>{28F9CED9-CD4F-40C5-A4BB-618482D50F50}</Project>
+      <Project>{28f9ced9-cd4f-40c5-a4bb-618482d50f50}</Project>
       <Name>KonobApp.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\KonobApp.Interfaces\KonobApp.Interfaces.csproj">

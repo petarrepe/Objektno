@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{28F9CED9-CD4F-40C5-A4BB-618482D50F50}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KonobApp.Forms</RootNamespace>
     <AssemblyName>KonobApp.Forms</AssemblyName>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,7 +67,18 @@
     <Compile Include="FormMainWindow.Designer.cs">
       <DependentUpon>FormMainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="FormNewReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewReceipt.Designer.cs">
+      <DependentUpon>FormNewReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewReceiptArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewReceiptArticle.Designer.cs">
+      <DependentUpon>FormNewReceiptArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormArticlesList.resx">
       <DependentUpon>FormArticlesList.cs</DependentUpon>
@@ -74,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMainWindow.resx">
       <DependentUpon>FormMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewReceipt.resx">
+      <DependentUpon>FormNewReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

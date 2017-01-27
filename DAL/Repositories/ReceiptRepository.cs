@@ -35,7 +35,7 @@ namespace DAL.Repositories
 
         private ReceiptRepository()
         {
-
+            _currentUser = null;
         }
 
         public static ReceiptRepository GetInstance()
@@ -46,6 +46,8 @@ namespace DAL.Repositories
             }
             return _instance;
         }
+
+        #region Load
 
         public void LoadAll()
         {
@@ -93,7 +95,15 @@ namespace DAL.Repositories
             }
         }
 
-        public void addArticleToCurrentReceipt(int articleId)
+        #endregion
+
+        #region Current Receipt methods
+        public void SetCurrentReceipt(int receiptId)
+        {
+            _currentReceipt = _receipts.FirstOrDefault(t => t.IDReceipt == receiptId);
+        }
+
+        public void AddArticleToCurrentReceipt(int articleId)
         {
             if (_articles == null)
             {
@@ -111,7 +121,7 @@ namespace DAL.Repositories
             _currentReceipt.Articles.Add(articleToAdd);
         }
 
-        public void removeArticleFromCurrentReceipt(int articleId)
+        public void RemoveArticleFromCurrentReceipt(int articleId)
         {
             if (_currentReceipt == null) return;
 
@@ -123,9 +133,30 @@ namespace DAL.Repositories
             _currentReceipt.Articles.Remove(articleToRemove);
         }
 
-        public void setPaymentMethodToCurrentReceipt(int paymentMethodId)
+        public void SetPaymentMethodToCurrentReceipt(int paymentMethodId)
         {
             if (_paymentMethods == null) LoadPaymentMethods();
         }
+
+        public void SaveCurrentReceiptChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Current User and Waiter methods
+
+        public void SetCurrentUser(UserModel user)
+        {
+            _currentUser = user;
+        }
+
+        public void SetCurrentWaiter(WaiterModel waiter)
+        {
+            _currentWaiter = waiter;
+        }
+
+        #endregion
     }
 }

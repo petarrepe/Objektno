@@ -7,10 +7,11 @@ using KonobApp.Model.Repositories;
 using KonobApp.Model.Models;
 using NHibernate;
 using KonobApp.Interfaces;
+using System.ComponentModel;
 
 namespace DAL.Repositories
 {
-    class ArticleRepository : Subject, IArticleRepository
+    public class ArticleRepository : Subject, IArticleRepository
     {
         private static ArticleRepository _instance = null;
         private IList<ArticleModel> _articles = new List<ArticleModel>();
@@ -143,6 +144,11 @@ namespace DAL.Repositories
         public CategoryModel FindCategoryByID(int categoryID)
         {
             return Categories.Where(c => c.IDCategory == categoryID).First();
+        }
+
+        public BindingList<ArticleModel> GetArticlesBindingList()
+        {
+            throw new NotImplementedException();
         }
     }
 }

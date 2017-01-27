@@ -34,15 +34,16 @@
             this.btnOptions = new System.Windows.Forms.Button();
             this.lblOrders = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.gbUserData = new System.Windows.Forms.GroupBox();
-            this.lblUsernameName = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.lblUsernameName = new System.Windows.Forms.Label();
             this.lblConnection = new System.Windows.Forms.Label();
             this.lblConnectionInfo = new System.Windows.Forms.Label();
+            this.btnViewReceipts = new System.Windows.Forms.Button();
             this.gbUserData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,17 +59,17 @@
             // 
             // btnArticles
             // 
-            this.btnArticles.Location = new System.Drawing.Point(337, 212);
+            this.btnArticles.Location = new System.Drawing.Point(337, 214);
             this.btnArticles.Name = "btnArticles";
             this.btnArticles.Size = new System.Drawing.Size(232, 53);
             this.btnArticles.TabIndex = 1;
-            this.btnArticles.Text = "Pregled inventara (P)";
+            this.btnArticles.Text = "Pregled inventara (I)";
             this.btnArticles.UseVisualStyleBackColor = true;
             this.btnArticles.Click += new System.EventHandler(this.btnArticles_Click);
             // 
             // btnNewReceipt
             // 
-            this.btnNewReceipt.Location = new System.Drawing.Point(337, 271);
+            this.btnNewReceipt.Location = new System.Drawing.Point(337, 273);
             this.btnNewReceipt.Name = "btnNewReceipt";
             this.btnNewReceipt.Size = new System.Drawing.Size(232, 53);
             this.btnNewReceipt.TabIndex = 2;
@@ -78,7 +79,7 @@
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(459, 388);
+            this.btnOptions.Location = new System.Drawing.Point(459, 391);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(110, 35);
             this.btnOptions.TabIndex = 3;
@@ -103,10 +104,14 @@
             this.colTotal});
             this.listView1.Location = new System.Drawing.Point(15, 32);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 391);
+            this.listView1.Size = new System.Drawing.Size(316, 394);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // colId
+            // 
+            this.colId.Text = "(Id:)";
             // 
             // colTime
             // 
@@ -117,10 +122,6 @@
             // 
             this.colTotal.Text = "Total:";
             this.colTotal.Width = 100;
-            // 
-            // colId
-            // 
-            this.colId.Text = "(Id:)";
             // 
             // btnLogout
             // 
@@ -144,15 +145,6 @@
             this.gbUserData.TabStop = false;
             this.gbUserData.Text = "Prijavljeni korisnik";
             // 
-            // lblUsernameName
-            // 
-            this.lblUsernameName.AutoSize = true;
-            this.lblUsernameName.Location = new System.Drawing.Point(6, 30);
-            this.lblUsernameName.Name = "lblUsernameName";
-            this.lblUsernameName.Size = new System.Drawing.Size(62, 17);
-            this.lblUsernameName.TabIndex = 0;
-            this.lblUsernameName.Text = "Korisnik:";
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -161,6 +153,15 @@
             this.lblUsername.Size = new System.Drawing.Size(93, 17);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "korisničkoIme";
+            // 
+            // lblUsernameName
+            // 
+            this.lblUsernameName.AutoSize = true;
+            this.lblUsernameName.Location = new System.Drawing.Point(6, 30);
+            this.lblUsernameName.Name = "lblUsernameName";
+            this.lblUsernameName.Size = new System.Drawing.Size(62, 17);
+            this.lblUsernameName.TabIndex = 0;
+            this.lblUsernameName.Text = "Korisnik:";
             // 
             // lblConnection
             // 
@@ -180,11 +181,22 @@
             this.lblConnectionInfo.TabIndex = 10;
             this.lblConnectionInfo.Text = "Aktivna/Spajanje/Nije spojeno";
             // 
+            // btnViewReceipts
+            // 
+            this.btnViewReceipts.Location = new System.Drawing.Point(337, 332);
+            this.btnViewReceipts.Name = "btnViewReceipts";
+            this.btnViewReceipts.Size = new System.Drawing.Size(232, 53);
+            this.btnViewReceipts.TabIndex = 11;
+            this.btnViewReceipts.Text = "Pregled računa (P)";
+            this.btnViewReceipts.UseVisualStyleBackColor = true;
+            this.btnViewReceipts.Click += new System.EventHandler(this.btnViewReceipts_Click);
+            // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 435);
+            this.ClientSize = new System.Drawing.Size(590, 438);
+            this.Controls.Add(this.btnViewReceipts);
             this.Controls.Add(this.lblConnectionInfo);
             this.Controls.Add(this.lblConnection);
             this.Controls.Add(this.gbUserData);
@@ -194,9 +206,11 @@
             this.Controls.Add(this.btnNewReceipt);
             this.Controls.Add(this.btnArticles);
             this.Controls.Add(this.btnActivateOrders);
+            this.KeyPreview = true;
             this.Name = "FormMainWindow";
             this.Text = "KonobApp - Glavni izbornik";
             this.Load += new System.EventHandler(this.FormMainWindow_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMainWindow_KeyDown);
             this.gbUserData.ResumeLayout(false);
             this.gbUserData.PerformLayout();
             this.ResumeLayout(false);
@@ -221,6 +235,7 @@
         private System.Windows.Forms.Label lblUsernameName;
         private System.Windows.Forms.Label lblConnection;
         private System.Windows.Forms.Label lblConnectionInfo;
+        private System.Windows.Forms.Button btnViewReceipts;
     }
 }
 
