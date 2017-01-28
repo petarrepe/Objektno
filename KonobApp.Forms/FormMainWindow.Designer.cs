@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainWindow));
             this.btnActivateOrders = new System.Windows.Forms.Button();
             this.btnArticles = new System.Windows.Forms.Button();
             this.btnNewReceipt = new System.Windows.Forms.Button();
@@ -46,7 +47,14 @@
             this.lblConnection = new System.Windows.Forms.Label();
             this.lblConnectionInfo = new System.Windows.Forms.Label();
             this.btnViewReceipts = new System.Windows.Forms.Button();
+            this.gbTables = new System.Windows.Forms.GroupBox();
+            this.lblTableAvailableName = new System.Windows.Forms.Label();
+            this.lblTablesOccupiedName = new System.Windows.Forms.Label();
+            this.lblTablesAvailable = new System.Windows.Forms.Label();
+            this.lblTablesOccupied = new System.Windows.Forms.Label();
+            this.btnTables = new System.Windows.Forms.Button();
             this.gbUserData.SuspendLayout();
+            this.gbTables.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnActivateOrders
@@ -106,7 +114,7 @@
             this.colTotal});
             this.listView1.Location = new System.Drawing.Point(15, 32);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 432);
+            this.listView1.Size = new System.Drawing.Size(316, 356);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -213,11 +221,71 @@
             this.btnViewReceipts.UseVisualStyleBackColor = true;
             this.btnViewReceipts.Click += new System.EventHandler(this.btnViewReceipts_Click);
             // 
+            // gbTables
+            // 
+            this.gbTables.Controls.Add(this.btnTables);
+            this.gbTables.Controls.Add(this.lblTablesOccupied);
+            this.gbTables.Controls.Add(this.lblTablesAvailable);
+            this.gbTables.Controls.Add(this.lblTablesOccupiedName);
+            this.gbTables.Controls.Add(this.lblTableAvailableName);
+            this.gbTables.Location = new System.Drawing.Point(15, 394);
+            this.gbTables.Name = "gbTables";
+            this.gbTables.Size = new System.Drawing.Size(316, 70);
+            this.gbTables.TabIndex = 12;
+            this.gbTables.TabStop = false;
+            this.gbTables.Text = "Stanje stolova:";
+            // 
+            // lblTableAvailableName
+            // 
+            this.lblTableAvailableName.AutoSize = true;
+            this.lblTableAvailableName.Location = new System.Drawing.Point(6, 18);
+            this.lblTableAvailableName.Name = "lblTableAvailableName";
+            this.lblTableAvailableName.Size = new System.Drawing.Size(52, 17);
+            this.lblTableAvailableName.TabIndex = 0;
+            this.lblTableAvailableName.Text = "Prazni:";
+            // 
+            // lblTablesOccupiedName
+            // 
+            this.lblTablesOccupiedName.AutoSize = true;
+            this.lblTablesOccupiedName.Location = new System.Drawing.Point(6, 35);
+            this.lblTablesOccupiedName.Name = "lblTablesOccupiedName";
+            this.lblTablesOccupiedName.Size = new System.Drawing.Size(59, 17);
+            this.lblTablesOccupiedName.TabIndex = 1;
+            this.lblTablesOccupiedName.Text = "Zauzeti:";
+            // 
+            // lblTablesAvailable
+            // 
+            this.lblTablesAvailable.AutoSize = true;
+            this.lblTablesAvailable.Location = new System.Drawing.Point(71, 18);
+            this.lblTablesAvailable.Name = "lblTablesAvailable";
+            this.lblTablesAvailable.Size = new System.Drawing.Size(95, 17);
+            this.lblTablesAvailable.TabIndex = 2;
+            this.lblTablesAvailable.Text = "brojSlobodnih";
+            // 
+            // lblTablesOccupied
+            // 
+            this.lblTablesOccupied.AutoSize = true;
+            this.lblTablesOccupied.Location = new System.Drawing.Point(71, 35);
+            this.lblTablesOccupied.Name = "lblTablesOccupied";
+            this.lblTablesOccupied.Size = new System.Drawing.Size(87, 17);
+            this.lblTablesOccupied.TabIndex = 3;
+            this.lblTablesOccupied.Text = "brojZauzetih";
+            // 
+            // btnTables
+            // 
+            this.btnTables.Location = new System.Drawing.Point(172, 18);
+            this.btnTables.Name = "btnTables";
+            this.btnTables.Size = new System.Drawing.Size(138, 34);
+            this.btnTables.TabIndex = 4;
+            this.btnTables.Text = "Pregled stolova (S)";
+            this.btnTables.UseVisualStyleBackColor = true;
+            // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 476);
+            this.Controls.Add(this.gbTables);
             this.Controls.Add(this.btnViewReceipts);
             this.Controls.Add(this.lblConnectionInfo);
             this.Controls.Add(this.lblConnection);
@@ -228,6 +296,7 @@
             this.Controls.Add(this.btnNewReceipt);
             this.Controls.Add(this.btnArticles);
             this.Controls.Add(this.btnActivateOrders);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FormMainWindow";
             this.Text = "KonobApp - Glavni izbornik";
@@ -235,6 +304,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMainWindow_KeyDown);
             this.gbUserData.ResumeLayout(false);
             this.gbUserData.PerformLayout();
+            this.gbTables.ResumeLayout(false);
+            this.gbTables.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +331,12 @@
         private System.Windows.Forms.Button btnViewReceipts;
         private System.Windows.Forms.Label lblCaffe;
         private System.Windows.Forms.Label lblCaffeName;
+        private System.Windows.Forms.GroupBox gbTables;
+        private System.Windows.Forms.Label lblTableAvailableName;
+        private System.Windows.Forms.Label lblTablesOccupiedName;
+        private System.Windows.Forms.Button btnTables;
+        private System.Windows.Forms.Label lblTablesOccupied;
+        private System.Windows.Forms.Label lblTablesAvailable;
     }
 }
 

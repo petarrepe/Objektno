@@ -39,6 +39,8 @@ namespace KonobApp.Controller
         {
             _receiptRepository.LoadAll();
             _accountRepository.LoadWaiters();
+            _caffeRepository.LoadAll();
+            //_caffeRepository.LoadCaffe();
         }
 
         #region Login
