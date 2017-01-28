@@ -32,11 +32,12 @@ namespace DAL.Repositories
         /// <summary>
         /// Eager approach when constructing repository.
         /// This will automatically load all neccessary data from database.
+        /// FIXME!!
         /// </summary>
         private AccountRepository()
         {
-            LoadUsers();
-            LoadWaiters();
+            //LoadUsers();
+            //LoadWaiters();
         }
 
         public static AccountRepository GetInstance()
