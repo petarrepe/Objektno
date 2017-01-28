@@ -24,11 +24,6 @@ namespace KonobApp.Controller
             _receiptRepository.LoadAll();
         }
 
-        public void CreateDatabase()
-        {
-            _accountRepository.CreateDatabase();
-        }
-
         #region Login
 
         public void Login()
@@ -103,7 +98,7 @@ namespace KonobApp.Controller
 
         public void DeleteReceipt(int receiptId)
         {
-            throw new NotImplementedException();
+            _receiptRepository.Receipts.Remove(_receiptRepository.Receipts.Where(t => t.IDReceipt == receiptId).First());
         }
 
         #endregion

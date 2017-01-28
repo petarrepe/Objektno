@@ -48,7 +48,6 @@ namespace KonobApp.Forms
 
         private void FormMainWindow_Load(object sender, EventArgs e)
         {
-            _mainController.CreateDatabase();
             _mainController.LoadAll();
             _mainController.Login();
         }

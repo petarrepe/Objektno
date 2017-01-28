@@ -53,7 +53,8 @@ namespace DAL.Repositories
 
         public void LoadAll()
         {
-            //zasada nepotrebno?
+            LoadCaffe();
+            LoadArticlesInCaffe();
         }
 
         public void LoadCaffe() //da li previše toga stvaraš?

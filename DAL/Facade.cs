@@ -43,9 +43,30 @@ namespace DAL
 
             return count;
         }
+        public void Insert<T>(T obj)
+        {
+            _session.Save(obj);
+        }
+
+        public void Insert<T>(List<T> obj)
+        {
+            for (int i = 0; i < obj.Count; i++)
+            {
+                _session.Save(obj);
+            }
+        }
+        public void Delete<T>(T obj)
+        {
+            _session.Delete(obj);
+        }
+        public void Update<T>(T obj)
+        {
+            _session.Update(obj);
+        }
 
         public void Dispose()
         {
+            _session.Transaction.Commit();
             _session.Close();
         }
     }
