@@ -6,14 +6,32 @@ using NHibernate;
 using NHibernate.Cfg;
 using System.Reflection;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DAL
 {
     public class OpenNHibernateSession
     {
         private readonly static string mvcDir = AppDomain.CurrentDomain.BaseDirectory;
-        private readonly static string localDir = mvcDir.Remove(mvcDir.Length - 9, 9) + @"DAL\"; //FIXME
+        private readonly static string localDir = SetLocalDir();
         private readonly static string nHibernateDir = localDir + @"Models\NHibernate";
+
+        /// <summary>
+        /// Dirty, but should work without problems
+        /// </summary>
+        /// <returns></returns>
+        private static string SetLocalDir()
+        {
+            string pattern = @"KonobApp.DesktopInit\\bDAL\\";
+            Regex rgx = new Regex(pattern);
+            string temp = mvcDir.Remove(mvcDir.Length - 9, 9) + @"DAL\";
+            string replacement = @"DAL\";
+
+            temp = rgx.Replace(temp, replacement);
+
+            return temp;
+        }
+
 
         public static ISession OpenSession()
         {
@@ -25,7 +43,7 @@ namespace DAL
             var caffeConfigurationFile = Path.Combine(nHibernateDir, @"Caffe.mapping.xml");
             configuration.AddFile(caffeConfigurationFile);
 
-            var tableConfigurationFile = Path.Combine(nHibernateDir,  @"Table.mapping.xml");
+            var tableConfigurationFile = Path.Combine(nHibernateDir, @"Table.mapping.xml");
             configuration.AddFile(tableConfigurationFile);
 
             var waiterConfigurationFile = Path.Combine(nHibernateDir, @"Waiter.mapping.xml");
