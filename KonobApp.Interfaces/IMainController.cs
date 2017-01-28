@@ -10,7 +10,6 @@ namespace KonobApp.Interfaces
 {
     public interface IMainController
     {
-        void CreateDatabase();
         void LoadAll();
         void Login();
         bool CheckCredentials(Form form, string username, string password);

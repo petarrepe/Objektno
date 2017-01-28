@@ -1,11 +1,8 @@
 ﻿using KonobApp.Model.Models;
 using KonobApp.Model.Repositories;
-using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -32,8 +29,14 @@ namespace DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Eager approach when constructing repository.
+        /// This will automatically load all neccessary data from database.
+        /// </summary>
         private AccountRepository()
         {
+            LoadUsers();
+            LoadWaiters();
         }
 
         public static AccountRepository GetInstance()
@@ -47,7 +50,15 @@ namespace DAL.Repositories
 
         public WaiterModel CheckCredentials(string username, string password)
         {
-            throw new NotImplementedException();
+            foreach (var waiter in _waiters)
+            {
+                if (waiter.Username == username && waiter.Password == password)
+                {
+                    return waiter;
+                }
+            }
+
+            return null;
         }
 
         public void LoadUsers()

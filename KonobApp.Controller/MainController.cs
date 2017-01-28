@@ -24,11 +24,6 @@ namespace KonobApp.Controller
             _receiptRepository.LoadAll();
         }
 
-        public void CreateDatabase()
-        {
-            _accountRepository.CreateDatabase();
-        }
-
         #region Login
 
         public void Login()
