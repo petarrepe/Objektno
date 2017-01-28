@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.Model", "KonobApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonobApp.Forms", "KonobApp.Forms\KonobApp.Forms.csproj", "{28F9CED9-CD4F-40C5-A4BB-618482D50F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationProvider", "NotificationProvider\NotificationProvider.csproj", "{EF23F724-EB2B-4AFE-9CC9-37CB68BA816A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsServer", "NotificationsServer\NotificationsServer.csproj", "{D3CF2795-CE10-4055-8992-8C767F40CF11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{28F9CED9-CD4F-40C5-A4BB-618482D50F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F9CED9-CD4F-40C5-A4BB-618482D50F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F9CED9-CD4F-40C5-A4BB-618482D50F50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF23F724-EB2B-4AFE-9CC9-37CB68BA816A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF23F724-EB2B-4AFE-9CC9-37CB68BA816A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF23F724-EB2B-4AFE-9CC9-37CB68BA816A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF23F724-EB2B-4AFE-9CC9-37CB68BA816A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3CF2795-CE10-4055-8992-8C767F40CF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CF2795-CE10-4055-8992-8C767F40CF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3CF2795-CE10-4055-8992-8C767F40CF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3CF2795-CE10-4055-8992-8C767F40CF11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,7 @@ namespace DAL
         public Facade()
         {
             _session = OpenNHibernateSession.OpenSession();
+            _session.Transaction.Begin();
         }
 
 

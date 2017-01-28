@@ -1,14 +1,11 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using KonobApp.Model.Models;
-using System.Threading.Tasks;
+using Objektno.Notifications;
 
 namespace Objektno.Controllers
 {
     public class PROBAController : Controller
     {
-
-        private Task listen = NotificationProvider.NotificationService.StartListeningOnNotification();
 
         // GET: PROBA
         public ActionResult Index()
@@ -27,7 +24,7 @@ namespace Objektno.Controllers
                 };
 
                 //var randomReciept = facade.FetchAll<ReceiptModel>().First();
-                var caffe = facade.FetchAll<KonobApp.Model.Models.CaffeModel>();
+                var caffe = facade.FetchAll<CaffeModel>();
                 NotificationService.SendReciept(rc);
 
                 return View(caffe);
