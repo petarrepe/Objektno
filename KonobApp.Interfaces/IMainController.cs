@@ -11,9 +11,11 @@ namespace KonobApp.Interfaces
     public interface IMainController
     {
         void LoadAll();
-        void Login();
+        string Login();
         bool CheckCredentials(Form form, string username, string password);
         bool CheckLoginSuccessStatus();
+
+        int GetCurrentCaffeId();
 
         void ShowReceipts();
         void NewReceipt();

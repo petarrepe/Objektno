@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.dgvArticles = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnCloseAndSave = new System.Windows.Forms.Button();
             this.colArticleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnCloseAndSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticles
             // 
+            this.dgvArticles.AllowUserToAddRows = false;
+            this.dgvArticles.AllowUserToDeleteRows = false;
             this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colArticleId,
@@ -51,26 +53,6 @@
             this.dgvArticles.RowTemplate.Height = 24;
             this.dgvArticles.Size = new System.Drawing.Size(444, 350);
             this.dgvArticles.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(236, 368);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(128, 41);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Zatvori";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnCloseAndSave
-            // 
-            this.btnCloseAndSave.Location = new System.Drawing.Point(102, 368);
-            this.btnCloseAndSave.Name = "btnCloseAndSave";
-            this.btnCloseAndSave.Size = new System.Drawing.Size(128, 41);
-            this.btnCloseAndSave.TabIndex = 2;
-            this.btnCloseAndSave.Text = "Spremi i zatvori";
-            this.btnCloseAndSave.UseVisualStyleBackColor = true;
-            this.btnCloseAndSave.Click += new System.EventHandler(this.btnCloseAndSave_Click);
             // 
             // colArticleId
             // 
@@ -96,10 +78,33 @@
             this.colAvailable.HeaderText = "Dostupan";
             this.colAvailable.Name = "colAvailable";
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(236, 368);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(128, 41);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Zatvori";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnCloseAndSave
+            // 
+            this.btnCloseAndSave.Location = new System.Drawing.Point(102, 368);
+            this.btnCloseAndSave.Name = "btnCloseAndSave";
+            this.btnCloseAndSave.Size = new System.Drawing.Size(128, 41);
+            this.btnCloseAndSave.TabIndex = 2;
+            this.btnCloseAndSave.Text = "Spremi i zatvori";
+            this.btnCloseAndSave.UseVisualStyleBackColor = true;
+            this.btnCloseAndSave.Click += new System.EventHandler(this.btnCloseAndSave_Click);
+            // 
             // FormArticlesList
             // 
+            this.AcceptButton = this.btnCloseAndSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(468, 421);
             this.ControlBox = false;
             this.Controls.Add(this.btnCloseAndSave);

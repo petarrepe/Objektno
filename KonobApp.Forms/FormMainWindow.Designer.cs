@@ -39,13 +39,13 @@
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.gbUserData = new System.Windows.Forms.GroupBox();
+            this.lblCaffe = new System.Windows.Forms.Label();
+            this.lblCaffeName = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblUsernameName = new System.Windows.Forms.Label();
             this.lblConnection = new System.Windows.Forms.Label();
             this.lblConnectionInfo = new System.Windows.Forms.Label();
             this.btnViewReceipts = new System.Windows.Forms.Button();
-            this.lblCaffeName = new System.Windows.Forms.Label();
-            this.lblCaffe = new System.Windows.Forms.Label();
             this.gbUserData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,7 +118,7 @@
             // colTime
             // 
             this.colTime.Text = "Vrijeme:";
-            this.colTime.Width = 150;
+            this.colTime.Width = 115;
             // 
             // colTotal
             // 
@@ -148,6 +148,24 @@
             this.gbUserData.TabIndex = 8;
             this.gbUserData.TabStop = false;
             this.gbUserData.Text = "Prijavljeni korisnik";
+            // 
+            // lblCaffe
+            // 
+            this.lblCaffe.AutoSize = true;
+            this.lblCaffe.Location = new System.Drawing.Point(74, 52);
+            this.lblCaffe.Name = "lblCaffe";
+            this.lblCaffe.Size = new System.Drawing.Size(37, 17);
+            this.lblCaffe.TabIndex = 9;
+            this.lblCaffe.Text = "kafić";
+            // 
+            // lblCaffeName
+            // 
+            this.lblCaffeName.AutoSize = true;
+            this.lblCaffeName.Location = new System.Drawing.Point(6, 52);
+            this.lblCaffeName.Name = "lblCaffeName";
+            this.lblCaffeName.Size = new System.Drawing.Size(43, 17);
+            this.lblCaffeName.TabIndex = 8;
+            this.lblCaffeName.Text = "Kafić:";
             // 
             // lblUsername
             // 
@@ -194,24 +212,6 @@
             this.btnViewReceipts.Text = "Pregled računa (P)";
             this.btnViewReceipts.UseVisualStyleBackColor = true;
             this.btnViewReceipts.Click += new System.EventHandler(this.btnViewReceipts_Click);
-            // 
-            // lblCaffeName
-            // 
-            this.lblCaffeName.AutoSize = true;
-            this.lblCaffeName.Location = new System.Drawing.Point(6, 52);
-            this.lblCaffeName.Name = "lblCaffeName";
-            this.lblCaffeName.Size = new System.Drawing.Size(43, 17);
-            this.lblCaffeName.TabIndex = 8;
-            this.lblCaffeName.Text = "Kafić:";
-            // 
-            // lblCaffe
-            // 
-            this.lblCaffe.AutoSize = true;
-            this.lblCaffe.Location = new System.Drawing.Point(74, 52);
-            this.lblCaffe.Name = "lblCaffe";
-            this.lblCaffe.Size = new System.Drawing.Size(37, 17);
-            this.lblCaffe.TabIndex = 9;
-            this.lblCaffe.Text = "kafić";
             // 
             // FormMainWindow
             // 

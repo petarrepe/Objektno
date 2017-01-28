@@ -42,7 +42,7 @@
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblLogin.Location = new System.Drawing.Point(116, 20);
+            this.lblLogin.Location = new System.Drawing.Point(152, 25);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(124, 17);
             this.lblLogin.TabIndex = 0;
@@ -51,7 +51,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(44, 56);
+            this.lblUsername.Location = new System.Drawing.Point(56, 71);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(103, 17);
             this.lblUsername.TabIndex = 1;
@@ -60,7 +60,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(44, 84);
+            this.lblPassword.Location = new System.Drawing.Point(56, 99);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(61, 17);
             this.lblPassword.TabIndex = 2;
@@ -68,21 +68,22 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(179, 53);
+            this.tbUsername.Location = new System.Drawing.Point(191, 68);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(152, 22);
+            this.tbUsername.Size = new System.Drawing.Size(207, 22);
             this.tbUsername.TabIndex = 3;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(179, 81);
+            this.tbPassword.Location = new System.Drawing.Point(191, 96);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(152, 22);
+            this.tbPassword.Size = new System.Drawing.Size(207, 22);
             this.tbPassword.TabIndex = 4;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(68, 152);
+            this.btnLogin.Location = new System.Drawing.Point(117, 173);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(96, 46);
             this.btnLogin.TabIndex = 5;
@@ -92,7 +93,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(179, 152);
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(228, 173);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 46);
             this.btnCancel.TabIndex = 6;
@@ -105,7 +107,7 @@
             this.lblError.AutoSize = true;
             this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(47, 118);
+            this.lblError.Location = new System.Drawing.Point(59, 133);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(62, 17);
             this.lblError.TabIndex = 7;
@@ -113,9 +115,11 @@
             // 
             // FormLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 223);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(461, 275);
             this.ControlBox = false;
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnCancel);

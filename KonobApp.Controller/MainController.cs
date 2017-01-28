@@ -15,31 +15,59 @@ namespace KonobApp.Controller
     {
         public bool LoginSuccessful = false;
         private bool _notificationConnectionActive = false;
+        private WaiterModel _currentWaiter;
+        private CaffeModel _currentCaffe;
 
         readonly ReceiptRepository _receiptRepository = ReceiptRepository.GetInstance();
         readonly AccountRepository _accountRepository = AccountRepository.GetInstance();
+        readonly CaffeRepository _caffeRepository = CaffeRepository.GetInstance();
 
         private NotificationController norificationController = new NotificationController();
+
+        public int GetCurrentCaffeId()
+        {
+            if (_currentCaffe == null)
+            {
+                throw new NotImplementedException();
+            } else
+            {
+                return _currentCaffe.IDCaffe;
+            }
+        }
 
         public void LoadAll()
         {
             _receiptRepository.LoadAll();
+            _accountRepository.LoadWaiters();
         }
 
         #region Login
 
-        public void Login()
+        public string Login()
         {
             LoginSuccessful = false;
             FormLogin formLogin = new FormLogin(this, _accountRepository);
+            formLogin.ShowDialog();
+
+            if (_currentWaiter != null)
+            {
+                return _currentWaiter.GetFullName();
+            } 
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public bool CheckCredentials(Form formLogin, string username, string password)
         {
             WaiterModel current = _accountRepository.CheckCredentials(username, password);
+            
 
             if(current != null)
             {
+                _currentWaiter = current;
+                _currentCaffe = _caffeRepository.FindCaffeByID(current.IDCaffe);
                 LoginSuccessful = true;
                 formLogin.Close();
                 return true;
@@ -66,7 +94,8 @@ namespace KonobApp.Controller
 
         public void NewReceipt()
         {
-
+            FormNewReceipt newReceipt = new FormNewReceipt(this, _receiptRepository);
+            newReceipt.ShowDialog();
         }
 
         public void NewReceipt(ReceiptModel receipt)
@@ -76,7 +105,8 @@ namespace KonobApp.Controller
 
         public void ShowAddArticleToNewReceipt()
         {
-            
+            FormNewReceiptArticle newRecArticle = new FormNewReceiptArticle(this, _receiptRepository);
+            newRecArticle.ShowDialog();
         }
 
         public int AddArticleToNewReceipt(Form form, int articleId, int amount)
@@ -109,7 +139,8 @@ namespace KonobApp.Controller
 
         public void ShowArticles()
         {
-            throw new NotImplementedException();
+            FormArticlesList formArticlesList = new FormArticlesList(this, _caffeRepository);
+            formArticlesList.ShowDialog();
         }
 
         public void SetArticleAvailable(int articleId)

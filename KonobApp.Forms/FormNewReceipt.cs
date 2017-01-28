@@ -41,7 +41,7 @@ namespace KonobApp.Forms
 
         private void btnNewArticle_Click(object sender, EventArgs e)
         {
-
+            _mainController.ShowAddArticleToNewReceipt();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

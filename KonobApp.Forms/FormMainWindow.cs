@@ -20,15 +20,15 @@ namespace KonobApp.Forms
 
             InitializeComponent();
 
-            if ((int)Properties.Settings.Default["CaffeId"] == -1)
-            {
-                _mainController.ShowOptions();
-            }
+            //if ((int)Properties.Settings.Default["CaffeId"] == -1)
+            //{
+            //    _mainController.ShowOptions();
+            //}
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            _mainController.Login();
+            lblUsername.Text = _mainController.Login();
         }
 
         private void btnArticles_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace KonobApp.Forms
         private void FormMainWindow_Load(object sender, EventArgs e)
         {
             _mainController.LoadAll();
-            _mainController.Login();
+            lblUsername.Text = _mainController.Login();
         }
 
         private void btnActivateOrders_Click(object sender, EventArgs e)

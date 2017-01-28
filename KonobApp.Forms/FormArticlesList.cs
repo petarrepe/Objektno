@@ -24,8 +24,8 @@ namespace KonobApp.Forms
 
             InitializeComponent();
 
-            BindingList<ArticleModel> bindingList = new System.ComponentModel.BindingList<ArticleModel>(_caffeRepository.ListArticlesInCaffe((int)Properties.Settings.Default["CaffeId"]));
-            dgvArticles.DataSource = bindingList;
+            //fillDataGrid(_caffeRepository.ListArticlesInCaffe(_mainController.GetCurrentCaffeId()));
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -36,6 +36,21 @@ namespace KonobApp.Forms
         private void btnCloseAndSave_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void fillDataGrid(IList<ArticleInCaffeModel> list)
+        {
+            dgvArticles.Rows.Clear();
+            foreach(ArticleInCaffeModel item in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvArticles);
+                row.Cells[0].Value = item.IDArticle;
+                row.Cells[1].Value = item.Article.Name;
+                row.Cells[2].Value = item.Article.Price.ToString("0.00");
+                row.Cells[3].Value = item.IsAvailable;
+                dgvArticles.Rows.Add(row);
+            }
         }
     }
 }
