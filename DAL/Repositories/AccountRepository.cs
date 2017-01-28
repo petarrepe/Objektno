@@ -1,6 +1,5 @@
 ﻿using KonobApp.Model.Models;
 using KonobApp.Model.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,8 +35,8 @@ namespace DAL.Repositories
         /// </summary>
         private AccountRepository()
         {
-            //LoadUsers();
-            //LoadWaiters();
+            LoadUsers();
+            LoadWaiters();
         }
 
         public static AccountRepository GetInstance()

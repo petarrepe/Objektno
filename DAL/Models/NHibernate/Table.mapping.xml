@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
 assembly="DAL"
 namespace="KonobApp.Model.Models">
-  <class name="KonobApp.Model.Models.TableModel, KonobApp.Model" table="Table" batch-size="25">
+  <class name="KonobApp.Model.Models.TableModel, KonobApp.Model" table="Stol" batch-size="25">
     <id name="IDTable">
       <generator class="increment" />
     </id>

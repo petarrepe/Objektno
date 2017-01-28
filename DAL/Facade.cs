@@ -19,7 +19,7 @@ namespace DAL
 
         public List<T> FetchAll<T>() where T : class // : BuisnessClass
         {
-            List<T> retrievedObjects = _session.Query<T>().ToList(); ;
+            List<T> retrievedObjects = _session.Query<T>().ToList();
 
             return retrievedObjects;
         }
@@ -60,6 +60,7 @@ namespace DAL
         {
             _session.Delete(obj);
         }
+
         public void Update<T>(T obj)
         {
             _session.Update(obj);

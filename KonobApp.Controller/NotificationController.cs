@@ -5,18 +5,48 @@ using System.Threading.Tasks;
 
 namespace KonobApp.Controller
 {
+    /// <summary>
+    /// Na van izlaže StartListening i StopListening za notifikacije.
+    /// Nije potreban izričit poziv task.Dispose, ali je ostavljen zbog verbosity.
+    /// </summary>
     class NotificationController
     {
-        private Task listenForNotification;     
+        private Task listenForNotification;
+        private bool isStarted;
 
         public NotificationController()
         {
-            listenForNotification = Task.Factory.StartNew(Listen);
+        }
+
+        ~NotificationController()
+        {
+            if (isStarted == true)
+            {
+                listenForNotification.Dispose();
+            }
+        }
+
+        internal void StartListening()
+        {
+            if (isStarted == false)
+            {
+                listenForNotification = Task.Factory.StartNew(Listen);
+                isStarted = true;
+            }
+        }
+        internal void StopListening()
+        {
+            if (isStarted == true)
+            {
+                listenForNotification.Dispose();
+                isStarted = false;
+            }
         }
 
         private void Listen()
         {
             IHubProxy _hub;
+
             string url = @"http://localhost:8080/";
             var connection = new HubConnection(url);
             _hub = connection.CreateHubProxy("NotificationsHub");

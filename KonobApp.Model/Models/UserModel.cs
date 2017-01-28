@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// TODO : obrisati tablicu User iz baze podataka, prije toga treba otpustiti strani ključ
+/// </summary>
 namespace KonobApp.Model.Models
 {
     [Serializable]

@@ -36,7 +36,7 @@ namespace DAL.Repositories
 
         private CaffeRepository()
         {
-
+            LoadAll();
         }
 
         public static CaffeRepository GetInstance()
