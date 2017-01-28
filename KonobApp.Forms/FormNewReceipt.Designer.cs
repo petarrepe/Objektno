@@ -50,6 +50,9 @@
             this.colPriceSingle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAmountPlus = new System.Windows.Forms.Button();
+            this.btnAmountMinus = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbGeneralData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -164,7 +167,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(189, 424);
+            this.lblTotal.Location = new System.Drawing.Point(189, 455);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(61, 17);
             this.lblTotal.TabIndex = 7;
@@ -173,7 +176,7 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(256, 421);
+            this.textBox2.Location = new System.Drawing.Point(256, 452);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 8;
@@ -186,6 +189,7 @@
             this.btnNewArticle.TabIndex = 9;
             this.btnNewArticle.Text = "Novi artikl (N)";
             this.btnNewArticle.UseVisualStyleBackColor = true;
+            this.btnNewArticle.Click += new System.EventHandler(this.btnNewArticle_Click);
             // 
             // btnAccept
             // 
@@ -195,6 +199,7 @@
             this.btnAccept.TabIndex = 10;
             this.btnAccept.Text = "Gotov unos (G)";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnCancel
             // 
@@ -205,6 +210,7 @@
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Odustani (E)";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // colId
             // 
@@ -237,6 +243,36 @@
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Izbriši odabrano (DEL)";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAmountPlus
+            // 
+            this.btnAmountPlus.Location = new System.Drawing.Point(256, 418);
+            this.btnAmountPlus.Name = "btnAmountPlus";
+            this.btnAmountPlus.Size = new System.Drawing.Size(31, 23);
+            this.btnAmountPlus.TabIndex = 13;
+            this.btnAmountPlus.Text = "+";
+            this.btnAmountPlus.UseVisualStyleBackColor = true;
+            this.btnAmountPlus.Click += new System.EventHandler(this.btnAmountPlus_Click);
+            // 
+            // btnAmountMinus
+            // 
+            this.btnAmountMinus.Location = new System.Drawing.Point(293, 418);
+            this.btnAmountMinus.Name = "btnAmountMinus";
+            this.btnAmountMinus.Size = new System.Drawing.Size(31, 23);
+            this.btnAmountMinus.TabIndex = 14;
+            this.btnAmountMinus.Text = "-";
+            this.btnAmountMinus.UseVisualStyleBackColor = true;
+            this.btnAmountMinus.Click += new System.EventHandler(this.btnAmountMinus_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(189, 421);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Količina:";
             // 
             // FormNewReceipt
             // 
@@ -246,6 +282,9 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(368, 552);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAmountMinus);
+            this.Controls.Add(this.btnAmountPlus);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
@@ -258,6 +297,7 @@
             this.Name = "FormNewReceipt";
             this.ShowIcon = false;
             this.Text = "FormNewReceipt";
+            this.Load += new System.EventHandler(this.FormNewReceipt_Load);
             this.gbGeneralData.ResumeLayout(false);
             this.gbGeneralData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -290,5 +330,8 @@
         private System.Windows.Forms.ColumnHeader colPriceSingle;
         private System.Windows.Forms.ColumnHeader colTotal;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAmountPlus;
+        private System.Windows.Forms.Button btnAmountMinus;
+        private System.Windows.Forms.Label label1;
     }
 }

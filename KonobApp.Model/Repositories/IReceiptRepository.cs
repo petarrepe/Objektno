@@ -20,9 +20,11 @@ namespace KonobApp.Model
         void LoadReceipts();
 
         void SetCurrentReceipt(int receiptId);
-        void AddArticleToCurrentReceipt(int articleId);
+        void SetNewCurrentReceipt();
+        void AddArticleToCurrentReceipt(int articleId, int amount);
         void RemoveArticleFromCurrentReceipt(int articleId);
         void SetPaymentMethodToCurrentReceipt(int paymentMethodId);
+        string ValidateCurrentReceipt();
         void SaveCurrentReceiptChanges();
 
         void SetCurrentUser(UserModel user);
