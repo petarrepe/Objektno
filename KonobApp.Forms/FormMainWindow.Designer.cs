@@ -46,7 +46,10 @@
             this.lblConnection = new System.Windows.Forms.Label();
             this.lblConnectionInfo = new System.Windows.Forms.Label();
             this.btnViewReceipts = new System.Windows.Forms.Button();
+            this.gbTables = new System.Windows.Forms.GroupBox();
+            this.lblTableAvailableName = new System.Windows.Forms.Label();
             this.gbUserData.SuspendLayout();
+            this.gbTables.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnActivateOrders
@@ -106,7 +109,7 @@
             this.colTotal});
             this.listView1.Location = new System.Drawing.Point(15, 32);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 432);
+            this.listView1.Size = new System.Drawing.Size(316, 315);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -213,11 +216,31 @@
             this.btnViewReceipts.UseVisualStyleBackColor = true;
             this.btnViewReceipts.Click += new System.EventHandler(this.btnViewReceipts_Click);
             // 
+            // gbTables
+            // 
+            this.gbTables.Controls.Add(this.lblTableAvailableName);
+            this.gbTables.Location = new System.Drawing.Point(15, 353);
+            this.gbTables.Name = "gbTables";
+            this.gbTables.Size = new System.Drawing.Size(316, 111);
+            this.gbTables.TabIndex = 12;
+            this.gbTables.TabStop = false;
+            this.gbTables.Text = "Stanje stolova:";
+            // 
+            // lblTableAvailableName
+            // 
+            this.lblTableAvailableName.AutoSize = true;
+            this.lblTableAvailableName.Location = new System.Drawing.Point(15, 35);
+            this.lblTableAvailableName.Name = "lblTableAvailableName";
+            this.lblTableAvailableName.Size = new System.Drawing.Size(52, 17);
+            this.lblTableAvailableName.TabIndex = 0;
+            this.lblTableAvailableName.Text = "Prazni:";
+            // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 476);
+            this.Controls.Add(this.gbTables);
             this.Controls.Add(this.btnViewReceipts);
             this.Controls.Add(this.lblConnectionInfo);
             this.Controls.Add(this.lblConnection);
@@ -235,6 +258,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMainWindow_KeyDown);
             this.gbUserData.ResumeLayout(false);
             this.gbUserData.PerformLayout();
+            this.gbTables.ResumeLayout(false);
+            this.gbTables.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +285,8 @@
         private System.Windows.Forms.Button btnViewReceipts;
         private System.Windows.Forms.Label lblCaffe;
         private System.Windows.Forms.Label lblCaffeName;
+        private System.Windows.Forms.GroupBox gbTables;
+        private System.Windows.Forms.Label lblTableAvailableName;
     }
 }
 

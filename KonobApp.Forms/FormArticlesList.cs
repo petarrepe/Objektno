@@ -24,8 +24,8 @@ namespace KonobApp.Forms
 
             InitializeComponent();
 
-            //fillDataGrid(_caffeRepository.ListArticlesInCaffe(_mainController.GetCurrentCaffeId()));
-            
+            fillDataGrid(_caffeRepository.ArticlesInCaffe.Where(t => t.IDCaffe == _mainController.GetCurrentCaffeId()).ToList());
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
