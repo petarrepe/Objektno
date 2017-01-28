@@ -13,6 +13,7 @@ namespace KonobApp.Model.Repositories
         IList<TableModel> Tables { get; }
         IList<WaiterModel> Waiters { get; }
         IList<ArticleInCaffeModel> ArticlesInCaffe { get; }
+        IList<CaffeModel> Caffes { get; }
 
         void LoadAll();
         void LoadCaffe();

@@ -26,6 +26,7 @@ namespace KonobApp.Model
         void SetPaymentMethodToCurrentReceipt(int paymentMethodId);
         string ValidateCurrentReceipt();
         void SaveCurrentReceiptChanges();
+        IList<ArticleModel> GetFastArticleSearchResult(string searchString);
 
         void SetCurrentUser(UserModel user);
         void SetCurrentWaiter(WaiterModel waiter);

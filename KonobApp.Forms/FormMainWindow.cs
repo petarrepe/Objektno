@@ -19,6 +19,11 @@ namespace KonobApp.Forms
             _mainController = mainController;
 
             InitializeComponent();
+
+            if ((int)Properties.Settings.Default["CaffeId"] == -1)
+            {
+                _mainController.ShowOptions();
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

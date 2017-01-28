@@ -166,6 +166,11 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
+        public IList<ArticleModel> GetFastArticleSearchResult(string searchString)
+        {
+            return _articles.Where(t => t.Name.ToLower().Contains(searchString) || t.IDArticle.ToString().Equals(searchString)).ToList();
+        }
+
         #endregion
 
         #region Current User and Waiter methods
