@@ -48,6 +48,11 @@ namespace KonobApp.Controller
             }
         }
 
+        public bool CheckLoginSuccessStatus()
+        {
+            return LoginSuccessful;
+        }
+
         #endregion
 
         #region Receipts
@@ -67,6 +72,20 @@ namespace KonobApp.Controller
 
         }
 
+        public void ShowAddArticleToNewReceipt()
+        {
+            
+        }
+
+        public int AddArticleToNewReceipt(Form form, int articleId, int amount)
+        {
+            _receiptRepository.AddArticleToCurrentReceipt(articleId, amount);
+            form.Close();
+
+            // TODO: ovo ne valja, ispraviti
+            return articleId;
+        }
+
         public void AddReceipt()
         {
             throw new NotImplementedException();
@@ -81,6 +100,10 @@ namespace KonobApp.Controller
         {
             _receiptRepository.Receipts.Remove(_receiptRepository.Receipts.Where(t => t.IDReceipt == receiptId).First());
         }
+
+        #endregion
+
+        #region Articles
 
         public void ShowArticles()
         {
@@ -105,6 +128,7 @@ namespace KonobApp.Controller
         {
 
         }
+        
 
         public void ChangeNotificationState()
         {

@@ -53,7 +53,8 @@ namespace DAL.Repositories
 
         public void LoadAll()
         {
-            //zasada nepotrebno?
+            LoadCaffe();
+            LoadArticlesInCaffe();
         }
 
         public void LoadCaffe() //da li previše toga stvaraš?
@@ -107,11 +108,18 @@ namespace DAL.Repositories
 
         public void LoadArticlesInCaffe()
         {
-            using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
+            using (Facade facade = new Facade())
             {
-                IQuery query = nhibernateSession.CreateQuery("from ArticleInCaffe");
-                _artInCaf = query.List<ArticleInCaffeModel>();
+                _artInCaf = facade.FetchAll<ArticleInCaffeModel>();
             }
+
+            if (_articles == null) LoadArticles();
+
+            foreach (ArticleInCaffeModel artCaf in _artInCaf)
+            {
+                artCaf.Article = _articles.Where(a => a.IDArticle == artCaf.IDArticle).First();
+            }
+
         }
 
         public void LoadArticles()
@@ -222,6 +230,31 @@ namespace DAL.Repositories
 
             NotifyObservers();
         }
+
+        public void UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff)
+        {
+            for (int i = 0; i < ListArtCaff.Count(); i++)
+            {
+                ArticleInCaffeModel artCaf = FindArtInCaffByID(ListArtCaff[i].ID);
+
+                if (ListArtCaff[i].IsAvailable != artCaf.IsAvailable)
+                {
+                    artCaf.IsAvailable = ListArtCaff[i].IsAvailable;
+
+                    using (ISession session = OpenNHibernateSession.OpenSession())
+                    {
+                        using (ITransaction transaction = session.BeginTransaction())
+                        {
+                            session.Update(artCaf); //mislim da ce ovo raditi
+                            transaction.Commit();
+                        }
+                    }
+
+                    NotifyObservers();
+                }
+            }
+        }
+
         public void DeleteArticleInCaffe(int ID)
         {
             ArticleInCaffeModel artCaf = FindArtInCaffByID(ID);

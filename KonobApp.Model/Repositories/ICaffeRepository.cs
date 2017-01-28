@@ -13,6 +13,7 @@ namespace KonobApp.Model.Repositories
         IList<TableModel> Tables { get; }
         IList<WaiterModel> Waiters { get; }
         IList<ArticleInCaffeModel> ArticlesInCaffe { get; }
+        IList<CaffeModel> Caffes { get; }
 
         void LoadAll();
         void LoadCaffe();
@@ -27,6 +28,7 @@ namespace KonobApp.Model.Repositories
 
         void AddArticleInCaffe(int articleID, int caffeID);
         void UpdateArticleInCaffe(int ID, bool IsAvailable);
+        void UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff);
         void DeleteArticleInCaffe(int ID);
 
         void AddTable(int caffeID);

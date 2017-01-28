@@ -39,18 +39,18 @@ namespace KonobApp.Forms
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (!GlobalData.LoginSuccessful)
-            //{
-            //    Application.Exit();
-            //}
+            if (!_mainController.CheckLoginSuccessStatus())
+            {
+                Application.Exit();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //if (!GlobalData.LoginSuccessful)
-            //{
-            //    Application.Exit();
-            //}
+            if (!_mainController.CheckLoginSuccessStatus())
+            {
+                Application.Exit();
+            }
         }
     }
 }

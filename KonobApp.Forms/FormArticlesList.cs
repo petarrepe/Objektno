@@ -16,26 +16,26 @@ namespace KonobApp.Forms
     public partial class FormArticlesList : Form
     {
         IMainController _mainController;
-        IArticleRepository _articleRepository;
-        public FormArticlesList(IMainController mainController, IArticleRepository articleRepository)
+        ICaffeRepository _caffeRepository;
+        public FormArticlesList(IMainController mainController, ICaffeRepository caffeRepository)
         {
             _mainController = mainController;
-            _articleRepository = articleRepository;
+            _caffeRepository = caffeRepository;
 
             InitializeComponent();
 
-            BindingList<ArticleModel> bindingList = _articleRepository.GetArticlesBindingList();
+            BindingList<ArticleModel> bindingList = new System.ComponentModel.BindingList<ArticleModel>(_caffeRepository.ListArticlesInCaffe((int)Properties.Settings.Default["CaffeId"]));
             dgvArticles.DataSource = bindingList;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void btnCloseAndSave_Click(object sender, EventArgs e)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

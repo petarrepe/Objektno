@@ -31,21 +31,30 @@
             this.dgvArticles = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCloseAndSave = new System.Windows.Forms.Button();
+            this.colArticleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticles
             // 
             this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colArticleId,
+            this.colArticleName,
+            this.colPrice,
+            this.colAvailable});
             this.dgvArticles.Location = new System.Drawing.Point(12, 12);
             this.dgvArticles.Name = "dgvArticles";
             this.dgvArticles.RowTemplate.Height = 24;
-            this.dgvArticles.Size = new System.Drawing.Size(355, 350);
+            this.dgvArticles.Size = new System.Drawing.Size(444, 350);
             this.dgvArticles.TabIndex = 0;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(187, 368);
+            this.btnClose.Location = new System.Drawing.Point(236, 368);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(128, 41);
             this.btnClose.TabIndex = 1;
@@ -55,7 +64,7 @@
             // 
             // btnCloseAndSave
             // 
-            this.btnCloseAndSave.Location = new System.Drawing.Point(53, 368);
+            this.btnCloseAndSave.Location = new System.Drawing.Point(102, 368);
             this.btnCloseAndSave.Name = "btnCloseAndSave";
             this.btnCloseAndSave.Size = new System.Drawing.Size(128, 41);
             this.btnCloseAndSave.TabIndex = 2;
@@ -63,15 +72,41 @@
             this.btnCloseAndSave.UseVisualStyleBackColor = true;
             this.btnCloseAndSave.Click += new System.EventHandler(this.btnCloseAndSave_Click);
             // 
+            // colArticleId
+            // 
+            this.colArticleId.HeaderText = "(Id)";
+            this.colArticleId.Name = "colArticleId";
+            this.colArticleId.Width = 50;
+            // 
+            // colArticleName
+            // 
+            this.colArticleName.HeaderText = "Naziv";
+            this.colArticleName.Name = "colArticleName";
+            this.colArticleName.ReadOnly = true;
+            this.colArticleName.Width = 150;
+            // 
+            // colPrice
+            // 
+            this.colPrice.HeaderText = "Cijena";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            // 
+            // colAvailable
+            // 
+            this.colAvailable.HeaderText = "Dostupan";
+            this.colAvailable.Name = "colAvailable";
+            // 
             // FormArticlesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 421);
+            this.ClientSize = new System.Drawing.Size(468, 421);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCloseAndSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvArticles);
             this.Name = "FormArticlesList";
+            this.ShowIcon = false;
             this.Text = "FormArticlesList";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
             this.ResumeLayout(false);
@@ -83,5 +118,9 @@
         private System.Windows.Forms.DataGridView dgvArticles;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCloseAndSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArticleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArticleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colAvailable;
     }
 }
