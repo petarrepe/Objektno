@@ -44,12 +44,14 @@
             this.lblConnection = new System.Windows.Forms.Label();
             this.lblConnectionInfo = new System.Windows.Forms.Label();
             this.btnViewReceipts = new System.Windows.Forms.Button();
+            this.lblCaffeName = new System.Windows.Forms.Label();
+            this.lblCaffe = new System.Windows.Forms.Label();
             this.gbUserData.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnActivateOrders
             // 
-            this.btnActivateOrders.Location = new System.Drawing.Point(337, 135);
+            this.btnActivateOrders.Location = new System.Drawing.Point(337, 173);
             this.btnActivateOrders.Name = "btnActivateOrders";
             this.btnActivateOrders.Size = new System.Drawing.Size(155, 39);
             this.btnActivateOrders.TabIndex = 0;
@@ -59,7 +61,7 @@
             // 
             // btnArticles
             // 
-            this.btnArticles.Location = new System.Drawing.Point(337, 214);
+            this.btnArticles.Location = new System.Drawing.Point(337, 252);
             this.btnArticles.Name = "btnArticles";
             this.btnArticles.Size = new System.Drawing.Size(232, 53);
             this.btnArticles.TabIndex = 1;
@@ -69,7 +71,7 @@
             // 
             // btnNewReceipt
             // 
-            this.btnNewReceipt.Location = new System.Drawing.Point(337, 273);
+            this.btnNewReceipt.Location = new System.Drawing.Point(337, 311);
             this.btnNewReceipt.Name = "btnNewReceipt";
             this.btnNewReceipt.Size = new System.Drawing.Size(232, 53);
             this.btnNewReceipt.TabIndex = 2;
@@ -79,7 +81,7 @@
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(459, 391);
+            this.btnOptions.Location = new System.Drawing.Point(459, 429);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(110, 35);
             this.btnOptions.TabIndex = 3;
@@ -104,7 +106,7 @@
             this.colTotal});
             this.listView1.Location = new System.Drawing.Point(15, 32);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 394);
+            this.listView1.Size = new System.Drawing.Size(316, 432);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -125,7 +127,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(6, 50);
+            this.btnLogout.Location = new System.Drawing.Point(6, 72);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(98, 44);
             this.btnLogout.TabIndex = 7;
@@ -135,12 +137,14 @@
             // 
             // gbUserData
             // 
+            this.gbUserData.Controls.Add(this.lblCaffe);
+            this.gbUserData.Controls.Add(this.lblCaffeName);
             this.gbUserData.Controls.Add(this.lblUsername);
             this.gbUserData.Controls.Add(this.btnLogout);
             this.gbUserData.Controls.Add(this.lblUsernameName);
             this.gbUserData.Location = new System.Drawing.Point(337, 12);
             this.gbUserData.Name = "gbUserData";
-            this.gbUserData.Size = new System.Drawing.Size(232, 100);
+            this.gbUserData.Size = new System.Drawing.Size(232, 122);
             this.gbUserData.TabIndex = 8;
             this.gbUserData.TabStop = false;
             this.gbUserData.Text = "Prijavljeni korisnik";
@@ -166,7 +170,7 @@
             // lblConnection
             // 
             this.lblConnection.AutoSize = true;
-            this.lblConnection.Location = new System.Drawing.Point(334, 115);
+            this.lblConnection.Location = new System.Drawing.Point(334, 153);
             this.lblConnection.Name = "lblConnection";
             this.lblConnection.Size = new System.Drawing.Size(86, 17);
             this.lblConnection.TabIndex = 9;
@@ -175,7 +179,7 @@
             // lblConnectionInfo
             // 
             this.lblConnectionInfo.AutoSize = true;
-            this.lblConnectionInfo.Location = new System.Drawing.Point(426, 115);
+            this.lblConnectionInfo.Location = new System.Drawing.Point(426, 153);
             this.lblConnectionInfo.Name = "lblConnectionInfo";
             this.lblConnectionInfo.Size = new System.Drawing.Size(195, 17);
             this.lblConnectionInfo.TabIndex = 10;
@@ -183,7 +187,7 @@
             // 
             // btnViewReceipts
             // 
-            this.btnViewReceipts.Location = new System.Drawing.Point(337, 332);
+            this.btnViewReceipts.Location = new System.Drawing.Point(337, 370);
             this.btnViewReceipts.Name = "btnViewReceipts";
             this.btnViewReceipts.Size = new System.Drawing.Size(232, 53);
             this.btnViewReceipts.TabIndex = 11;
@@ -191,11 +195,29 @@
             this.btnViewReceipts.UseVisualStyleBackColor = true;
             this.btnViewReceipts.Click += new System.EventHandler(this.btnViewReceipts_Click);
             // 
+            // lblCaffeName
+            // 
+            this.lblCaffeName.AutoSize = true;
+            this.lblCaffeName.Location = new System.Drawing.Point(6, 52);
+            this.lblCaffeName.Name = "lblCaffeName";
+            this.lblCaffeName.Size = new System.Drawing.Size(43, 17);
+            this.lblCaffeName.TabIndex = 8;
+            this.lblCaffeName.Text = "Kafić:";
+            // 
+            // lblCaffe
+            // 
+            this.lblCaffe.AutoSize = true;
+            this.lblCaffe.Location = new System.Drawing.Point(74, 52);
+            this.lblCaffe.Name = "lblCaffe";
+            this.lblCaffe.Size = new System.Drawing.Size(37, 17);
+            this.lblCaffe.TabIndex = 9;
+            this.lblCaffe.Text = "kafić";
+            // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 438);
+            this.ClientSize = new System.Drawing.Size(590, 476);
             this.Controls.Add(this.btnViewReceipts);
             this.Controls.Add(this.lblConnectionInfo);
             this.Controls.Add(this.lblConnection);
@@ -236,6 +258,8 @@
         private System.Windows.Forms.Label lblConnection;
         private System.Windows.Forms.Label lblConnectionInfo;
         private System.Windows.Forms.Button btnViewReceipts;
+        private System.Windows.Forms.Label lblCaffe;
+        private System.Windows.Forms.Label lblCaffeName;
     }
 }
 
