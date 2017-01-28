@@ -19,6 +19,8 @@ namespace KonobApp.Controller
         readonly ReceiptRepository _receiptRepository = ReceiptRepository.GetInstance();
         readonly AccountRepository _accountRepository = AccountRepository.GetInstance();
 
+        private NotificationController norificationController = new NotificationController();
+
         public void LoadAll()
         {
             _receiptRepository.LoadAll();

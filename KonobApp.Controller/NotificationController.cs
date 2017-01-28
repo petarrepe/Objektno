@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,15 +22,16 @@ namespace KonobApp.Controller
             _hub = connection.CreateHubProxy("NotificationsHub");
             connection.Start().Wait();
 
-            _hub.On("SendReceipt", t=> RecieveReceipt(t));
+            _hub.On("ReceiveReceipt", t=> RecieveReceipt(t));
             while (true)
             {
                 Thread.Sleep(1000);
             }
         }
 
-        private void RecieveReceipt(KonobApp.Model.Models.ReceiptModel recipe)
+        private void RecieveReceipt(string t)
         {
+            KonobApp.Model.Models.ReceiptModel reciept = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
             //ovdje nešto radiš sa receptom kojeg si dobio 
         }
     }

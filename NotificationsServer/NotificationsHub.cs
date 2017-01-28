@@ -7,9 +7,10 @@ namespace NotificationsServer
     [HubName("NotificationsHub")]
     public class NotificationsHub : Hub
     {
-        public void SendReceipt(KonobApp.Model.Models.ReceiptModel rcp)
+        public void SendReceipt(string reciepeAsJson)
         {
-            Clients.All.ReceiveReceipt(rcp);
+            Clients.All.ReceiveReceipt(reciepeAsJson);
+            System.Console.WriteLine("Recieved recipe");
         }
     }
 }

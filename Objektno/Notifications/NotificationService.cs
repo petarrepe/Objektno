@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json;
 
 namespace Objektno.Notifications
 {
@@ -16,7 +17,12 @@ namespace Objektno.Notifications
 
             connection.Start().Wait();
 
-            _hub.Invoke("SendReceipt", rcp).Wait();
+            _hub.Invoke("SendReceipt", ToJson(rcp)).Wait();
+        }
+
+        private static string ToJson(KonobApp.Model.Models.ReceiptModel rcp)
+        {
+            return JsonConvert.SerializeObject(rcp);
         }
 
     }
