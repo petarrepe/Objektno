@@ -28,7 +28,7 @@ namespace KonobApp.Model.Repositories
 
         void AddArticleInCaffe(int articleID, int caffeID);
         void UpdateArticleInCaffe(int ID, bool IsAvailable);
-        IList<ArticleInCaffeModel> UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff);
+        void UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff);
         void DeleteArticleInCaffe(int ID);
 
         void AddTable(int caffeID);

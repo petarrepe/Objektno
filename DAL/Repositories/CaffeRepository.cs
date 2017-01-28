@@ -231,7 +231,7 @@ namespace DAL.Repositories
             NotifyObservers();
         }
 
-        public IList<ArticleInCaffeModel> UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff)
+        public void UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff)
         {
             for (int i = 0; i < ListArtCaff.Count(); i++)
             {
@@ -253,9 +253,6 @@ namespace DAL.Repositories
                     NotifyObservers();
                 }
             }
-
-            return ListArtCaff; //vrati istu listu jer se po njoj sada i promijenila baza
-            //return ArticlesInCaffe; //vrati ovu listu (no neznam da li se dogodi promjena odmah)
         }
 
         public void DeleteArticleInCaffe(int ID)
