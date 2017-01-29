@@ -2,20 +2,43 @@
 @{
     ViewBag.Title = "Create";
 }
-@for (int i = 1; i < 11; i++)
+@for (int i = 1; i <= @Model.categories.Count; i++)
 {
-    @Html.Raw("<div class=\"container\" id=\"categoryContainer\">")
-
-    var path = "~/Images/" + @i + ".jpg";
+    @Html.Raw("<div class=\"container\" id=\"categoryContainer\" width:\"600\">")
+    @Html.Raw("<h2>")
+    @Model.categories.Where(t => t.Key == i).First().Value   @*ovdje će se kršiti sranje, trenutno nemam koncentracije napisati ispravan izraz*@
+    @Html.Raw("</h2>")
+    var path = "~/Images/" + Model.categories.Where(t => t.Key == i).First().Key + ".jpg"; /* isti komentar kao 2 retka iznad*/
     <img src="@Url.Content(path)" width="700" height="250" />
 
+    foreach (var article in @Model.articlesInCaffe)
+    {
+        if (article.IDCategory == i)
+        {
+            @Html.Raw("<p id=articleText><b>")
+            @Html.Raw("<span class=\"pull-left\">" + article.Name +"</span>"+ "<span class=\"pull-right\">"+ article.Price+" kn </span>")     @Html.Raw("<span class=\"pull-right\"><button type=\"button\" id = \"addButton\" class=\"btn btn - primary\">Dodaj</button></span>")
+            @Html.Raw("</p></b>")
+            @Html.Raw("<br/>")
+        }
+    }
     @Html.Raw("</div>")
 }
 
 <style>
     #categoryContainer {
         margin: 100px;
-        margin-top:50px;
+        margin-top: 50px;
         padding: 10px;
+    }
+
+    #articleText {
+        font-size: medium;
+        margin: 5px;
+        color:black;
+    }
+    #addButton{
+        margin:5px;
+        padding:5px;
+        
     }
 </style>
