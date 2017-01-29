@@ -123,8 +123,8 @@ namespace DAL.Repositories
                 _artRec = facade.FetchAll<ArticleReceiptModel>();
             }
 
-            if (_articles == null) LoadArticles();
-            if (_receipts == null) LoadReceipts();
+            if (_articles.Count() == 0) LoadArticles();
+            if (_receipts.Count() == 0) LoadReceipts();
 
             foreach (ArticleReceiptModel artRec in _artRec)
             {
