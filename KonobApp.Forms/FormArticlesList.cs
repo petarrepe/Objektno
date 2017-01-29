@@ -17,6 +17,7 @@ namespace KonobApp.Forms
     {
         IMainController _mainController;
         ICaffeRepository _caffeRepository;
+        List<ArticleInCaffeModel> _artInCaffeList;
         public FormArticlesList(IMainController mainController, ICaffeRepository caffeRepository)
         {
             _mainController = mainController;
@@ -24,8 +25,8 @@ namespace KonobApp.Forms
 
             InitializeComponent();
 
-            fillDataGrid(_caffeRepository.ArticlesInCaffe.Where(t => t.IDCaffe == _mainController.GetCurrentCaffeId()).ToList());
-
+            _artInCaffeList = _caffeRepository.ArticlesInCaffe.Where(t => t.IDCaffe == _mainController.GetCurrentCaffeId()).ToList();
+            fillDataGrid(_artInCaffeList);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -35,7 +36,20 @@ namespace KonobApp.Forms
 
         private void btnCloseAndSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            List<ArticleInCaffeModel> editList = new List<ArticleInCaffeModel>();
+            foreach (DataGridViewRow row in dgvArticles.Rows)
+            {
+                ArticleInCaffeModel current = _artInCaffeList.FirstOrDefault(t => t.IDArticle == (int)row.Cells[0].Value);
+                if (current.IsAvailable != (bool)row.Cells[3].Value)
+                {
+                    editList.Add(current);
+                }
+            }
+            if (editList.Count > 0)
+            {
+                _caffeRepository.UpdateListArtInCaff(editList);
+            }
+            this.Close();
         }
 
         private void fillDataGrid(IList<ArticleInCaffeModel> list)

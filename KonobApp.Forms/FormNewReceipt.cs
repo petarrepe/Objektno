@@ -1,5 +1,6 @@
 ﻿using KonobApp.Interfaces;
 using KonobApp.Model;
+using KonobApp.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,12 @@ namespace KonobApp.Forms
             _mainController = mainController;
             _receiptRepository = receiptRepository;
             InitializeComponent();
+        }
+
+        public FormNewReceipt(IMainController mainController, IReceiptRepository receiptRepository, ReceiptModel receipt)
+        {
+            _mainController = mainController;
+            _receiptRepository = receiptRepository;
         }
 
         private void FormNewReceipt_Load(object sender, EventArgs e)
