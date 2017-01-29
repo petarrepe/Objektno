@@ -141,9 +141,7 @@ namespace KonobApp.Forms
             refreshOrdersList();
             if (cbSound.Checked)
             {
-                string notificationSoundPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + @"\Sounds\NotificationSound.wav";
-                SoundPlayer notificationSound = new SoundPlayer(notificationSoundPath);
-                notificationSound.Play();
+                playNotificationSound();
             }
         }
 
@@ -171,6 +169,21 @@ namespace KonobApp.Forms
         private void btnTables_Click(object sender, EventArgs e)
         {
             _mainController.ShowTables();
+        }
+
+        private void playNotificationSound()
+        {
+            string notificationSoundPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            notificationSoundPath = notificationSoundPath.Substring(0, notificationSoundPath.Length - 20) + @"KonobApp.Forms\Sounds\NotificationSound.wav";
+            try
+            {
+                SoundPlayer notificationSound = new SoundPlayer(notificationSoundPath);
+                notificationSound.Play();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message + "\nNotification sound path:" + notificationSoundPath);
+            }
         }
     }
 }
