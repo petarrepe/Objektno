@@ -177,7 +177,6 @@ namespace KonobApp.Forms
             notificationSoundPath = notificationSoundPath.Substring(0, notificationSoundPath.Length - 20) + @"KonobApp.Forms\Sounds\NotificationSound.wav";
             try
             {
-
                 SoundPlayer notificationSound = new SoundPlayer(notificationSoundPath);
                 notificationSound.Play();
             }
