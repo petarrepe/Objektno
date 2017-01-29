@@ -15,10 +15,10 @@ namespace DAL.Repositories
         private static CaffeRepository _instance = null;
         private ISession nhibernateSession;
 
-        private IList<TableModel> _tables;
-        private IList<WaiterModel> _waiters;
+        private IList<TableModel> _tables = new List<TableModel>();
+        private IList<WaiterModel> _waiters = new List<WaiterModel>();
         private IList<ArticleInCaffeModel> _artInCaf = new List<ArticleInCaffeModel>();
-        private IList<ArticleModel> _articles;
+        private IList<ArticleModel> _articles = new List<ArticleModel>();
         private IList<CaffeModel> _caffes = new List<CaffeModel>();
 
 
