@@ -1,0 +1,21 @@
+﻿@model Objektno.Models.ReceiptViewModel
+@{
+    ViewBag.Title = "Create";
+}
+@for (int i = 1; i < 11; i++)
+{
+    @Html.Raw("<div class=\"container\" id=\"categoryContainer\">")
+
+    var path = "~/Images/" + @i + ".jpg";
+    <img src="@Url.Content(path)" width="700" height="250" />
+
+    @Html.Raw("</div>")
+}
+
+<style>
+    #categoryContainer {
+        margin: 100px;
+        margin-top:50px;
+        padding: 10px;
+    }
+</style>

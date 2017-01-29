@@ -15,10 +15,10 @@ namespace DAL.Repositories
         private static CaffeRepository _instance = null;
         private ISession nhibernateSession;
 
-        private IList<TableModel> _tables = new List<TableModel>();
-        private IList<WaiterModel> _waiters = new List<WaiterModel>();
+        private IList<TableModel> _tables;
+        private IList<WaiterModel> _waiters;
         private IList<ArticleInCaffeModel> _artInCaf = new List<ArticleInCaffeModel>();
-        private IList<ArticleModel> _articles = new List<ArticleModel>();
+        private IList<ArticleModel> _articles;
         private IList<CaffeModel> _caffes = new List<CaffeModel>();
 
 
@@ -132,7 +132,6 @@ namespace DAL.Repositories
             {
                 artCaf.Article = _articles.Where(a => a.IDArticle == artCaf.IDArticle).First();
             }
-
         }
 
         public void LoadArticles()
@@ -362,6 +361,21 @@ namespace DAL.Repositories
         public IList<TableModel> ListFreeTablesInCaffe(int caffeID)
         {
             return Tables.Where(t => t.IDCaffe == caffeID).Where(t => t.IsOccupied == false).ToList();
+        }
+
+        public IList<CaffeModel> ListOpenCaffesWithFreeTables()
+        {
+            List<CaffeModel> openCaffes = new List<CaffeModel>();
+            var temp = new List<CaffeModel>(_caffes.Where(t => t.IsOpen == true));
+
+            foreach (var caffe in temp)
+            {
+                if (caffe.Tables.Where(t => t.IsOccupied == false).Count() > 0)
+                {
+                    openCaffes.Add(caffe);
+                }
+            }
+            return openCaffes;
         }
 
         public CaffeModel FindCaffeByID(int caffeID)
