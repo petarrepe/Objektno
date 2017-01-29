@@ -17,6 +17,7 @@ namespace KonobApp.Interfaces
         bool CheckLoginSuccessStatus();
 
         int GetCurrentCaffeId();
+        WaiterModel GetCurrentWaiter();
 
         void ShowReceipts();
         void NewReceipt();

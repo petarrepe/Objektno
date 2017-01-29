@@ -359,6 +359,20 @@ namespace DAL.Repositories
             return articlesCaffe;
         }
 
+        public IList<ArticleModel> ListAvailableArticlesInCaffe(int caffeID)
+        {
+            List<ArticleModel> articlesCaffe = new List<ArticleModel>();
+            foreach (ArticleInCaffeModel artCaf in _artInCaf)
+            {
+                if (artCaf.IDCaffe == caffeID && artCaf.IsAvailable)
+                {
+                    articlesCaffe.Add(artCaf.Article);
+                }
+            }
+
+            return articlesCaffe;
+        }
+
         public IList<TableModel> ListAllTablesInCaffe(int caffeID)
         {
             return Tables.Where(t => t.IDCaffe == caffeID).ToList();

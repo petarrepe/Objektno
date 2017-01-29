@@ -1,5 +1,7 @@
-﻿using KonobApp.Interfaces;
+﻿using DAL.Repositories;
+using KonobApp.Interfaces;
 using KonobApp.Model.Models;
+using KonobApp.Model.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +19,15 @@ namespace KonobApp.Forms
     public partial class FormMainWindow : Form
     {
         IMainController _mainController;
+        CaffeRepository _caffeRepository;
+        CaffeModel _currentCaffe;
         List<ReceiptModel> ordersList;
 
         public FormMainWindow(IMainController mainController)
         {
             _mainController = mainController;
             _mainController.FormMainWindow = this;
+            _caffeRepository = CaffeRepository.GetInstance();
             InitializeComponent();
 
             ordersList = new List<ReceiptModel>();
@@ -49,6 +54,8 @@ namespace KonobApp.Forms
         private void btnLogout_Click(object sender, EventArgs e)
         {
             lblUsername.Text = _mainController.Login();
+            _currentCaffe = _caffeRepository.FindCaffeByID(_mainController.GetCurrentCaffeId());
+            refreshTablesInfo();
         }
 
         private void btnArticles_Click(object sender, EventArgs e)
@@ -70,12 +77,22 @@ namespace KonobApp.Forms
         {
             _mainController.LoadAll();
             lblUsername.Text = _mainController.Login();
+            _currentCaffe = _caffeRepository.FindCaffeByID(_mainController.GetCurrentCaffeId());
+            lblCaffe.Text = _currentCaffe.Name;
+            refreshTablesInfo();
         }
 
         private void btnActivateOrders_Click(object sender, EventArgs e)
         {
-            lblConnectionInfo.Text = "Spajanje...";
+            if (_mainController.IsNotificationConnectionActive())
+            {
+                lblConnectionInfo.Text = "Odspajanje...";
+            } else
+            {
+                lblConnectionInfo.Text = "Spajanje...";
+            }
             lblConnectionInfo.ForeColor = Color.Orange;
+            this.Refresh();
             _mainController.ChangeNotificationState();
             btnActivateOrders.Enabled = false;
             if (_mainController.IsNotificationConnectionActive())
@@ -142,6 +159,13 @@ namespace KonobApp.Forms
                 lvOrders.Items.Add(item);
             }
             // TODO!
+        }
+
+        private void refreshTablesInfo()
+        {
+            List<TableModel> tables = _caffeRepository.ListAllTablesInCaffe(_currentCaffe.IDCaffe).ToList();
+            lblTablesAvailable.Text = tables.Where(t => !t.IsOccupied).Count().ToString();
+            lblTablesOccupied.Text = tables.Where(t => t.IsOccupied).Count().ToString();
         }
 
         private void btnTables_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using KonobApp.Interfaces;
 using KonobApp.Model;
 using KonobApp.Model.Models;
+using KonobApp.Model.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,16 +18,19 @@ namespace KonobApp.Forms
     {
         IMainController _mainController;
         IReceiptRepository _receiptRepository;
+        ICaffeRepository _caffeRepository;
 
         
-        public FormNewReceiptArticle(IMainController mainController, IReceiptRepository receiptRepository)
+        public FormNewReceiptArticle(IMainController mainController, IReceiptRepository receiptRepository, ICaffeRepository caffeRepository)
         {
             _mainController = mainController;
             _receiptRepository = receiptRepository;
+            _caffeRepository = caffeRepository;
 
             InitializeComponent();
 
             numAmount.Value = 1;
+            fillArticleListView(_caffeRepository.ListAvailableArticlesInCaffe(_mainController.GetCurrentCaffeId()));
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -90,10 +94,11 @@ namespace KonobApp.Forms
             }
             if (String.IsNullOrEmpty(tbSearch.Text))
             {
-                fillArticleListView(_receiptRepository.Articles);
+                fillArticleListView(_caffeRepository.ListAvailableArticlesInCaffe(_mainController.GetCurrentCaffeId()));
             } else
             {
-                fillArticleListView(_receiptRepository.GetFastArticleSearchResult(tbSearch.Text));
+                fillArticleListView(_caffeRepository.ListAvailableArticlesInCaffe(_mainController.GetCurrentCaffeId()).Where(t => t.Name.Contains(tbSearch.Text)).ToList());
+                
             }
         }
 
@@ -106,6 +111,7 @@ namespace KonobApp.Forms
                 item.SubItems.Add(article.IDArticle.ToString());
                 item.SubItems.Add(article.Name);
                 item.SubItems.Add(article.Price.ToString());
+                lvArticles.Items.Add(item);
             }
         }
     }

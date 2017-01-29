@@ -152,6 +152,7 @@
             this.KeyPreview = true;
             this.Name = "FormNewReceiptArticle";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pretraga artikala";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormNewReceiptArticle_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();

@@ -14,7 +14,6 @@ namespace KonobApp.Controller
     public class MainController : IMainController
     {
         public bool LoginSuccessful = false;
-        private bool _notificationConnectionActive = false;
         private WaiterModel _currentWaiter;
         private CaffeModel _currentCaffe;
 
@@ -52,6 +51,11 @@ namespace KonobApp.Controller
             {
                 return _currentCaffe.IDCaffe;
             }
+        }
+
+        public WaiterModel GetCurrentWaiter()
+        {
+            return _currentWaiter;
         }
 
         public void LoadAll()
@@ -126,7 +130,7 @@ namespace KonobApp.Controller
 
         public void ShowAddArticleToNewReceipt()
         {
-            FormNewReceiptArticle newRecArticle = new FormNewReceiptArticle(this, _receiptRepository);
+            FormNewReceiptArticle newRecArticle = new FormNewReceiptArticle(this, _receiptRepository, _caffeRepository);
             newRecArticle.ShowDialog();
         }
 

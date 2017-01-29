@@ -136,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8A47AE88-FE47-43BD-9F74-60E3B27F4DF5}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KonobApp.Interfaces\KonobApp.Interfaces.csproj">
       <Project>{4B9FCDA1-5185-4E5A-8D34-4AA2F937039C}</Project>
       <Name>KonobApp.Interfaces</Name>

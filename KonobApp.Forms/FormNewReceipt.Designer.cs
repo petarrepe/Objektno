@@ -31,24 +31,24 @@
             this.lblWaiter = new System.Windows.Forms.Label();
             this.tbWaiter = new System.Windows.Forms.TextBox();
             this.lblUser = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbUser = new System.Windows.Forms.TextBox();
             this.gbGeneralData = new System.Windows.Forms.GroupBox();
-            this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
-            this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblPaymentMethod = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPriceSingle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblArticles = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnNewArticle = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colPriceSingle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAmountPlus = new System.Windows.Forms.Button();
             this.btnAmountMinus = new System.Windows.Forms.Button();
@@ -83,12 +83,13 @@
             this.lblUser.TabIndex = 2;
             this.lblUser.Text = "Korisnik (web):";
             // 
-            // textBox1
+            // tbUser
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 22);
-            this.textBox1.TabIndex = 3;
+            this.tbUser.Enabled = false;
+            this.tbUser.Location = new System.Drawing.Point(144, 53);
+            this.tbUser.Name = "tbUser";
+            this.tbUser.Size = new System.Drawing.Size(194, 22);
+            this.tbUser.TabIndex = 3;
             // 
             // gbGeneralData
             // 
@@ -97,7 +98,7 @@
             this.gbGeneralData.Controls.Add(this.lblDiscount);
             this.gbGeneralData.Controls.Add(this.lblPaymentMethod);
             this.gbGeneralData.Controls.Add(this.lblWaiter);
-            this.gbGeneralData.Controls.Add(this.textBox1);
+            this.gbGeneralData.Controls.Add(this.tbUser);
             this.gbGeneralData.Controls.Add(this.tbWaiter);
             this.gbGeneralData.Controls.Add(this.lblUser);
             this.gbGeneralData.Location = new System.Drawing.Point(12, 12);
@@ -107,14 +108,21 @@
             this.gbGeneralData.TabStop = false;
             this.gbGeneralData.Text = "Osnovne informacije:";
             // 
-            // lblPaymentMethod
+            // numericUpDown1
             // 
-            this.lblPaymentMethod.AutoSize = true;
-            this.lblPaymentMethod.Location = new System.Drawing.Point(15, 84);
-            this.lblPaymentMethod.Name = "lblPaymentMethod";
-            this.lblPaymentMethod.Size = new System.Drawing.Size(105, 17);
-            this.lblPaymentMethod.TabIndex = 4;
-            this.lblPaymentMethod.Text = "Način plačanja:";
+            this.numericUpDown1.Location = new System.Drawing.Point(144, 111);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(194, 22);
+            this.numericUpDown1.TabIndex = 7;
+            // 
+            // cbPaymentMethod
+            // 
+            this.cbPaymentMethod.FormattingEnabled = true;
+            this.cbPaymentMethod.Location = new System.Drawing.Point(144, 81);
+            this.cbPaymentMethod.Name = "cbPaymentMethod";
+            this.cbPaymentMethod.Size = new System.Drawing.Size(194, 24);
+            this.cbPaymentMethod.TabIndex = 6;
+            this.cbPaymentMethod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbPaymentMethod_KeyDown);
             // 
             // lblDiscount
             // 
@@ -125,20 +133,14 @@
             this.lblDiscount.TabIndex = 5;
             this.lblDiscount.Text = "Popust (0-100):";
             // 
-            // cbPaymentMethod
+            // lblPaymentMethod
             // 
-            this.cbPaymentMethod.FormattingEnabled = true;
-            this.cbPaymentMethod.Location = new System.Drawing.Point(144, 81);
-            this.cbPaymentMethod.Name = "cbPaymentMethod";
-            this.cbPaymentMethod.Size = new System.Drawing.Size(194, 24);
-            this.cbPaymentMethod.TabIndex = 6;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(144, 111);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(194, 22);
-            this.numericUpDown1.TabIndex = 7;
+            this.lblPaymentMethod.AutoSize = true;
+            this.lblPaymentMethod.Location = new System.Drawing.Point(15, 84);
+            this.lblPaymentMethod.Name = "lblPaymentMethod";
+            this.lblPaymentMethod.Size = new System.Drawing.Size(105, 17);
+            this.lblPaymentMethod.TabIndex = 4;
+            this.lblPaymentMethod.Text = "Način plačanja:";
             // 
             // listView1
             // 
@@ -154,6 +156,29 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // colId
+            // 
+            this.colId.Text = "(Id)";
+            this.colId.Width = 40;
+            // 
+            // colName
+            // 
+            this.colName.Text = "Naziv";
+            this.colName.Width = 100;
+            // 
+            // colAmount
+            // 
+            this.colAmount.Text = "Količina";
+            // 
+            // colPriceSingle
+            // 
+            this.colPriceSingle.Text = "Cij. pojed.";
+            this.colPriceSingle.Width = 80;
+            // 
+            // colTotal
+            // 
+            this.colTotal.Text = "Ukupno";
             // 
             // lblArticles
             // 
@@ -197,7 +222,7 @@
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(166, 42);
             this.btnAccept.TabIndex = 10;
-            this.btnAccept.Text = "Gotov unos (G)";
+            this.btnAccept.Text = "Gotov unos (ENT)";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
@@ -208,32 +233,9 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(172, 42);
             this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "Odustani (E)";
+            this.btnCancel.Text = "Odustani (ESC)";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // colId
-            // 
-            this.colId.Text = "(Id)";
-            this.colId.Width = 40;
-            // 
-            // colName
-            // 
-            this.colName.Text = "Naziv";
-            this.colName.Width = 100;
-            // 
-            // colAmount
-            // 
-            this.colAmount.Text = "Količina";
-            // 
-            // colPriceSingle
-            // 
-            this.colPriceSingle.Text = "Cij. pojed.";
-            this.colPriceSingle.Width = 80;
-            // 
-            // colTotal
-            // 
-            this.colTotal.Text = "Ukupno";
             // 
             // btnDelete
             // 
@@ -296,6 +298,7 @@
             this.Controls.Add(this.gbGeneralData);
             this.Name = "FormNewReceipt";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormNewReceipt";
             this.Load += new System.EventHandler(this.FormNewReceipt_Load);
             this.gbGeneralData.ResumeLayout(false);
@@ -311,7 +314,7 @@
         private System.Windows.Forms.Label lblWaiter;
         private System.Windows.Forms.TextBox tbWaiter;
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.GroupBox gbGeneralData;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.ComboBox cbPaymentMethod;

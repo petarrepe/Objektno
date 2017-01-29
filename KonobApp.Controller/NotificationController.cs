@@ -28,6 +28,7 @@ namespace KonobApp.Controller
         {
             if (_isStarted == true)
             {
+                
                 _listenForNotification.Dispose();
             }
         }

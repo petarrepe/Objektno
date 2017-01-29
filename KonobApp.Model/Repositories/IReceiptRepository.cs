@@ -12,6 +12,7 @@ namespace KonobApp.Model
         IList<ReceiptModel> Receipts { get; }
         IList<ArticleModel> Articles { get; }
         IList<ArticleReceiptModel> ArticleReceipts { get; }
+        IList<PaymentMethodModel> PaymentMethods { get; }
 
         ReceiptModel CurrentReceipt { get; }
         UserModel CurrentUser { get; }
