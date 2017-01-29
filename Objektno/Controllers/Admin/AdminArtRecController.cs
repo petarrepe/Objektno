@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KonobApp.Model.Models;
+using DAL.Repositories;
+using KonobApp.Controller;
+using KonobApp.Model.Repositories;
+using KonobApp.Interfaces;
 using Objektno.Models;
 
 namespace Objektno.Controllers.Admin
@@ -14,12 +18,13 @@ namespace Objektno.Controllers.Admin
     public class AdminArtRecController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ReceiptRepository _receiptRepository = ReceiptRepository.GetInstance();
 
         // GET: AdminArtRec
         public ActionResult Index()
         {
-            var articleReceiptModels = db.ArticleReceiptModels.Include(a => a.Article).Include(a => a.Receipt);
-            return View(articleReceiptModels.ToList());
+            _receiptRepository.LoadArtRec();
+            return View(_receiptRepository.ArticleReceipts.ToList());
         }
 
         // GET: AdminArtRec/Details/5
@@ -29,7 +34,7 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleReceiptModel articleReceiptModel = db.ArticleReceiptModels.Find(id);
+            ArticleReceiptModel articleReceiptModel = _receiptRepository.FindArtRecByID(Convert.ToInt32(id));
             if (articleReceiptModel == null)
             {
                 return HttpNotFound();
@@ -40,8 +45,8 @@ namespace Objektno.Controllers.Admin
         // GET: AdminArtRec/Create
         public ActionResult Create()
         {
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name");
-            ViewBag.IDReceipt = new SelectList(db.ReceiptModels, "IDReceipt", "IDReceipt");
+            ViewBag.IDArticle = new SelectList(_receiptRepository.Articles, "IDArticle", "Name");
+            ViewBag.IDReceipt = new SelectList(_receiptRepository.Receipts, "IDReceipt", "IDReceipt");
             return View();
         }
 
@@ -54,13 +59,12 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                db.ArticleReceiptModels.Add(articleReceiptModel);
-                db.SaveChanges();
+                _receiptRepository.AddArtRec(articleReceiptModel.IDReceipt, articleReceiptModel.IDArticle, articleReceiptModel.Quantity, articleReceiptModel.PriceOfOne);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleReceiptModel.IDArticle);
-            ViewBag.IDReceipt = new SelectList(db.ReceiptModels, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
+            ViewBag.IDArticle = new SelectList(_receiptRepository.Articles, "IDArticle", "Name", articleReceiptModel.IDArticle);
+            ViewBag.IDReceipt = new SelectList(_receiptRepository.Receipts, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
             return View(articleReceiptModel);
         }
 
@@ -71,13 +75,13 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleReceiptModel articleReceiptModel = db.ArticleReceiptModels.Find(id);
+            ArticleReceiptModel articleReceiptModel = _receiptRepository.FindArtRecByID(Convert.ToInt32(id));
             if (articleReceiptModel == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleReceiptModel.IDArticle);
-            ViewBag.IDReceipt = new SelectList(db.ReceiptModels, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
+            ViewBag.IDArticle = new SelectList(_receiptRepository.Articles, "IDArticle", "Name", articleReceiptModel.IDArticle);
+            ViewBag.IDReceipt = new SelectList(_receiptRepository.Receipts, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
             return View(articleReceiptModel);
         }
 
@@ -90,12 +94,11 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                db.Entry(articleReceiptModel).State = EntityState.Modified;
-                db.SaveChanges();
+                _receiptRepository.UpdateArtRec(articleReceiptModel.ID, articleReceiptModel.IDReceipt, articleReceiptModel.IDArticle, articleReceiptModel.Quantity, articleReceiptModel.PriceOfOne);
                 return RedirectToAction("Index");
             }
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleReceiptModel.IDArticle);
-            ViewBag.IDReceipt = new SelectList(db.ReceiptModels, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
+            ViewBag.IDArticle = new SelectList(_receiptRepository.Articles, "IDArticle", "Name", articleReceiptModel.IDArticle);
+            ViewBag.IDReceipt = new SelectList(_receiptRepository.Receipts, "IDReceipt", "IDReceipt", articleReceiptModel.IDReceipt);
             return View(articleReceiptModel);
         }
 
@@ -106,7 +109,7 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleReceiptModel articleReceiptModel = db.ArticleReceiptModels.Find(id);
+            ArticleReceiptModel articleReceiptModel = _receiptRepository.FindArtRecByID(Convert.ToInt32(id));
             if (articleReceiptModel == null)
             {
                 return HttpNotFound();
@@ -119,9 +122,7 @@ namespace Objektno.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArticleReceiptModel articleReceiptModel = db.ArticleReceiptModels.Find(id);
-            db.ArticleReceiptModels.Remove(articleReceiptModel);
-            db.SaveChanges();
+            _receiptRepository.DeleteArtRec(id);
             return RedirectToAction("Index");
         }
 

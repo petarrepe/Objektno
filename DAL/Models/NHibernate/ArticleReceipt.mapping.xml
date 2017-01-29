@@ -4,15 +4,13 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.ArticleReceiptModel, KonobApp.Model" table="Article_Receipt" batch-size="25">
     <id name="ID">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
-    <property name="IDArticle" not-null="true" />
-    <property name="IDReceipt" not-null="true" />
+    <property name="IDArticle" column="IDArticle" not-null="true" />
+    <property name="IDReceipt" column="IDReceipt" not-null="true" />
     <property name="Quantity" not-null="true" />
     <property name="PriceOfOne" not-null="true" />
 
-    <many-to-one name="Receipt" class="ReceiptModel" column="IDReceipt" />
-    <many-to-one name="Article" class="ArticleModel" column="IDArticle" />
 
   </class>
 </hibernate-mapping>

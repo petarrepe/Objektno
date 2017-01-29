@@ -192,6 +192,7 @@
     <Compile Include="Controllers\Admin\AdminTableController.cs" />
     <Compile Include="Controllers\Admin\AdminUserController.cs" />
     <Compile Include="Controllers\Admin\AdminWaiterController.cs" />
+    <Compile Include="Controllers\Admin\StartingPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PROBAController.cs" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Admin\AdminArtRec\Details.cshtml" />
     <Content Include="Views\Admin\AdminArtRec\Edit.cshtml" />
     <Content Include="Views\Admin\AdminArtRec\Index.cshtml" />
+    <Content Include="Views\Admin\StartingPage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

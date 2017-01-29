@@ -11,6 +11,8 @@ namespace KonobApp.Model
     {
         IList<ReceiptModel> Receipts { get; }
         IList<ArticleModel> Articles { get; }
+        IList<ArticleReceiptModel> ArticleReceipts { get; }
+
         ReceiptModel CurrentReceipt { get; }
         UserModel CurrentUser { get; }
         WaiterModel CurrentWaiter { get; }
@@ -18,6 +20,11 @@ namespace KonobApp.Model
         void LoadAll();
         void LoadArticles();
         void LoadReceipts();
+        void LoadArtRec();
+
+        void AddArtRec(int receiptID, int articleID, int quantity, float priceOfOne);
+        void UpdateArtRec(int ID, int receiptID, int articleID, int quantity, float priceOfOne);
+        void DeleteArtRec(int ID);
 
         void SetCurrentReceipt(int receiptId);
         void SetNewCurrentReceipt();
@@ -27,7 +34,8 @@ namespace KonobApp.Model
         string ValidateCurrentReceipt();
         void SaveCurrentReceiptChanges();
         IList<ArticleModel> GetFastArticleSearchResult(string searchString);
-
+        ArticleReceiptModel FindArtRecByID(int ID);
+        ReceiptModel FindReceiptByID(int ID);
         void SetCurrentUser(UserModel user);
         void SetCurrentWaiter(WaiterModel waiter);
     }
