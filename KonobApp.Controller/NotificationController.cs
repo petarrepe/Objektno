@@ -12,13 +12,15 @@ namespace KonobApp.Controller
     /// </summary>
     class NotificationController : INotificationController
     {
+        private IMainController _mainController;
         private Task _listenForNotification;
         private bool _isStarted;
 
         public bool IsStarted { get { return _isStarted; } }
 
-        public NotificationController()
+        public NotificationController(IMainController mainController)
         {
+            _mainController = mainController;
             _isStarted = false;
         }
 
@@ -66,8 +68,9 @@ namespace KonobApp.Controller
 
         private void RecieveReceipt(string t)
         {
-            KonobApp.Model.Models.ReceiptModel reciept = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
+            KonobApp.Model.Models.ReceiptModel receipt = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
             //ovdje nešto radiš sa receptom kojeg si dobio 
+            _mainController.AddNewOrder(receipt);
         }
     }
 }

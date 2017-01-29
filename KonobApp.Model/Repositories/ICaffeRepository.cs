@@ -44,5 +44,8 @@ namespace KonobApp.Model.Repositories
         ArticleInCaffeModel FindArtInCaffByID(int ID);
         TableModel FindTableByID(int tableID);
         WaiterModel FindWaiterByID(int waiterID);
+
+        void SetCaffeOpened(CaffeModel caffeModel);
+        void SetCaffeClosed(CaffeModel caffeModel);
     }
 }

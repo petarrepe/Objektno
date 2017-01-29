@@ -148,6 +148,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Images\bartender-icon-71120.ico" />
+    <Content Include="Sounds\NotificationSound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

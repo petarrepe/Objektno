@@ -22,7 +22,26 @@ namespace KonobApp.Controller
         readonly AccountRepository _accountRepository = AccountRepository.GetInstance();
         readonly CaffeRepository _caffeRepository = CaffeRepository.GetInstance();
 
-        private NotificationController _notificationController = new NotificationController();
+        private NotificationController _notificationController;
+
+        private FormMainWindow _formMainWindow;
+
+        public Form FormMainWindow
+        {
+            set
+            {
+                if (value.GetType() == typeof(FormMainWindow))
+                {
+                    _formMainWindow = (FormMainWindow)value;
+                }
+            }
+        }
+
+
+        public MainController()
+        {
+            _notificationController = new NotificationController(this);
+        }
 
         public int GetCurrentCaffeId()
         {
@@ -157,6 +176,11 @@ namespace KonobApp.Controller
 
         #endregion
 
+        public void ShowTables()
+        {
+            throw new NotImplementedException();
+        }
+
         #region Options
 
         public void ShowOptions()
@@ -185,5 +209,14 @@ namespace KonobApp.Controller
 
         #endregion
 
+
+        #region Orders
+
+        public void AddNewOrder(ReceiptModel receiptModel)
+        {
+
+        }
+
+        #endregion
     }
 }
