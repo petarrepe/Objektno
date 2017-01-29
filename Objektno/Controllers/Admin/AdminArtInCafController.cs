@@ -24,7 +24,7 @@ namespace Objektno.Controllers.Admin
         public ActionResult Index()
         {
             _caffeRepository.LoadArticlesInCaffe();
-            return View(_caffeRepository.Caffes.ToList());
+            return View(_caffeRepository.ArticlesInCaffe.ToList());
         }
 
         // GET: AdminArtInCaf/Details/5
@@ -34,7 +34,7 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleInCaffeModel articleInCaffeModel = db.ArticleInCaffeModels.Find(id);
+            ArticleInCaffeModel articleInCaffeModel = _caffeRepository.FindArtInCaffByID(Convert.ToInt32(id));
             if (articleInCaffeModel == null)
             {
                 return HttpNotFound();
@@ -45,8 +45,8 @@ namespace Objektno.Controllers.Admin
         // GET: AdminArtInCaf/Create
         public ActionResult Create()
         {
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name");
-            ViewBag.IDCaffe = new SelectList(db.CaffeModels, "IDCaffe", "Name");
+            ViewBag.IDArticle = new SelectList(_caffeRepository.Articles, "IDArticle", "Name");
+            ViewBag.IDCaffe = new SelectList(_caffeRepository.Caffes, "IDCaffe", "Name");
             return View();
         }
 
@@ -59,13 +59,12 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                db.ArticleInCaffeModels.Add(articleInCaffeModel);
-                db.SaveChanges();
+                _caffeRepository.AddArticleInCaffe(articleInCaffeModel.IDArticle, articleInCaffeModel.IDCaffe);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleInCaffeModel.IDArticle);
-            ViewBag.IDCaffe = new SelectList(db.CaffeModels, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
+            ViewBag.IDArticle = new SelectList(_caffeRepository.Articles, "IDArticle", "Name", articleInCaffeModel.IDArticle);
+            ViewBag.IDCaffe = new SelectList(_caffeRepository.Caffes, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
             return View(articleInCaffeModel);
         }
 
@@ -76,13 +75,13 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleInCaffeModel articleInCaffeModel = db.ArticleInCaffeModels.Find(id);
+            ArticleInCaffeModel articleInCaffeModel = _caffeRepository.FindArtInCaffByID(Convert.ToInt32(id));
             if (articleInCaffeModel == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleInCaffeModel.IDArticle);
-            ViewBag.IDCaffe = new SelectList(db.CaffeModels, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
+            ViewBag.IDArticle = new SelectList(_caffeRepository.Articles, "IDArticle", "Name", articleInCaffeModel.IDArticle);
+            ViewBag.IDCaffe = new SelectList(_caffeRepository.Caffes, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
             return View(articleInCaffeModel);
         }
 
@@ -95,12 +94,11 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                db.Entry(articleInCaffeModel).State = EntityState.Modified;
-                db.SaveChanges();
+                _caffeRepository.UpdateArticleInCaffe(articleInCaffeModel.ID, articleInCaffeModel.IsAvailable);
                 return RedirectToAction("Index");
             }
-            ViewBag.IDArticle = new SelectList(db.ArticleModels, "IDArticle", "Name", articleInCaffeModel.IDArticle);
-            ViewBag.IDCaffe = new SelectList(db.CaffeModels, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
+            ViewBag.IDArticle = new SelectList(_caffeRepository.Articles, "IDArticle", "Name", articleInCaffeModel.IDArticle);
+            ViewBag.IDCaffe = new SelectList(_caffeRepository.Caffes, "IDCaffe", "Name", articleInCaffeModel.IDCaffe);
             return View(articleInCaffeModel);
         }
 
@@ -111,7 +109,7 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticleInCaffeModel articleInCaffeModel = db.ArticleInCaffeModels.Find(id);
+            ArticleInCaffeModel articleInCaffeModel = _caffeRepository.FindArtInCaffByID(Convert.ToInt32(id));
             if (articleInCaffeModel == null)
             {
                 return HttpNotFound();
@@ -124,9 +122,7 @@ namespace Objektno.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArticleInCaffeModel articleInCaffeModel = db.ArticleInCaffeModels.Find(id);
-            db.ArticleInCaffeModels.Remove(articleInCaffeModel);
-            db.SaveChanges();
+            _caffeRepository.DeleteArticleInCaffe(id);
             return RedirectToAction("Index");
         }
 

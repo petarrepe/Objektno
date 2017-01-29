@@ -53,9 +53,7 @@
             @Html.DisplayFor(modelItem => item.Discount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDReceipt }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDReceipt }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDReceipt })
+            @Html.ActionLink("Details", "Details", new { id=item.IDReceipt }) 
         </td>
     </tr>
 }
