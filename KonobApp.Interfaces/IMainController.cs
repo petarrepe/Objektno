@@ -10,6 +10,7 @@ namespace KonobApp.Interfaces
 {
     public interface IMainController
     {
+        Form FormMainWindow { set; }
         void LoadAll();
         string Login();
         bool CheckCredentials(Form form, string username, string password);
@@ -30,8 +31,12 @@ namespace KonobApp.Interfaces
         void SetArticleAvailable(int articleId);
         void SetArticleUnavailable(int articleId);
 
+        void ShowTables();
+
         void ShowOptions();
         void ChangeNotificationState();
         bool IsNotificationConnectionActive();
+
+        void AddNewOrder(ReceiptModel receiptModel);
     }
 }

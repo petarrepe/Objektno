@@ -71,9 +71,9 @@ namespace DAL.Repositories
                 tablesCaffeList = facade.FetchAll<TableModel>();
             }
 
-            if (_articles == null) LoadArticles();
-            if (_waiters == null) LoadWaiters();
-            if (_tables == null) LoadTables();
+            if (_articles.Count() == 0) LoadArticles();
+            if (_waiters.Count() == 0) LoadWaiters();
+            if (_tables.Count() == 0) LoadTables();
 
             foreach (CaffeModel caffe in _caffes)
             {
@@ -96,7 +96,7 @@ namespace DAL.Repositories
                 _tables = query.List<TableModel>();
             }
 
-            if (_caffes == null) LoadCaffe();
+            if (_caffes.Count() == 0) LoadCaffe();
 
             foreach (TableModel table in _tables)
             {
@@ -111,7 +111,7 @@ namespace DAL.Repositories
                 IQuery query = nhibernateSession.CreateQuery("from WaiterModel");
                 _waiters = query.List<WaiterModel>();
             }
-            if (_caffes == null) LoadCaffe();
+            if (_caffes.Count() == 0) LoadCaffe();
 
             foreach (WaiterModel waiter in _waiters)
             {
@@ -126,11 +126,17 @@ namespace DAL.Repositories
                 _artInCaf = facade.FetchAll<ArticleInCaffeModel>();
             }
 
-            if (_articles == null) LoadArticles();
+            if (_articles.Count() == 0) LoadArticles();
+            if (_caffes.Count() == 0) LoadCaffe();
 
             foreach (ArticleInCaffeModel artCaf in _artInCaf)
             {
                 artCaf.Article = _articles.Where(a => a.IDArticle == artCaf.IDArticle).First();
+            }
+
+            foreach (ArticleInCaffeModel artCaf in _artInCaf)
+            {
+                artCaf.Caffe = _caffes.Where(c => c.IDCaffe == artCaf.IDCaffe).First();
             }
         }
 
@@ -406,6 +412,16 @@ namespace DAL.Repositories
         public WaiterModel FindWaiterByID(int waiterID)
         {
             return Waiters.Where(w => w.IDWaiter == waiterID).First();
+        }
+
+        public void SetCaffeOpened(CaffeModel caffeModel)
+        {
+            UpdateCaffe(caffeModel.IDCaffe, caffeModel.Name, caffeModel.Adress, true);
+        }
+
+        public void SetCaffeClosed(CaffeModel caffeModel)
+        {
+            UpdateCaffe(caffeModel.IDCaffe, caffeModel.Name, caffeModel.Adress, false);
         }
     }
 }

@@ -184,10 +184,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminArticlesController.cs" />
+    <Compile Include="Controllers\Admin\AdminArtInCafController.cs" />
+    <Compile Include="Controllers\Admin\AdminArtRecController.cs" />
     <Compile Include="Controllers\Admin\AdminCaffeController.cs" />
+    <Compile Include="Controllers\Admin\AdminReceiptController.cs" />
     <Compile Include="Controllers\Admin\AdminTableController.cs" />
     <Compile Include="Controllers\Admin\AdminUserController.cs" />
     <Compile Include="Controllers\Admin\AdminWaiterController.cs" />
+    <Compile Include="Controllers\Admin\StartingPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PROBAController.cs" />
@@ -234,6 +239,8 @@
     <Content Include="Images\9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -297,7 +304,27 @@
     <Content Include="Views\Admin\AdminTable\Details.cshtml" />
     <Content Include="Views\Admin\AdminTable\Edit.cshtml" />
     <Content Include="Views\Admin\AdminTable\Index.cshtml" />
-    <Content Include="Views\Receipt\Create.cshtml" />
+    <Content Include="Views\Admin\AdminArticles\Create.cshtml" />
+    <Content Include="Views\Admin\AdminArticles\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminArticles\Details.cshtml" />
+    <Content Include="Views\Admin\AdminArticles\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminArticles\Index.cshtml" />
+    <Content Include="Views\Admin\AdminReceipt\Create.cshtml" />
+    <Content Include="Views\Admin\AdminReceipt\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminReceipt\Details.cshtml" />
+    <Content Include="Views\Admin\AdminReceipt\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminReceipt\Index.cshtml" />
+    <Content Include="Views\Admin\AdminArtInCaf\Create.cshtml" />
+    <Content Include="Views\Admin\AdminArtInCaf\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminArtInCaf\Details.cshtml" />
+    <Content Include="Views\Admin\AdminArtInCaf\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminArtInCaf\Index.cshtml" />
+    <Content Include="Views\Admin\AdminArtRec\Create.cshtml" />
+    <Content Include="Views\Admin\AdminArtRec\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminArtRec\Details.cshtml" />
+    <Content Include="Views\Admin\AdminArtRec\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminArtRec\Index.cshtml" />
+    <Content Include="Views\Admin\StartingPage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

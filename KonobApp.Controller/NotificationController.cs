@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR.Client;
+﻿using KonobApp.Interfaces;
+using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,37 +10,43 @@ namespace KonobApp.Controller
     /// Na van izlaže StartListening i StopListening za notifikacije.
     /// Nije potreban izričit poziv task.Dispose, ali je ostavljen zbog verbosity.
     /// </summary>
-    class NotificationController
+    class NotificationController : INotificationController
     {
-        private Task listenForNotification;
-        private bool isStarted;
+        private IMainController _mainController;
+        private Task _listenForNotification;
+        private bool _isStarted;
 
-        public NotificationController()
+        public bool IsStarted { get { return _isStarted; } }
+
+        public NotificationController(IMainController mainController)
         {
+            _mainController = mainController;
+            _isStarted = false;
         }
 
         ~NotificationController()
         {
-            if (isStarted == true)
+            if (_isStarted == true)
             {
-                listenForNotification.Dispose();
+                _listenForNotification.Dispose();
             }
         }
 
-        internal void StartListening()
+        public void StartListening()
         {
-            if (isStarted == false)
+            if (_isStarted == false)
             {
-                listenForNotification = Task.Factory.StartNew(Listen);
-                isStarted = true;
+                _listenForNotification = Task.Factory.StartNew(Listen);
+                _isStarted = true;
             }
         }
-        internal void StopListening()
+
+        public void StopListening()
         {
-            if (isStarted == true)
+            if (_isStarted == true)
             {
-                listenForNotification.Dispose();
-                isStarted = false;
+                _listenForNotification.Dispose();
+                _isStarted = false;
             }
         }
 
@@ -61,8 +68,9 @@ namespace KonobApp.Controller
 
         private void RecieveReceipt(string t)
         {
-            KonobApp.Model.Models.ReceiptModel reciept = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
+            KonobApp.Model.Models.ReceiptModel receipt = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
             //ovdje nešto radiš sa receptom kojeg si dobio 
+            _mainController.AddNewOrder(receipt);
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model KonobApp.Model.Models.ArticleReceiptModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ArticleReceiptModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Article.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Article.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receipt.IDReceipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receipt.IDReceipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfOne)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

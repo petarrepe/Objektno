@@ -55,6 +55,12 @@
     <Compile Include="FormArticlesList.Designer.cs">
       <DependentUpon>FormArticlesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReceiptsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReceiptsList.Designer.cs">
+      <DependentUpon>FormReceiptsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormArticlesList.resx">
       <DependentUpon>FormArticlesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReceiptsList.resx">
+      <DependentUpon>FormReceiptsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -139,6 +148,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Images\bartender-icon-71120.ico" />
+    <Content Include="Sounds\NotificationSound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

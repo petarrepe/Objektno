@@ -34,7 +34,7 @@
             this.btnNewReceipt = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
             this.lblOrders = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvOrders = new System.Windows.Forms.ListView();
             this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,18 +48,19 @@
             this.lblConnectionInfo = new System.Windows.Forms.Label();
             this.btnViewReceipts = new System.Windows.Forms.Button();
             this.gbTables = new System.Windows.Forms.GroupBox();
-            this.lblTableAvailableName = new System.Windows.Forms.Label();
-            this.lblTablesOccupiedName = new System.Windows.Forms.Label();
-            this.lblTablesAvailable = new System.Windows.Forms.Label();
-            this.lblTablesOccupied = new System.Windows.Forms.Label();
             this.btnTables = new System.Windows.Forms.Button();
+            this.lblTablesOccupied = new System.Windows.Forms.Label();
+            this.lblTablesAvailable = new System.Windows.Forms.Label();
+            this.lblTablesOccupiedName = new System.Windows.Forms.Label();
+            this.lblTableAvailableName = new System.Windows.Forms.Label();
+            this.cbSound = new System.Windows.Forms.CheckBox();
             this.gbUserData.SuspendLayout();
             this.gbTables.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnActivateOrders
             // 
-            this.btnActivateOrders.Location = new System.Drawing.Point(337, 173);
+            this.btnActivateOrders.Location = new System.Drawing.Point(337, 184);
             this.btnActivateOrders.Name = "btnActivateOrders";
             this.btnActivateOrders.Size = new System.Drawing.Size(155, 39);
             this.btnActivateOrders.TabIndex = 0;
@@ -106,18 +107,18 @@
             this.lblOrders.TabIndex = 5;
             this.lblOrders.Text = "Pristigle narudžbe:";
             // 
-            // listView1
+            // lvOrders
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colId,
             this.colTime,
             this.colTotal});
-            this.listView1.Location = new System.Drawing.Point(15, 32);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 356);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvOrders.Location = new System.Drawing.Point(15, 32);
+            this.lvOrders.Name = "lvOrders";
+            this.lvOrders.Size = new System.Drawing.Size(316, 356);
+            this.lvOrders.TabIndex = 6;
+            this.lvOrders.UseCompatibleStateImageBehavior = false;
+            this.lvOrders.View = System.Windows.Forms.View.Details;
             // 
             // colId
             // 
@@ -196,7 +197,7 @@
             // lblConnection
             // 
             this.lblConnection.AutoSize = true;
-            this.lblConnection.Location = new System.Drawing.Point(334, 153);
+            this.lblConnection.Location = new System.Drawing.Point(334, 137);
             this.lblConnection.Name = "lblConnection";
             this.lblConnection.Size = new System.Drawing.Size(86, 17);
             this.lblConnection.TabIndex = 9;
@@ -205,7 +206,7 @@
             // lblConnectionInfo
             // 
             this.lblConnectionInfo.AutoSize = true;
-            this.lblConnectionInfo.Location = new System.Drawing.Point(426, 153);
+            this.lblConnectionInfo.Location = new System.Drawing.Point(426, 137);
             this.lblConnectionInfo.Name = "lblConnectionInfo";
             this.lblConnectionInfo.Size = new System.Drawing.Size(195, 17);
             this.lblConnectionInfo.TabIndex = 10;
@@ -235,32 +236,15 @@
             this.gbTables.TabStop = false;
             this.gbTables.Text = "Stanje stolova:";
             // 
-            // lblTableAvailableName
+            // btnTables
             // 
-            this.lblTableAvailableName.AutoSize = true;
-            this.lblTableAvailableName.Location = new System.Drawing.Point(6, 18);
-            this.lblTableAvailableName.Name = "lblTableAvailableName";
-            this.lblTableAvailableName.Size = new System.Drawing.Size(52, 17);
-            this.lblTableAvailableName.TabIndex = 0;
-            this.lblTableAvailableName.Text = "Prazni:";
-            // 
-            // lblTablesOccupiedName
-            // 
-            this.lblTablesOccupiedName.AutoSize = true;
-            this.lblTablesOccupiedName.Location = new System.Drawing.Point(6, 35);
-            this.lblTablesOccupiedName.Name = "lblTablesOccupiedName";
-            this.lblTablesOccupiedName.Size = new System.Drawing.Size(59, 17);
-            this.lblTablesOccupiedName.TabIndex = 1;
-            this.lblTablesOccupiedName.Text = "Zauzeti:";
-            // 
-            // lblTablesAvailable
-            // 
-            this.lblTablesAvailable.AutoSize = true;
-            this.lblTablesAvailable.Location = new System.Drawing.Point(71, 18);
-            this.lblTablesAvailable.Name = "lblTablesAvailable";
-            this.lblTablesAvailable.Size = new System.Drawing.Size(95, 17);
-            this.lblTablesAvailable.TabIndex = 2;
-            this.lblTablesAvailable.Text = "brojSlobodnih";
+            this.btnTables.Location = new System.Drawing.Point(172, 18);
+            this.btnTables.Name = "btnTables";
+            this.btnTables.Size = new System.Drawing.Size(138, 34);
+            this.btnTables.TabIndex = 4;
+            this.btnTables.Text = "Pregled stolova (S)";
+            this.btnTables.UseVisualStyleBackColor = true;
+            this.btnTables.Click += new System.EventHandler(this.btnTables_Click);
             // 
             // lblTablesOccupied
             // 
@@ -271,26 +255,55 @@
             this.lblTablesOccupied.TabIndex = 3;
             this.lblTablesOccupied.Text = "brojZauzetih";
             // 
-            // btnTables
+            // lblTablesAvailable
             // 
-            this.btnTables.Location = new System.Drawing.Point(172, 18);
-            this.btnTables.Name = "btnTables";
-            this.btnTables.Size = new System.Drawing.Size(138, 34);
-            this.btnTables.TabIndex = 4;
-            this.btnTables.Text = "Pregled stolova (S)";
-            this.btnTables.UseVisualStyleBackColor = true;
+            this.lblTablesAvailable.AutoSize = true;
+            this.lblTablesAvailable.Location = new System.Drawing.Point(71, 18);
+            this.lblTablesAvailable.Name = "lblTablesAvailable";
+            this.lblTablesAvailable.Size = new System.Drawing.Size(95, 17);
+            this.lblTablesAvailable.TabIndex = 2;
+            this.lblTablesAvailable.Text = "brojSlobodnih";
+            // 
+            // lblTablesOccupiedName
+            // 
+            this.lblTablesOccupiedName.AutoSize = true;
+            this.lblTablesOccupiedName.Location = new System.Drawing.Point(6, 35);
+            this.lblTablesOccupiedName.Name = "lblTablesOccupiedName";
+            this.lblTablesOccupiedName.Size = new System.Drawing.Size(59, 17);
+            this.lblTablesOccupiedName.TabIndex = 1;
+            this.lblTablesOccupiedName.Text = "Zauzeti:";
+            // 
+            // lblTableAvailableName
+            // 
+            this.lblTableAvailableName.AutoSize = true;
+            this.lblTableAvailableName.Location = new System.Drawing.Point(6, 18);
+            this.lblTableAvailableName.Name = "lblTableAvailableName";
+            this.lblTableAvailableName.Size = new System.Drawing.Size(52, 17);
+            this.lblTableAvailableName.TabIndex = 0;
+            this.lblTableAvailableName.Text = "Prazni:";
+            // 
+            // cbSound
+            // 
+            this.cbSound.AutoSize = true;
+            this.cbSound.Location = new System.Drawing.Point(337, 157);
+            this.cbSound.Name = "cbSound";
+            this.cbSound.Size = new System.Drawing.Size(140, 21);
+            this.cbSound.TabIndex = 13;
+            this.cbSound.Text = "Zvuk za obavijest";
+            this.cbSound.UseVisualStyleBackColor = true;
             // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 476);
+            this.Controls.Add(this.cbSound);
             this.Controls.Add(this.gbTables);
             this.Controls.Add(this.btnViewReceipts);
             this.Controls.Add(this.lblConnectionInfo);
             this.Controls.Add(this.lblConnection);
             this.Controls.Add(this.gbUserData);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvOrders);
             this.Controls.Add(this.lblOrders);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnNewReceipt);
@@ -318,7 +331,7 @@
         private System.Windows.Forms.Button btnNewReceipt;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Label lblOrders;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvOrders;
         private System.Windows.Forms.ColumnHeader colId;
         private System.Windows.Forms.ColumnHeader colTime;
         private System.Windows.Forms.ColumnHeader colTotal;
@@ -337,6 +350,7 @@
         private System.Windows.Forms.Button btnTables;
         private System.Windows.Forms.Label lblTablesOccupied;
         private System.Windows.Forms.Label lblTablesAvailable;
+        private System.Windows.Forms.CheckBox cbSound;
     }
 }
 

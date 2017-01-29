@@ -22,7 +22,26 @@ namespace KonobApp.Controller
         readonly AccountRepository _accountRepository = AccountRepository.GetInstance();
         readonly CaffeRepository _caffeRepository = CaffeRepository.GetInstance();
 
-        private NotificationController norificationController = new NotificationController();
+        private NotificationController _notificationController;
+
+        private FormMainWindow _formMainWindow;
+
+        public Form FormMainWindow
+        {
+            set
+            {
+                if (value.GetType() == typeof(FormMainWindow))
+                {
+                    _formMainWindow = (FormMainWindow)value;
+                }
+            }
+        }
+
+
+        public MainController()
+        {
+            _notificationController = new NotificationController(this);
+        }
 
         public int GetCurrentCaffeId()
         {
@@ -40,7 +59,6 @@ namespace KonobApp.Controller
             _receiptRepository.LoadAll();
             _accountRepository.LoadWaiters();
             _caffeRepository.LoadAll();
-            //_caffeRepository.LoadCaffe();
         }
 
         #region Login
@@ -91,7 +109,8 @@ namespace KonobApp.Controller
 
         public void ShowReceipts()
         {
-
+            FormReceiptsList receiptsList = new FormReceiptsList(this, _receiptRepository);
+            receiptsList.ShowDialog();
         }
 
         public void NewReceipt()
@@ -157,6 +176,11 @@ namespace KonobApp.Controller
 
         #endregion
 
+        public void ShowTables()
+        {
+            throw new NotImplementedException();
+        }
+
         #region Options
 
         public void ShowOptions()
@@ -167,15 +191,32 @@ namespace KonobApp.Controller
 
         public void ChangeNotificationState()
         {
-
+            if (_notificationController.IsStarted)
+            {
+                _notificationController.StopListening();
+                _caffeRepository.SetCaffeClosed(_currentCaffe);
+            } else
+            {
+                _notificationController.StartListening();
+                _caffeRepository.SetCaffeOpened(_currentCaffe);
+            }
         }
 
         public bool IsNotificationConnectionActive()
         {
-            return _notificationConnectionActive;
+            return _notificationController.IsStarted;
         }
 
         #endregion
 
+
+        #region Orders
+
+        public void AddNewOrder(ReceiptModel receiptModel)
+        {
+
+        }
+
+        #endregion
     }
 }
