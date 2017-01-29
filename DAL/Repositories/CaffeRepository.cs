@@ -383,6 +383,21 @@ namespace DAL.Repositories
             return Tables.Where(t => t.IDCaffe == caffeID).Where(t => t.IsOccupied == false).ToList();
         }
 
+        public IList<CaffeModel> ListOpenCaffesWithFreeTables()
+        {
+            List<CaffeModel> openCaffes = new List<CaffeModel>();
+            var temp = new List<CaffeModel>(_caffes.Where(t => t.IsOpen == true));
+
+            foreach (var caffe in temp)
+            {
+                if (caffe.Tables.Where(t => t.IsOccupied == false).Count() > 0)
+                {
+                    openCaffes.Add(caffe);
+                }
+            }
+            return openCaffes;
+        }
+
         public CaffeModel FindCaffeByID(int caffeID)
         {
             return Caffes.Where(c => c.IDCaffe == caffeID).First();

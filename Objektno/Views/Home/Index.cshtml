@@ -1,34 +1,58 @@
-﻿@{
+﻿<!DOCTYPE html>
+@{
     ViewBag.Title = "Home Page";
 }
-<html lang="en">
+@model Objektno.Models.CaffeViewModel
+
+
+<html>
 <head>
     <title>Bootstrap Case</title>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
     <div class="container">
         <h3>Popis kafica</h3>
-        <ul class="nav nav-pills nav-stacked">
-            @*foreach kafic  - NOTE: if (ima slobodnih stolova onda ide dropdown, else (?))*@ 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    @*foreach slobodan stol u kaficu*@
-                    @*<li><a href="#">Submenu 1-1</a></li>
-                    <li><a href="#">Submenu 1-2</a></li>
-                    <li><a href="#">Submenu 1-3</a></li>*@
-                </ul>
-            </li>
-            <li><a href="#">Menu 2</a></li>
-            <li><a href="#">Menu 3</a></li>
-        </ul>
+        @foreach (var caffe in Model.openCaffe)
+            {
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    @caffe.Name      @caffe.Adress
+                    <b class="caret"></b>
+                </button>
+                @foreach (var table in caffe.Tables)
+                {
+                    <ul class="dropdown-menu">
+                        <li><a href="#">@table.IDTable</a></li>@*TODO: ActionLink ?caffeId=@caffe.IDCaffe*@
+                    </ul>
+                }
+            </div>
+        }
+        @*<li class="dropdown" id="menu1">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+                    Dropdown
+                </a>
+            </li>*@
     </div>
 
+    <style>
+        .dropdown-menu {
+            padding-top: 5px;
+        }
+
+            .dropdown-menu label {
+                padding: 0 10px;
+            }
+
+            .dropdown-menu input {
+                margin-right: 5px;
+                float: left;
+            }
+    </style>
 </body>
 </html>
