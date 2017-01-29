@@ -4,9 +4,9 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.WaiterModel, KonobApp.Model" table="Waiter" batch-size="25">
     <id name="IDWaiter">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
-    <property name="IDCaffe" not-null="true"  />
+    <property name="IDCaffe" column="IDCaffe" not-null="true" />
     <property name="Name" not-null="true" />
     <property name="Surname" not-null="true" />
     <property name="Username" not-null="true" />
@@ -16,6 +16,5 @@ namespace="KonobApp.Model.Models">
       <key column="IDWaiter" />
       <one-to-many class="ReceiptModel" />
     </bag>
-    <many-to-one name="Caffe" class="CaffeModel" column="IDCaffe" />
   </class>
 </hibernate-mapping>

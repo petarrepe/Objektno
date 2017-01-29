@@ -127,12 +127,17 @@ namespace DAL.Repositories
             }
 
             if (_articles == null) LoadArticles();
+            if (_caffes == null) LoadCaffe();
 
             foreach (ArticleInCaffeModel artCaf in _artInCaf)
             {
                 artCaf.Article = _articles.Where(a => a.IDArticle == artCaf.IDArticle).First();
             }
 
+            foreach (ArticleInCaffeModel artCaf in _artInCaf)
+            {
+                artCaf.Caffe = _caffes.Where(c => c.IDCaffe == artCaf.IDCaffe).First();
+            }
         }
 
         public void LoadArticles()

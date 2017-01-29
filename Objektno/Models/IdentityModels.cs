@@ -37,5 +37,17 @@ namespace Objektno.Models
         public System.Data.Entity.DbSet<KonobApp.Model.Models.WaiterModel> WaiterModels { get; set; }
 
         public System.Data.Entity.DbSet<KonobApp.Model.Models.TableModel> TableModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.ArticleModel> ArticleModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.CategoryModel> CategoryModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.ArticleInCaffeModel> ArticleInCaffeModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.ArticleReceiptModel> ArticleReceiptModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.ReceiptModel> ReceiptModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.PaymentMethodModel> PaymentMethodModels { get; set; }
     }
 }
