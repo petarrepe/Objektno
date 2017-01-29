@@ -55,6 +55,11 @@ namespace DAL.Repositories
                 IQuery query = nhibernateSession.CreateQuery("from ArticleModel");
                 _articles = query.List<ArticleModel>();
             }
+            if (_categories == null) LoadCategory();
+            foreach (ArticleModel article in _articles)
+            {
+                article.Category = _categories.Where(c => c.IDCategory == article.IDCategory).First();
+            }
         }
 
         public void LoadCategory()
