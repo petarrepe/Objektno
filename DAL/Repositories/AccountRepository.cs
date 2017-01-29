@@ -77,7 +77,7 @@ namespace DAL.Repositories
             }
         }
 
-        public void AddWaiter(string name, string username, string surname, string password)
+        public void AddWaiter(string name, string surname, string username, string password, int caffeID)
         {
             WaiterModel waiter = new WaiterModel();
 
@@ -85,6 +85,7 @@ namespace DAL.Repositories
             waiter.Surname = surname;
             waiter.Username = username;
             waiter.Password = password;
+            waiter.IDCaffe = caffeID;
 
             using (Facade facade = new Facade())
             {
@@ -157,7 +158,7 @@ namespace DAL.Repositories
             _users.Add(user);
         }
 
-        public void UpdateWaiter(int id, string name, string surname, string username, string password)
+        public void UpdateWaiter(int id, string name, string surname, string username, string password, int caffeID)
         {
             var waiter = _waiters.Where(t => t.IDWaiter == id).FirstOrDefault();
 
@@ -165,6 +166,7 @@ namespace DAL.Repositories
             waiter.Surname = surname;
             waiter.Username = username;
             waiter.Password = password;
+            waiter.IDCaffe = caffeID;
 
             using (Facade facade = new Facade())
             {
@@ -173,6 +175,16 @@ namespace DAL.Repositories
 
             _waiters.Remove(waiter);
             _waiters.Add(waiter);
+        }
+
+        public UserModel FindUserByID(int ID)
+        {
+            return _users.Where(u => u.IDUser == ID).First();
+        }
+
+        public WaiterModel FindWaiterByID(int ID)
+        {
+            return _waiters.Where(w => w.IDWaiter == ID).First();
         }
     }
 }

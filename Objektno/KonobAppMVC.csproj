@@ -184,6 +184,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminCaffeController.cs" />
+    <Compile Include="Controllers\Admin\AdminTableController.cs" />
+    <Compile Include="Controllers\Admin\AdminUserController.cs" />
+    <Compile Include="Controllers\Admin\AdminWaiterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PROBAController.cs" />
@@ -250,6 +254,26 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\PROBA\Index.cshtml" />
+    <Content Include="Views\Admin\AdminUser\Create.cshtml" />
+    <Content Include="Views\Admin\AdminUser\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminUser\Details.cshtml" />
+    <Content Include="Views\Admin\AdminUser\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminUser\Index.cshtml" />
+    <Content Include="Views\Admin\AdminWaiter\Create.cshtml" />
+    <Content Include="Views\Admin\AdminWaiter\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminWaiter\Details.cshtml" />
+    <Content Include="Views\Admin\AdminWaiter\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminWaiter\Index.cshtml" />
+    <Content Include="Views\Admin\AdminCaffe\Create.cshtml" />
+    <Content Include="Views\Admin\AdminCaffe\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminCaffe\Details.cshtml" />
+    <Content Include="Views\Admin\AdminCaffe\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminCaffe\Index.cshtml" />
+    <Content Include="Views\Admin\AdminTable\Create.cshtml" />
+    <Content Include="Views\Admin\AdminTable\Delete.cshtml" />
+    <Content Include="Views\Admin\AdminTable\Details.cshtml" />
+    <Content Include="Views\Admin\AdminTable\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminTable\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +290,14 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{8a47ae88-fe47-43bd-9f74-60e3b27f4df5}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Controller\KonobApp.Controller.csproj">
+      <Project>{3e9f636b-71d4-4f4c-9316-67e0dc8385d6}</Project>
+      <Name>KonobApp.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonobApp.Interfaces\KonobApp.Interfaces.csproj">
+      <Project>{4b9fcda1-5185-4e5a-8d34-4aa2f937039c}</Project>
+      <Name>KonobApp.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\KonobApp.Model\KonobApp.Model.csproj">
       <Project>{443e97fb-6175-4dd8-b909-ba9f734144d3}</Project>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true"
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
 assembly="DAL" namespace="KonobApp.Model.Models">
-  <class name="KonobApp.Model.Models.CaffeModel, KonobApp.Model" table="Caffe" dynamic-update="true" batch-size="25">
-    <cache usage="read-write"/>
-    <id name="IDCaffe" column="IDCaffe" type="int">
-      <generator class="increment" />
+  <class name="KonobApp.Model.Models.CaffeModel, KonobApp.Model" table="Caffe" batch-size="25">
+    <id name="IDCaffe">
+      <generator class="native" />
     </id>
-    <property name="Name" />
-    <property name="Adress" />
-    <property name="IsOpen" />
+    <property name="Name" not-null="true"/>
+    <property name="Adress" not-null="true"/>
+    <property name="IsOpen" not-null="true"/>
     
     <bag name="Tables" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
       <key column="IDCaffe" />

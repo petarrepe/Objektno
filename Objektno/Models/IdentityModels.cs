@@ -31,5 +31,11 @@ namespace Objektno.Models
         }
 
         public System.Data.Entity.DbSet<KonobApp.Model.Models.CaffeModel> CaffeModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.UserModel> UserModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.WaiterModel> WaiterModels { get; set; }
+
+        public System.Data.Entity.DbSet<KonobApp.Model.Models.TableModel> TableModels { get; set; }
     }
 }

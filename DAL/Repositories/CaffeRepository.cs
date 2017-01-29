@@ -92,8 +92,15 @@ namespace DAL.Repositories
         {
             using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Table");
+                IQuery query = nhibernateSession.CreateQuery("from TableModel");
                 _tables = query.List<TableModel>();
+            }
+
+            if (_caffes == null) LoadCaffe();
+
+            foreach (TableModel table in _tables)
+            {
+                table.Caffe = _caffes.Where(c => c.IDCaffe == table.IDCaffe).First();
             }
         }
 
@@ -101,8 +108,14 @@ namespace DAL.Repositories
         {
             using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Waiter");
+                IQuery query = nhibernateSession.CreateQuery("from WaiterModel");
                 _waiters = query.List<WaiterModel>();
+            }
+            if (_caffes == null) LoadCaffe();
+
+            foreach (WaiterModel waiter in _waiters)
+            {
+                waiter.Caffe = _caffes.Where(c => c.IDCaffe == waiter.IDCaffe).First();
             }
         }
 
@@ -126,7 +139,7 @@ namespace DAL.Repositories
         {
             using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Article");
+                IQuery query = nhibernateSession.CreateQuery("from ArticleModel");
                 _articles = query.List<ArticleModel>();
             }
         }
@@ -374,6 +387,11 @@ namespace DAL.Repositories
         public TableModel FindTableByID(int tableID)
         {
             return Tables.Where(t => t.IDTable == tableID).First();
+        }
+
+        public WaiterModel FindWaiterByID(int waiterID)
+        {
+            return Waiters.Where(w => w.IDWaiter == waiterID).First();
         }
     }
 }

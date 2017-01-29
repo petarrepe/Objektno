@@ -43,5 +43,6 @@ namespace KonobApp.Model.Repositories
         CaffeModel FindCaffeByAddress(string address);
         ArticleInCaffeModel FindArtInCaffByID(int ID);
         TableModel FindTableByID(int tableID);
+        WaiterModel FindWaiterByID(int waiterID);
     }
 }

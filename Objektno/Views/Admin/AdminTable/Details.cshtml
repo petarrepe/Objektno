@@ -1,0 +1,34 @@
+﻿@model KonobApp.Model.Models.TableModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TableModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Caffe.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caffe.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOccupied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOccupied)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDTable }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

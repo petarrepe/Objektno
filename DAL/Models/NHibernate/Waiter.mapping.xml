@@ -6,7 +6,7 @@ namespace="KonobApp.Model.Models">
     <id name="IDWaiter">
       <generator class="increment" />
     </id>
-    <property name="IDCaffe" not-null="true" />
+    <property name="IDCaffe" not-null="true"  />
     <property name="Name" not-null="true" />
     <property name="Surname" not-null="true" />
     <property name="Username" not-null="true" />

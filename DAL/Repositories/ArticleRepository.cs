@@ -52,7 +52,7 @@ namespace DAL.Repositories
         {
             using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Article");
+                IQuery query = nhibernateSession.CreateQuery("from ArticleModel");
                 _articles = query.List<ArticleModel>();
             }
         }
@@ -61,7 +61,7 @@ namespace DAL.Repositories
         {
             using (ISession nhibernateSession = OpenNHibernateSession.OpenSession())
             {
-                IQuery query = nhibernateSession.CreateQuery("from Category");
+                IQuery query = nhibernateSession.CreateQuery("from CategoryModel");
                 _categories = query.List<CategoryModel>();
             }
         }
