@@ -398,5 +398,15 @@ namespace DAL.Repositories
         {
             return Waiters.Where(w => w.IDWaiter == waiterID).First();
         }
+
+        public void SetCaffeOpened(CaffeModel caffeModel)
+        {
+            UpdateCaffe(caffeModel.IDCaffe, caffeModel.Name, caffeModel.Adress, true);
+        }
+
+        public void SetCaffeClosed(CaffeModel caffeModel)
+        {
+            UpdateCaffe(caffeModel.IDCaffe, caffeModel.Name, caffeModel.Adress, false);
+        }
     }
 }

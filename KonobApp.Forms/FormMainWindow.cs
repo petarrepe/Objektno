@@ -14,11 +14,24 @@ namespace KonobApp.Forms
     public partial class FormMainWindow : Form
     {
         IMainController _mainController;
+
         public FormMainWindow(IMainController mainController)
         {
             _mainController = mainController;
 
             InitializeComponent();
+
+            if (_mainController.IsNotificationConnectionActive())
+            {
+                lblConnectionInfo.Text = "Aktivna";
+                lblConnectionInfo.ForeColor = Color.Green;
+                btnActivateOrders.Text = "Odspoji";
+            } else
+            {
+                lblConnectionInfo.Text = "Nije spojeno";
+                lblConnectionInfo.ForeColor = Color.Red;
+                btnActivateOrders.Text = "Aktiviraj narudžbe";
+            }
 
             //if ((int)Properties.Settings.Default["CaffeId"] == -1)
             //{
@@ -54,7 +67,23 @@ namespace KonobApp.Forms
 
         private void btnActivateOrders_Click(object sender, EventArgs e)
         {
+            lblConnectionInfo.Text = "Spajanje...";
+            lblConnectionInfo.ForeColor = Color.Orange;
             _mainController.ChangeNotificationState();
+            btnActivateOrders.Enabled = false;
+            if (_mainController.IsNotificationConnectionActive())
+            {
+                lblConnectionInfo.Text = "Aktivna";
+                lblConnectionInfo.ForeColor = Color.Green;
+                btnActivateOrders.Text = "Odspoji";
+                
+            } else
+            {
+                lblConnectionInfo.Text = "Nije spojeno";
+                lblConnectionInfo.ForeColor = Color.Red;
+                btnActivateOrders.Text = "Aktiviraj narudžbe";
+            }
+            btnActivateOrders.Enabled = true;
         }
 
         private void btnViewReceipts_Click(object sender, EventArgs e)

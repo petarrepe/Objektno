@@ -38,5 +38,8 @@ namespace KonobApp.Model
         ReceiptModel FindReceiptByID(int ID);
         void SetCurrentUser(UserModel user);
         void SetCurrentWaiter(WaiterModel waiter);
+
+        void SetCaffeOpened(CaffeModel caffeModel);
+        void SetCaffeClosed(CaffeModel caffeModel);
     }
 }
