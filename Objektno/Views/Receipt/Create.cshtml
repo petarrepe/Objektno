@@ -2,27 +2,43 @@
 @{
     ViewBag.Title = "Create";
 }
-@for (int i = 0; i < @Model.categories.Count; i++)
-{
-    @Html.Raw("<div class=\"container\" id=\"categoryContainer\" width:\"600\">")
-    @Html.Raw("<h2>")
-    @Model.categories.ElementAt(i).Value   @*ovdje će se kršiti sranje, trenutno nemam koncentracije napisati ispravan izraz*@
-    @Html.Raw("</h2>")
-    var path = "~/Images/" + Model.categories.ElementAt(i).Key + ".jpg"; /* isti komentar kao 2 retka iznad*/
-    <img src="@Url.Content(path)" width="700" height="250" />
-
-    foreach (var article in @Model.articlesInCaffe)
-    {
-        if (Model.categories.ElementAt(i).Key ==article.IDCategory)
+<div class="container">
+    <div class="col-lg-9 col-md-auto">
+        @for (int i = 0; i < @Model.categories.Count; i++)
         {
-            @Html.Raw("<p id=articleText><b>")
-            @Html.Raw("<span class=\"pull-left\">" + article.Name +"</span>"+ "<span class=\"pull-right\">"+ article.Price+" kn </span>")     @Html.Raw("<span class=\"pull-right\"><button type=\"button\" id = \"addButton\" class=\"btn btn - primary\">Dodaj</button></span>")
-            @Html.Raw("</p></b>")
-            @Html.Raw("<br/>")
+            @Html.Raw("<div class=\"container\" id=\"categoryContainer\">")
+            @Html.Raw("<h2>")
+            @Model.categories.ElementAt(i).Value
+            @Html.Raw("</h2>")
+            var path = "~/Images/" + Model.categories.ElementAt(i).Key + ".jpg";
+            <img src="@Url.Content(path)" width="700" height="250" id="picture" />
+
+            foreach (var article in @Model.articlesInCaffe)
+            {
+                if (Model.categories.ElementAt(i).Key == article.IDCategory)
+                {
+                    @Html.Raw("<p id=articleNameText><b>")
+                    @Html.Raw(article.Name)
+                    @*@Html.Raw("<span class=\"pull-left\">" + article.Name + "</span>" + "<span class=\"pull-right\">" + article.Price + " kn </span>")*@
+                    @Html.Raw("<button type=\"button\" id = \"addButton\" class=\"btn btn - primary\">Dodaj</button>")
+                    @Html.Raw("</p></b>")
+
+                    @Html.Raw("<p id=articlePriceText><b>")
+                    @Html.Raw(article.Price + " kn")
+                    @Html.Raw("</p></b>")
+
+                    //inb4 LOL
+                    @Html.Raw("<br/>")
+                    @Html.Raw("<br/>")
+                    @Html.Raw("<br/>")
+                    @Html.Raw("<br/>")
+
+                }
+            }
+            @Html.Raw("</div>")
         }
-    }
-    @Html.Raw("</div>")
-}
+    </div>
+</div>
 
 <style>
     #categoryContainer {
@@ -31,14 +47,30 @@
         padding: 10px;
     }
 
-    #articleText {
+    #articleNameText {
         font-size: medium;
-        margin: 5px;
-        color:black;
+        margin: 15px;
+        color: black;
+        float: left;
+        text-align: left;
     }
-    #addButton{
-        margin:5px;
-        padding:5px;
-        
+
+    #articlePriceText {
+        margin: 5px;
+        font-size: medium;
+        float: right;
+        text-align: end;
+        /*margin-right:80px;*/
+    }
+
+    #addButton {
+        padding: 2px;
+        position: absolute;
+        right: 0px;
+        background-color: darkorange;
+    }
+
+    #picture {
+        margin: 20px;
     }
 </style>

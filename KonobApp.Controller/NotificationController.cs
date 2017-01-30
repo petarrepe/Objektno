@@ -27,8 +27,7 @@ namespace KonobApp.Controller
         ~NotificationController()
         {
             if (_isStarted == true)
-            {
-                
+            {          
                 _listenForNotification.Dispose();
             }
         }
@@ -46,7 +45,6 @@ namespace KonobApp.Controller
         {
             if (_isStarted == true)
             {
-                _listenForNotification.Dispose();
                 _isStarted = false;
             }
         }
@@ -54,14 +52,15 @@ namespace KonobApp.Controller
         private void Listen()
         {
             IHubProxy _hub;
-
             string url = @"http://localhost:8080/";
             var connection = new HubConnection(url);
+
             _hub = connection.CreateHubProxy("NotificationsHub");
             connection.Start().Wait();
 
             _hub.On("ReceiveReceipt", t=> RecieveReceipt(t));
-            while (true)
+
+            while (IsStarted==true)
             {
                 Thread.Sleep(1000);
             }

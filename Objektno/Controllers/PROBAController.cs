@@ -26,7 +26,7 @@ namespace Objektno.Controllers
                 //var randomReciept = facade.FetchAll<ReceiptModel>().First();
                 var caffe = facade.FetchAll<CaffeModel>();
                 NotificationService.SendReciept(rc);
-
+                
                 return View(caffe);
             }
 
