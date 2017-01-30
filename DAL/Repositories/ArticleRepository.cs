@@ -44,8 +44,8 @@ namespace DAL.Repositories
 
         public void LoadAll()
         {
-            LoadArticle();
             LoadCategory();
+            LoadArticle();
         }
 
         public void LoadArticle()

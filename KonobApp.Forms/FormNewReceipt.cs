@@ -22,7 +22,15 @@ namespace KonobApp.Forms
         {
             _mainController = mainController;
             _receiptRepository = receiptRepository;
+            _receiptRepository.SetNewCurrentReceipt();
             InitializeComponent();
+
+            cbPaymentMethod.DataSource = _receiptRepository.PaymentMethods;
+            cbPaymentMethod.DisplayMember = "TypePaymentMethod";
+            cbPaymentMethod.ValueMember = "IDPaymentMethod";
+
+            tbWaiter.Text = _mainController.GetCurrentWaiter().GetFullName();
+            tbUser.Text = "-";
         }
 
         public FormNewReceipt(IMainController mainController, IReceiptRepository receiptRepository, ReceiptModel receipt)
@@ -42,6 +50,7 @@ namespace KonobApp.Forms
             if (!String.IsNullOrEmpty(errorMessage))
             {
                 MessageBox.Show(errorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             _receiptRepository.SaveCurrentReceiptChanges();
         }
@@ -69,6 +78,21 @@ namespace KonobApp.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbPaymentMethod_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.N:
+                    btnNewArticle.PerformClick();
+                    e.SuppressKeyPress = true; ;
+                    break;
+                case Keys.Delete:
+                    btnDelete.PerformClick();
+                    e.SuppressKeyPress = true;
+                    break;
+            }
         }
     }
 }

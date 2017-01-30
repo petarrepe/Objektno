@@ -10,8 +10,11 @@ namespace Objektno.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new Models.CaffeViewModel();
+            return View(viewModel);
         }
+
+
 
         public ActionResult About()
         {

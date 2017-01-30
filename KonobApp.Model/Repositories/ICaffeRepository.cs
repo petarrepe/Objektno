@@ -36,6 +36,7 @@ namespace KonobApp.Model.Repositories
         void DeleteTable(int tableID);
         
         IList<ArticleModel> ListArticlesInCaffe(int caffeID);
+        IList<ArticleModel> ListAvailableArticlesInCaffe(int caffeID);
         IList<TableModel> ListAllTablesInCaffe(int caffeID);
         IList<TableModel> ListFreeTablesInCaffe(int caffeID);
         CaffeModel FindCaffeByID(int caffeID);

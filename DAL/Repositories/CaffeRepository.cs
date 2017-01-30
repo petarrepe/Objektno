@@ -359,6 +359,20 @@ namespace DAL.Repositories
             return articlesCaffe;
         }
 
+        public IList<ArticleModel> ListAvailableArticlesInCaffe(int caffeID)
+        {
+            List<ArticleModel> articlesCaffe = new List<ArticleModel>();
+            foreach (ArticleInCaffeModel artCaf in _artInCaf)
+            {
+                if (artCaf.IDCaffe == caffeID && artCaf.IsAvailable)
+                {
+                    articlesCaffe.Add(artCaf.Article);
+                }
+            }
+
+            return articlesCaffe;
+        }
+
         public IList<TableModel> ListAllTablesInCaffe(int caffeID)
         {
             return Tables.Where(t => t.IDCaffe == caffeID).ToList();
@@ -367,6 +381,21 @@ namespace DAL.Repositories
         public IList<TableModel> ListFreeTablesInCaffe(int caffeID)
         {
             return Tables.Where(t => t.IDCaffe == caffeID).Where(t => t.IsOccupied == false).ToList();
+        }
+
+        public IList<CaffeModel> ListOpenCaffesWithFreeTables()
+        {
+            List<CaffeModel> openCaffes = new List<CaffeModel>();
+            var temp = new List<CaffeModel>(_caffes.Where(t => t.IsOpen == true));
+
+            foreach (var caffe in temp)
+            {
+                if (caffe.Tables.Where(t => t.IsOccupied == false).Count() > 0)
+                {
+                    openCaffes.Add(caffe);
+                }
+            }
+            return openCaffes;
         }
 
         public CaffeModel FindCaffeByID(int caffeID)

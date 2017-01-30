@@ -151,7 +151,8 @@ namespace DAL.Repositories
             {
                 Date = DateTime.Now,
                 Waiter = _currentWaiter,
-                PaymentMethod = _paymentMethods.FirstOrDefault(t => t.TypePaymentMethod.ToLower() == "gotovina")
+                PaymentMethod = _paymentMethods.FirstOrDefault(t => t.TypePaymentMethod.ToLower() == "gotovina"),
+                ArtRec = new List<ArticleReceiptModel>()
             };
         }
 
@@ -196,6 +197,7 @@ namespace DAL.Repositories
 
         public string ValidateCurrentReceipt()
         {
+            
             if (_currentReceipt.ArtRec.Count < 1)
             {
                 return "Račun mora imati najmanje jedan artikl!";
