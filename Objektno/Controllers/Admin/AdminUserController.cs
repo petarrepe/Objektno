@@ -57,7 +57,7 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                _userRepository.AddUser(userModel.Name, userModel.Surname, userModel.Email, userModel.CardNumber, userModel.Password, userModel.IsAdmin);
+                _userRepository.AddUser(userModel.Name, userModel.Surname, userModel.Email, userModel.CardNumber, userModel.Password, userModel.DateOfBirth, userModel.IsAdmin);
                 return RedirectToAction("Index");
             }
 
@@ -88,7 +88,7 @@ namespace Objektno.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                _userRepository.UpdateUser(userModel.IDUser, userModel.Name, userModel.Surname, userModel.Email, userModel.CardNumber, userModel.Password, userModel.IsAdmin);
+                _userRepository.UpdateUser(userModel.IDUser, userModel.Name, userModel.Surname, userModel.Email, userModel.CardNumber, userModel.Password, userModel.DateOfBirth, userModel.IsAdmin);
                 return RedirectToAction("Index");
             }
             return View(userModel);

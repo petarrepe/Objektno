@@ -1,5 +1,6 @@
 ﻿using KonobApp.Model.Models;
 using KonobApp.Model.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -95,7 +96,7 @@ namespace DAL.Repositories
             _waiters.Add(waiter);
         }
 
-        public void AddUser(string name, string surname, string email, string cardNumber, string password, bool isAdmin)
+        public void AddUser(string name, string surname, string email, string cardNumber, string password, DateTime dateOfBirth, bool isAdmin)
         {
             UserModel user = new UserModel();
 
@@ -104,6 +105,7 @@ namespace DAL.Repositories
             user.Email = email;
             user.CardNumber = cardNumber;
             user.Password = password;
+            user.DateOfBirth = dateOfBirth;
             user.IsAdmin = isAdmin;
 
             using (Facade facade = new Facade())
@@ -139,7 +141,7 @@ namespace DAL.Repositories
             }
         }
 
-        public void UpdateUser(int id, string name, string surname, string email, string cardNumber, string password, bool isAdmin)
+        public void UpdateUser(int id, string name, string surname, string email, string cardNumber, string password, DateTime dateOfBirth, bool isAdmin)
         {
             var user = _users.Where(t => t.IDUser == id).FirstOrDefault();
 
@@ -147,6 +149,7 @@ namespace DAL.Repositories
             user.Surname = surname;
             user.Email = email;
             user.Password = password;
+            user.DateOfBirth = dateOfBirth;
             user.IsAdmin = isAdmin;
 
             using (Facade facade = new Facade())
