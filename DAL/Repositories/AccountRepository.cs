@@ -180,6 +180,29 @@ namespace DAL.Repositories
             _waiters.Add(waiter);
         }
 
+        public bool VertifyUser(string email, string password)
+        {
+            if (_users.Count() == 0) LoadUsers();
+
+            if (_users.Where(u => u.Email == email).Where(u => u.Password == password).Count() == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsUserAdmin(string email, string password)
+        {
+            if (_users.Count() == 0) LoadUsers();
+
+            UserModel isUserAdmin = _users.Where(u => u.Email == email).Where(u => u.Password == password).First();
+
+            return isUserAdmin.IsAdmin;
+        }
+
         public UserModel FindUserByID(int ID)
         {
             return _users.Where(u => u.IDUser == ID).First();
