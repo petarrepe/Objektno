@@ -12,6 +12,7 @@ namespace KonobApp.Interfaces
     {
         Form FormMainWindow { set; }
         void LoadAll();
+        void InitialLoadAll();
         string Login();
         bool CheckCredentials(Form form, string username, string password);
         bool CheckLoginSuccessStatus();
@@ -29,12 +30,9 @@ namespace KonobApp.Interfaces
         void DeleteReceipt(int receiptId);
 
         void ShowArticles();
-        void SetArticleAvailable(int articleId);
-        void SetArticleUnavailable(int articleId);
 
         void ShowTables();
-
-        void ShowOptions();
+        
         void ChangeNotificationState();
         bool IsNotificationConnectionActive();
 

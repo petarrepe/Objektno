@@ -68,18 +68,23 @@ namespace KonobApp.Forms
             _mainController.NewReceipt();
         }
 
-        private void btnOptions_Click(object sender, EventArgs e)
-        {
-            _mainController.ShowOptions();
-        }
-
         private void FormMainWindow_Load(object sender, EventArgs e)
         {
-            _mainController.LoadAll();
-            lblUsername.Text = _mainController.Login();
-            _currentCaffe = _caffeRepository.FindCaffeByID(_mainController.GetCurrentCaffeId());
-            lblCaffe.Text = _currentCaffe.Name;
-            refreshTablesInfo();
+          
+            //_mainController.InitialLoadAll();
+            string username = _mainController.Login();
+            if (String.IsNullOrEmpty((username)))
+            {
+                Application.Exit();
+            }
+            else
+            {
+                lblUsername.Text = username;
+                _currentCaffe = _caffeRepository.FindCaffeByID(_mainController.GetCurrentCaffeId());
+                lblCaffe.Text = _currentCaffe.Name;
+                refreshTablesInfo();
+            }
+            
         }
 
         private void btnActivateOrders_Click(object sender, EventArgs e)
@@ -169,6 +174,7 @@ namespace KonobApp.Forms
         private void btnTables_Click(object sender, EventArgs e)
         {
             _mainController.ShowTables();
+            refreshTablesInfo();
         }
 
         private void playNotificationSound()

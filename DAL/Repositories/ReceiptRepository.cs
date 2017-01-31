@@ -140,6 +140,7 @@ namespace DAL.Repositories
         #endregion
 
         #region Current Receipt methods
+
         public void SetCurrentReceipt(int receiptId)
         {
             _currentReceipt = _receipts.FirstOrDefault(t => t.IDReceipt == receiptId);

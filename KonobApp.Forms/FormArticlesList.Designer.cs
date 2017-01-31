@@ -53,6 +53,7 @@
             this.dgvArticles.RowTemplate.Height = 24;
             this.dgvArticles.Size = new System.Drawing.Size(593, 350);
             this.dgvArticles.TabIndex = 0;
+            this.dgvArticles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvArticles_KeyDown);
             // 
             // colArticleId
             // 
@@ -112,7 +113,7 @@
             this.Controls.Add(this.dgvArticles);
             this.Name = "FormArticlesList";
             this.ShowIcon = false;
-            this.Text = "FormArticlesList";
+            this.Text = "KonobApp - Pregled artikala";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
             this.ResumeLayout(false);
 

@@ -32,7 +32,6 @@
             this.btnActivateOrders = new System.Windows.Forms.Button();
             this.btnArticles = new System.Windows.Forms.Button();
             this.btnNewReceipt = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.lblOrders = new System.Windows.Forms.Label();
             this.lvOrders = new System.Windows.Forms.ListView();
             this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,7 +69,7 @@
             // 
             // btnArticles
             // 
-            this.btnArticles.Location = new System.Drawing.Point(337, 252);
+            this.btnArticles.Location = new System.Drawing.Point(337, 294);
             this.btnArticles.Name = "btnArticles";
             this.btnArticles.Size = new System.Drawing.Size(232, 53);
             this.btnArticles.TabIndex = 1;
@@ -80,23 +79,13 @@
             // 
             // btnNewReceipt
             // 
-            this.btnNewReceipt.Location = new System.Drawing.Point(337, 311);
+            this.btnNewReceipt.Location = new System.Drawing.Point(337, 353);
             this.btnNewReceipt.Name = "btnNewReceipt";
             this.btnNewReceipt.Size = new System.Drawing.Size(232, 53);
             this.btnNewReceipt.TabIndex = 2;
             this.btnNewReceipt.Text = "Novi račun (R)";
             this.btnNewReceipt.UseVisualStyleBackColor = true;
             this.btnNewReceipt.Click += new System.EventHandler(this.btnNewReceipt_Click);
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(459, 429);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(110, 35);
-            this.btnOptions.TabIndex = 3;
-            this.btnOptions.Text = "Postavke";
-            this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // lblOrders
             // 
@@ -214,7 +203,7 @@
             // 
             // btnViewReceipts
             // 
-            this.btnViewReceipts.Location = new System.Drawing.Point(337, 370);
+            this.btnViewReceipts.Location = new System.Drawing.Point(337, 412);
             this.btnViewReceipts.Name = "btnViewReceipts";
             this.btnViewReceipts.Size = new System.Drawing.Size(232, 53);
             this.btnViewReceipts.TabIndex = 11;
@@ -285,6 +274,8 @@
             // cbSound
             // 
             this.cbSound.AutoSize = true;
+            this.cbSound.Checked = true;
+            this.cbSound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSound.Location = new System.Drawing.Point(337, 157);
             this.cbSound.Name = "cbSound";
             this.cbSound.Size = new System.Drawing.Size(140, 21);
@@ -305,7 +296,6 @@
             this.Controls.Add(this.gbUserData);
             this.Controls.Add(this.lvOrders);
             this.Controls.Add(this.lblOrders);
-            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnNewReceipt);
             this.Controls.Add(this.btnArticles);
             this.Controls.Add(this.btnActivateOrders);
@@ -330,7 +320,6 @@
         private System.Windows.Forms.Button btnActivateOrders;
         private System.Windows.Forms.Button btnArticles;
         private System.Windows.Forms.Button btnNewReceipt;
-        private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Label lblOrders;
         private System.Windows.Forms.ListView lvOrders;
         private System.Windows.Forms.ColumnHeader colId;

@@ -14,9 +14,11 @@ namespace KonobApp.DesktopInit
         static void Main(string[] args)
         {
             MainController controller = new MainController();
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            controller.InitialLoadAll();
             Application.Run(new FormMainWindow(controller));
         }
     }

@@ -68,26 +68,47 @@ namespace KonobApp.Forms
                     
             } else if (e.KeyCode == Keys.Down)
             {
-                int index = lvArticles.SelectedIndices[0];
-                
-                if (index < lvArticles.Items.Count - 1)
+                if (lvArticles.SelectedIndices.Count < 1)
                 {
-                    //lvArticles.Items[index].Focused = false;
-                    lvArticles.Items[index].Selected = false;
-                    //lvArticles.Items[index + 1].Focused = true;
-                    lvArticles.Items[index + 1].Selected = true;
+                    if (lvArticles.Items.Count > 0)
+                    {
+                        lvArticles.Items[0].Selected = true;
+                    }
+                }
+                else
+                {
+                    int index = lvArticles.SelectedIndices[0];
+
+                    if (index < lvArticles.Items.Count - 1)
+                    {
+                        //lvArticles.Items[index].Focused = false;
+                        lvArticles.Items[index].Selected = false;
+                        //lvArticles.Items[index + 1].Focused = true;
+                        lvArticles.Items[index + 1].Selected = true;
+                    }
+                    
                 }
                 e.Handled = true;
-                // select up in list view
+                
             } else if (e.KeyCode == Keys.Up)
             {
-                int index = lvArticles.SelectedIndices[0];
-                if (index > 0)
+                if (lvArticles.SelectedIndices.Count < 1)
                 {
-                    //lvArticles.Items[index].Focused = false;
-                    lvArticles.Items[index].Selected = false;
-                    //lvArticles.Items[index - 1].Focused = true;
-                    lvArticles.Items[index - 1].Selected = true;
+                    if (lvArticles.Items.Count > 0)
+                    {
+                        lvArticles.Items[0].Selected = true;
+                    }
+                }
+                else
+                {
+                    int index = lvArticles.SelectedIndices[0];
+                    if (index > 0)
+                    {
+                        //lvArticles.Items[index].Focused = false;
+                        lvArticles.Items[index].Selected = false;
+                        //lvArticles.Items[index - 1].Focused = true;
+                        lvArticles.Items[index - 1].Selected = true;
+                    }
                 }
                 e.Handled = true;
             }
