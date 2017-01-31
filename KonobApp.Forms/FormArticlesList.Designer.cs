@@ -113,6 +113,7 @@
             this.Controls.Add(this.dgvArticles);
             this.Name = "FormArticlesList";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KonobApp - Pregled artikala";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
             this.ResumeLayout(false);

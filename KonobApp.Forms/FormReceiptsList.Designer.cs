@@ -295,6 +295,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.gbDateFilter);
             this.Name = "FormReceiptsList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KonobApp - Pregled računa";
             this.gbDateFilter.ResumeLayout(false);
             this.gbDateFilter.PerformLayout();
