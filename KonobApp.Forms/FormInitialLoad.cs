@@ -30,6 +30,7 @@ namespace KonobApp.Forms
         {
             if (progressBar1.Maximum > progressBar1.Value)
                 progressBar1.Value += 1;
+            Refresh();
         }
     }
 }
