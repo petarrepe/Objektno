@@ -297,7 +297,33 @@ namespace DAL.Repositories
         public int GetNewReceiptID()
         {
             if (_receipts.Count() == 0) LoadReceipts();
-            return _receipts.Last().IDReceipt + 1; //zadnji plus 1
+            return _receipts.OrderBy(t => t.IDReceipt).Last().IDReceipt + 1; //zadnji plus 1
+        }
+
+        public ReceiptModel AddReceiptWithArticles(ReceiptModel receipt)
+        {
+            receipt.IDReceipt = GetNewReceiptID();
+            if (receipt.ArtRec == null) return null;
+            if (receipt.ArtRec.Count < 1) return null;
+
+            using (ISession session = OpenNHibernateSession.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(receipt);
+                    foreach(ArticleReceiptModel artRec in receipt.ArtRec)
+                    {
+                        artRec.IDReceipt = receipt.IDReceipt;
+                        artRec.IDArticle = artRec.Article.IDArticle;
+                        session.Save(artRec);
+                    }
+                    transaction.Commit();
+                }
+            }
+
+            _receipts.Add(receipt);
+            NotifyObservers();
+            return receipt;
         }
 
         #endregion

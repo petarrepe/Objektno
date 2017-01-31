@@ -28,6 +28,7 @@ namespace KonobApp.Model
         void DeleteArtRec(int ID);
 
         void AddReceipt(DateTime date, int waiterID, int paymentID, int userID, float totalCost, float discount);
+        ReceiptModel AddReceiptWithArticles(ReceiptModel receipt);
         int GetNewReceiptID();
 
         void SetCurrentReceipt(int receiptId);
