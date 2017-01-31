@@ -24,5 +24,9 @@ namespace KonobApp.Model.Models
 
         public virtual IList<ReceiptModel> Receipts { get; set; }
 
+        public virtual string GetFullName()
+        {
+            return Name + " " + "Surname";
+        }
     }
 }

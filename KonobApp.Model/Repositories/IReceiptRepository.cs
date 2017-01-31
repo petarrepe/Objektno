@@ -34,9 +34,13 @@ namespace KonobApp.Model
         void SetPaymentMethodToCurrentReceipt(int paymentMethodId);
         string ValidateCurrentReceipt();
         void SaveCurrentReceiptChanges();
+
         IList<ArticleModel> GetFastArticleSearchResult(string searchString);
         ArticleReceiptModel FindArtRecByID(int ID);
+
         ReceiptModel FindReceiptByID(int ID);
+        List<ReceiptModel> GetFilteredReceipts(DateTime timeFrom, DateTime timeTo);
+
         void SetCurrentUser(UserModel user);
         void SetCurrentWaiter(WaiterModel waiter);
 

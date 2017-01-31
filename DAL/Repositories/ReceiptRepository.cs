@@ -223,17 +223,59 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region Article
+
+        /// <summary>
+        /// Matches search string with given <code>searchString</code> with IDs and article names
+        /// from in-memory articles (without reloading database)
+        /// </summary>
+        /// <param name="searchString">Search parameter</param>
+        /// <returns>List with search results</returns>
         public IList<ArticleModel> GetFastArticleSearchResult(string searchString)
         {
             return _articles.Where(t => t.Name.ToLower().Contains(searchString) || t.IDArticle.ToString().Equals(searchString)).ToList();
         }
 
+        #endregion
+
+        #region Various Receipt Get Methods
+
         public ReceiptModel FindReceiptByID(int ID)
         {
-            return _receipts.Where(r => r.IDReceipt == ID).First();
+            ReceiptModel result = _receipts.Where(r => r.IDReceipt == ID).First();
+            if (result == null) return null;
+
+            if (result.Waiter == null) result.Waiter = _waiters.FirstOrDefault(t => t.IDWaiter == result.IDWaiter);
+            if (result.User == null && result.IDUser != 0) result.User = _users.FirstOrDefault(t => t.IDUser == result.IDUser);
+            if (result.PaymentMethod == null) result.PaymentMethod = _paymentMethods.FirstOrDefault(t => t.IDPaymentMethod == result.IDPaymentMethod);
+            if (result.ArtRec == null) result = fillReceiptWithArtRec(result);
+            else if (result.ArtRec.Count < 1) result = fillReceiptWithArtRec(result);
+            
+            return result;
         }
 
+        private ReceiptModel fillReceiptWithArtRec(ReceiptModel receipt)
+        {
+            receipt.ArtRec = new List<ArticleReceiptModel>();
+            List<ArticleReceiptModel> artRecList = _artRec.Where(t => t.IDReceipt == receipt.IDReceipt).ToList();
+            foreach(ArticleReceiptModel artRec in artRecList)
+            {
+                if (artRec.Article == null) artRec.Article = _articles.FirstOrDefault(t => t.IDArticle == artRec.IDArticle);
+                receipt.ArtRec.Add(artRec);
+            }
+            return receipt;
+        }
+
+        public List<ReceiptModel> GetFilteredReceipts(DateTime timeFrom, DateTime timeTo)
+        {
+            return _receipts.Where(t => t.Date.Date <= timeTo.Date && t.Date.Date >= timeFrom.Date).ToList();
+        }
+
+
         #endregion
+
 
         #region ArticleReceipt methods
 
