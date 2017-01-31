@@ -44,6 +44,7 @@ namespace KonobApp.Forms
             int articleId = Int32.Parse(lvArticles.Items[index].SubItems[0].Text);
             int amount = (int)numAmount.Value;
             _receiptRepository.AddArticleToCurrentReceipt(articleId, amount);
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -65,23 +66,51 @@ namespace KonobApp.Forms
                     e.SuppressKeyPress = true;
                 }
                     
-            } else if (e.KeyCode == Keys.Up)
-            {
-                int index = lvArticles.SelectedIndices[0];
-                if (index < lvArticles.Items.Count - 1)
-                {
-                    lvArticles.Items[index + 1].Focused = true;
-                    lvArticles.Items[index + 1].Selected = true;
-                }
-                // select up in list view
             } else if (e.KeyCode == Keys.Down)
             {
-                int index = lvArticles.SelectedIndices[0];
-                if (index > 0)
+                if (lvArticles.SelectedIndices.Count < 1)
                 {
-                    lvArticles.Items[index + 1].Focused = true;
-                    lvArticles.Items[index + 1].Selected = true;
+                    if (lvArticles.Items.Count > 0)
+                    {
+                        lvArticles.Items[0].Selected = true;
+                    }
                 }
+                else
+                {
+                    int index = lvArticles.SelectedIndices[0];
+
+                    if (index < lvArticles.Items.Count - 1)
+                    {
+                        //lvArticles.Items[index].Focused = false;
+                        lvArticles.Items[index].Selected = false;
+                        //lvArticles.Items[index + 1].Focused = true;
+                        lvArticles.Items[index + 1].Selected = true;
+                    }
+                    
+                }
+                e.Handled = true;
+                
+            } else if (e.KeyCode == Keys.Up)
+            {
+                if (lvArticles.SelectedIndices.Count < 1)
+                {
+                    if (lvArticles.Items.Count > 0)
+                    {
+                        lvArticles.Items[0].Selected = true;
+                    }
+                }
+                else
+                {
+                    int index = lvArticles.SelectedIndices[0];
+                    if (index > 0)
+                    {
+                        //lvArticles.Items[index].Focused = false;
+                        lvArticles.Items[index].Selected = false;
+                        //lvArticles.Items[index - 1].Focused = true;
+                        lvArticles.Items[index - 1].Selected = true;
+                    }
+                }
+                e.Handled = true;
             }
         }
 
@@ -97,8 +126,7 @@ namespace KonobApp.Forms
                 fillArticleListView(_caffeRepository.ListAvailableArticlesInCaffe(_mainController.GetCurrentCaffeId()));
             } else
             {
-                fillArticleListView(_caffeRepository.ListAvailableArticlesInCaffe(_mainController.GetCurrentCaffeId()).Where(t => t.Name.Contains(tbSearch.Text)).ToList());
-                
+                fillArticleListView(_caffeRepository.ListFastSearchArticlesInCaffe(tbSearch.Text, _mainController.GetCurrentCaffeId()));
             }
         }
 
@@ -108,10 +136,15 @@ namespace KonobApp.Forms
             foreach(ArticleModel article in articles)
             {
                 ListViewItem item = new ListViewItem();
-                item.SubItems.Add(article.IDArticle.ToString());
+
+                item.Text =  article.IDArticle.ToString();
                 item.SubItems.Add(article.Name);
-                item.SubItems.Add(article.Price.ToString());
+                item.SubItems.Add(article.Price.ToString("0.00"));
                 lvArticles.Items.Add(item);
+            }
+            if (lvArticles.Items.Count > 0)
+            {
+                lvArticles.Items[0].Selected = true;
             }
         }
     }

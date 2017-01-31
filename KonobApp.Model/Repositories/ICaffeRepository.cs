@@ -33,12 +33,15 @@ namespace KonobApp.Model.Repositories
 
         void AddTable(int caffeID);
         void UpdateTable(int tableID, int caffeID, bool IsOccupied);
+        void UpdateListTables(IList<TableModel> tablesList);
         void DeleteTable(int tableID);
         
         IList<ArticleModel> ListArticlesInCaffe(int caffeID);
+        IList<ArticleModel> ListFastSearchArticlesInCaffe(string searchItem, int caffeID);
         IList<ArticleModel> ListAvailableArticlesInCaffe(int caffeID);
         IList<TableModel> ListAllTablesInCaffe(int caffeID);
         IList<TableModel> ListFreeTablesInCaffe(int caffeID);
+        
         CaffeModel FindCaffeByID(int caffeID);
         CaffeModel FindCaffeByName(string name);
         CaffeModel FindCaffeByAddress(string address);
