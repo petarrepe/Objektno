@@ -120,7 +120,9 @@ namespace KonobApp.Controller
         public void NewReceipt()
         {
             FormNewReceipt newReceipt = new FormNewReceipt(this, _receiptRepository);
+            _receiptRepository.Attatch(newReceipt);
             newReceipt.ShowDialog();
+            _receiptRepository.Delete(newReceipt);
         }
 
         public void NewReceipt(ReceiptModel receipt)
@@ -131,6 +133,7 @@ namespace KonobApp.Controller
         public void ShowAddArticleToNewReceipt()
         {
             FormNewReceiptArticle newRecArticle = new FormNewReceiptArticle(this, _receiptRepository, _caffeRepository);
+            
             newRecArticle.ShowDialog();
         }
 

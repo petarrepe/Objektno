@@ -35,23 +35,23 @@
             this.gbDateFilter = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.gbCurrentBill = new System.Windows.Forms.GroupBox();
-            this.lblWaiter = new System.Windows.Forms.Label();
-            this.tbWaiter = new System.Windows.Forms.TextBox();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
-            this.tbUser = new System.Windows.Forms.TextBox();
-            this.tbPaymentMethod = new System.Windows.Forms.TextBox();
-            this.tbDiscount = new System.Windows.Forms.TextBox();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.tbTotal = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblArticles = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPriceOne = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTotalPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.tbTotal = new System.Windows.Forms.TextBox();
+            this.tbDiscount = new System.Windows.Forms.TextBox();
+            this.tbPaymentMethod = new System.Windows.Forms.TextBox();
+            this.tbUser = new System.Windows.Forms.TextBox();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblPaymentMethod = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.tbWaiter = new System.Windows.Forms.TextBox();
+            this.lblWaiter = new System.Windows.Forms.Label();
             this.lblTotalFiltered = new System.Windows.Forms.Label();
             this.tbTotalFiltered = new System.Windows.Forms.TextBox();
             this.gbDateFilter.SuspendLayout();
@@ -127,7 +127,6 @@
             this.gbCurrentBill.Controls.Add(this.lblUser);
             this.gbCurrentBill.Controls.Add(this.tbWaiter);
             this.gbCurrentBill.Controls.Add(this.lblWaiter);
-            this.gbCurrentBill.Enabled = false;
             this.gbCurrentBill.Location = new System.Drawing.Point(286, 12);
             this.gbCurrentBill.Name = "gbCurrentBill";
             this.gbCurrentBill.Size = new System.Drawing.Size(466, 456);
@@ -135,70 +134,30 @@
             this.gbCurrentBill.TabStop = false;
             this.gbCurrentBill.Text = "Odabrani račun:";
             // 
-            // lblWaiter
+            // tbTotal
             // 
-            this.lblWaiter.AutoSize = true;
-            this.lblWaiter.Location = new System.Drawing.Point(6, 24);
-            this.lblWaiter.Name = "lblWaiter";
-            this.lblWaiter.Size = new System.Drawing.Size(66, 17);
-            this.lblWaiter.TabIndex = 0;
-            this.lblWaiter.Text = "Konobar:";
+            this.tbTotal.Location = new System.Drawing.Point(312, 428);
+            this.tbTotal.Name = "tbTotal";
+            this.tbTotal.Size = new System.Drawing.Size(148, 22);
+            this.tbTotal.TabIndex = 11;
             // 
-            // tbWaiter
+            // lblTotal
             // 
-            this.tbWaiter.Enabled = false;
-            this.tbWaiter.Location = new System.Drawing.Point(145, 21);
-            this.tbWaiter.Name = "tbWaiter";
-            this.tbWaiter.Size = new System.Drawing.Size(254, 22);
-            this.tbWaiter.TabIndex = 1;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(245, 431);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(61, 17);
+            this.lblTotal.TabIndex = 10;
+            this.lblTotal.Text = "Ukupno:";
             // 
-            // lblUser
+            // lblArticles
             // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(6, 52);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(101, 17);
-            this.lblUser.TabIndex = 2;
-            this.lblUser.Text = "Korisnik (web):";
-            // 
-            // lblPaymentMethod
-            // 
-            this.lblPaymentMethod.AutoSize = true;
-            this.lblPaymentMethod.Location = new System.Drawing.Point(6, 80);
-            this.lblPaymentMethod.Name = "lblPaymentMethod";
-            this.lblPaymentMethod.Size = new System.Drawing.Size(105, 17);
-            this.lblPaymentMethod.TabIndex = 3;
-            this.lblPaymentMethod.Text = "Način plačanja:";
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.AutoSize = true;
-            this.lblDiscount.Location = new System.Drawing.Point(6, 108);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(115, 17);
-            this.lblDiscount.TabIndex = 4;
-            this.lblDiscount.Text = "Popust (0-100%)";
-            // 
-            // tbUser
-            // 
-            this.tbUser.Location = new System.Drawing.Point(145, 49);
-            this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(254, 22);
-            this.tbUser.TabIndex = 5;
-            // 
-            // tbPaymentMethod
-            // 
-            this.tbPaymentMethod.Location = new System.Drawing.Point(145, 77);
-            this.tbPaymentMethod.Name = "tbPaymentMethod";
-            this.tbPaymentMethod.Size = new System.Drawing.Size(254, 22);
-            this.tbPaymentMethod.TabIndex = 6;
-            // 
-            // tbDiscount
-            // 
-            this.tbDiscount.Location = new System.Drawing.Point(145, 105);
-            this.tbDiscount.Name = "tbDiscount";
-            this.tbDiscount.Size = new System.Drawing.Size(254, 22);
-            this.tbDiscount.TabIndex = 7;
+            this.lblArticles.AutoSize = true;
+            this.lblArticles.Location = new System.Drawing.Point(9, 139);
+            this.lblArticles.Name = "lblArticles";
+            this.lblArticles.Size = new System.Drawing.Size(106, 17);
+            this.lblArticles.TabIndex = 9;
+            this.lblArticles.Text = "Artikli u računu:";
             // 
             // listView2
             // 
@@ -214,15 +173,6 @@
             this.listView2.TabIndex = 8;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // lblArticles
-            // 
-            this.lblArticles.AutoSize = true;
-            this.lblArticles.Location = new System.Drawing.Point(9, 139);
-            this.lblArticles.Name = "lblArticles";
-            this.lblArticles.Size = new System.Drawing.Size(106, 17);
-            this.lblArticles.TabIndex = 9;
-            this.lblArticles.Text = "Artikli u računu:";
             // 
             // colId
             // 
@@ -247,21 +197,74 @@
             this.colTotalPrice.Text = "Ukupna cijena";
             this.colTotalPrice.Width = 80;
             // 
-            // lblTotal
+            // tbDiscount
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(245, 431);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(61, 17);
-            this.lblTotal.TabIndex = 10;
-            this.lblTotal.Text = "Ukupno:";
+            this.tbDiscount.Location = new System.Drawing.Point(145, 105);
+            this.tbDiscount.Name = "tbDiscount";
+            this.tbDiscount.ReadOnly = true;
+            this.tbDiscount.Size = new System.Drawing.Size(254, 22);
+            this.tbDiscount.TabIndex = 7;
             // 
-            // tbTotal
+            // tbPaymentMethod
             // 
-            this.tbTotal.Location = new System.Drawing.Point(312, 428);
-            this.tbTotal.Name = "tbTotal";
-            this.tbTotal.Size = new System.Drawing.Size(148, 22);
-            this.tbTotal.TabIndex = 11;
+            this.tbPaymentMethod.Location = new System.Drawing.Point(145, 77);
+            this.tbPaymentMethod.Name = "tbPaymentMethod";
+            this.tbPaymentMethod.ReadOnly = true;
+            this.tbPaymentMethod.Size = new System.Drawing.Size(254, 22);
+            this.tbPaymentMethod.TabIndex = 6;
+            // 
+            // tbUser
+            // 
+            this.tbUser.Location = new System.Drawing.Point(145, 49);
+            this.tbUser.Name = "tbUser";
+            this.tbUser.ReadOnly = true;
+            this.tbUser.Size = new System.Drawing.Size(254, 22);
+            this.tbUser.TabIndex = 5;
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Location = new System.Drawing.Point(6, 108);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(115, 17);
+            this.lblDiscount.TabIndex = 4;
+            this.lblDiscount.Text = "Popust (0-100%)";
+            // 
+            // lblPaymentMethod
+            // 
+            this.lblPaymentMethod.AutoSize = true;
+            this.lblPaymentMethod.Location = new System.Drawing.Point(6, 80);
+            this.lblPaymentMethod.Name = "lblPaymentMethod";
+            this.lblPaymentMethod.Size = new System.Drawing.Size(105, 17);
+            this.lblPaymentMethod.TabIndex = 3;
+            this.lblPaymentMethod.Text = "Način plačanja:";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(6, 52);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(101, 17);
+            this.lblUser.TabIndex = 2;
+            this.lblUser.Text = "Korisnik (web):";
+            // 
+            // tbWaiter
+            // 
+            this.tbWaiter.Enabled = false;
+            this.tbWaiter.Location = new System.Drawing.Point(145, 21);
+            this.tbWaiter.Name = "tbWaiter";
+            this.tbWaiter.ReadOnly = true;
+            this.tbWaiter.Size = new System.Drawing.Size(254, 22);
+            this.tbWaiter.TabIndex = 1;
+            // 
+            // lblWaiter
+            // 
+            this.lblWaiter.AutoSize = true;
+            this.lblWaiter.Location = new System.Drawing.Point(6, 24);
+            this.lblWaiter.Name = "lblWaiter";
+            this.lblWaiter.Size = new System.Drawing.Size(66, 17);
+            this.lblWaiter.TabIndex = 0;
+            this.lblWaiter.Text = "Konobar:";
             // 
             // lblTotalFiltered
             // 
@@ -277,10 +280,11 @@
             this.tbTotalFiltered.Enabled = false;
             this.tbTotalFiltered.Location = new System.Drawing.Point(12, 446);
             this.tbTotalFiltered.Name = "tbTotalFiltered";
+            this.tbTotalFiltered.ReadOnly = true;
             this.tbTotalFiltered.Size = new System.Drawing.Size(182, 22);
             this.tbTotalFiltered.TabIndex = 8;
             // 
-            // FormBillsList
+            // FormReceiptsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -290,7 +294,7 @@
             this.Controls.Add(this.gbCurrentBill);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.gbDateFilter);
-            this.Name = "FormBillsList";
+            this.Name = "FormReceiptsList";
             this.Text = "KonobApp - Pregled računa";
             this.gbDateFilter.ResumeLayout(false);
             this.gbDateFilter.PerformLayout();

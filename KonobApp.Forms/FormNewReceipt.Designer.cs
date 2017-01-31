@@ -33,11 +33,11 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.gbGeneralData = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numDiscount = new System.Windows.Forms.NumericUpDown();
             this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvArticles = new System.Windows.Forms.ListView();
             this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,7 +45,7 @@
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblArticles = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbTotal = new System.Windows.Forms.TextBox();
             this.btnNewArticle = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             this.btnAmountMinus = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.gbGeneralData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWaiter
@@ -69,9 +69,9 @@
             // tbWaiter
             // 
             this.tbWaiter.Enabled = false;
-            this.tbWaiter.Location = new System.Drawing.Point(144, 25);
+            this.tbWaiter.Location = new System.Drawing.Point(134, 25);
             this.tbWaiter.Name = "tbWaiter";
-            this.tbWaiter.Size = new System.Drawing.Size(194, 22);
+            this.tbWaiter.Size = new System.Drawing.Size(295, 22);
             this.tbWaiter.TabIndex = 1;
             // 
             // lblUser
@@ -86,14 +86,14 @@
             // tbUser
             // 
             this.tbUser.Enabled = false;
-            this.tbUser.Location = new System.Drawing.Point(144, 53);
+            this.tbUser.Location = new System.Drawing.Point(134, 53);
             this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(194, 22);
+            this.tbUser.Size = new System.Drawing.Size(295, 22);
             this.tbUser.TabIndex = 3;
             // 
             // gbGeneralData
             // 
-            this.gbGeneralData.Controls.Add(this.numericUpDown1);
+            this.gbGeneralData.Controls.Add(this.numDiscount);
             this.gbGeneralData.Controls.Add(this.cbPaymentMethod);
             this.gbGeneralData.Controls.Add(this.lblDiscount);
             this.gbGeneralData.Controls.Add(this.lblPaymentMethod);
@@ -103,24 +103,24 @@
             this.gbGeneralData.Controls.Add(this.lblUser);
             this.gbGeneralData.Location = new System.Drawing.Point(12, 12);
             this.gbGeneralData.Name = "gbGeneralData";
-            this.gbGeneralData.Size = new System.Drawing.Size(344, 148);
+            this.gbGeneralData.Size = new System.Drawing.Size(435, 148);
             this.gbGeneralData.TabIndex = 4;
             this.gbGeneralData.TabStop = false;
             this.gbGeneralData.Text = "Osnovne informacije:";
             // 
-            // numericUpDown1
+            // numDiscount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(144, 111);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(194, 22);
-            this.numericUpDown1.TabIndex = 7;
+            this.numDiscount.Location = new System.Drawing.Point(134, 111);
+            this.numDiscount.Name = "numDiscount";
+            this.numDiscount.Size = new System.Drawing.Size(295, 22);
+            this.numDiscount.TabIndex = 7;
             // 
             // cbPaymentMethod
             // 
             this.cbPaymentMethod.FormattingEnabled = true;
-            this.cbPaymentMethod.Location = new System.Drawing.Point(144, 81);
+            this.cbPaymentMethod.Location = new System.Drawing.Point(134, 81);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
-            this.cbPaymentMethod.Size = new System.Drawing.Size(194, 24);
+            this.cbPaymentMethod.Size = new System.Drawing.Size(295, 24);
             this.cbPaymentMethod.TabIndex = 6;
             this.cbPaymentMethod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbPaymentMethod_KeyDown);
             // 
@@ -142,20 +142,20 @@
             this.lblPaymentMethod.TabIndex = 4;
             this.lblPaymentMethod.Text = "Način plačanja:";
             // 
-            // listView1
+            // lvArticles
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvArticles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colId,
             this.colName,
             this.colAmount,
             this.colPriceSingle,
             this.colTotal});
-            this.listView1.Location = new System.Drawing.Point(12, 183);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(344, 226);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvArticles.Location = new System.Drawing.Point(12, 183);
+            this.lvArticles.Name = "lvArticles";
+            this.lvArticles.Size = new System.Drawing.Size(435, 226);
+            this.lvArticles.TabIndex = 5;
+            this.lvArticles.UseCompatibleStateImageBehavior = false;
+            this.lvArticles.View = System.Windows.Forms.View.Details;
             // 
             // colId
             // 
@@ -192,23 +192,23 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(189, 455);
+            this.lblTotal.Location = new System.Drawing.Point(238, 455);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(61, 17);
             this.lblTotal.TabIndex = 7;
             this.lblTotal.Text = "Ukupno:";
             // 
-            // textBox2
+            // tbTotal
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(256, 452);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 8;
+            this.tbTotal.Enabled = false;
+            this.tbTotal.Location = new System.Drawing.Point(305, 452);
+            this.tbTotal.Name = "tbTotal";
+            this.tbTotal.Size = new System.Drawing.Size(100, 22);
+            this.tbTotal.TabIndex = 8;
             // 
             // btnNewArticle
             // 
-            this.btnNewArticle.Location = new System.Drawing.Point(12, 415);
+            this.btnNewArticle.Location = new System.Drawing.Point(61, 415);
             this.btnNewArticle.Name = "btnNewArticle";
             this.btnNewArticle.Size = new System.Drawing.Size(166, 28);
             this.btnNewArticle.TabIndex = 9;
@@ -218,7 +218,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(12, 498);
+            this.btnAccept.Location = new System.Drawing.Point(61, 498);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(166, 42);
             this.btnAccept.TabIndex = 10;
@@ -229,7 +229,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(184, 498);
+            this.btnCancel.Location = new System.Drawing.Point(233, 498);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(172, 42);
             this.btnCancel.TabIndex = 11;
@@ -239,7 +239,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(12, 449);
+            this.btnDelete.Location = new System.Drawing.Point(61, 449);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(166, 28);
             this.btnDelete.TabIndex = 12;
@@ -249,7 +249,7 @@
             // 
             // btnAmountPlus
             // 
-            this.btnAmountPlus.Location = new System.Drawing.Point(256, 418);
+            this.btnAmountPlus.Location = new System.Drawing.Point(305, 418);
             this.btnAmountPlus.Name = "btnAmountPlus";
             this.btnAmountPlus.Size = new System.Drawing.Size(31, 23);
             this.btnAmountPlus.TabIndex = 13;
@@ -259,7 +259,7 @@
             // 
             // btnAmountMinus
             // 
-            this.btnAmountMinus.Location = new System.Drawing.Point(293, 418);
+            this.btnAmountMinus.Location = new System.Drawing.Point(342, 418);
             this.btnAmountMinus.Name = "btnAmountMinus";
             this.btnAmountMinus.Size = new System.Drawing.Size(31, 23);
             this.btnAmountMinus.TabIndex = 14;
@@ -270,7 +270,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(189, 421);
+            this.label1.Location = new System.Drawing.Point(238, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 15;
@@ -282,7 +282,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(368, 552);
+            this.ClientSize = new System.Drawing.Size(459, 552);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAmountMinus);
@@ -291,10 +291,10 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnNewArticle);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbTotal);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblArticles);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvArticles);
             this.Controls.Add(this.gbGeneralData);
             this.Name = "FormNewReceipt";
             this.ShowIcon = false;
@@ -303,7 +303,7 @@
             this.Load += new System.EventHandler(this.FormNewReceipt_Load);
             this.gbGeneralData.ResumeLayout(false);
             this.gbGeneralData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,14 +316,14 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.GroupBox gbGeneralData;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numDiscount;
         private System.Windows.Forms.ComboBox cbPaymentMethod;
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblPaymentMethod;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvArticles;
         private System.Windows.Forms.Label lblArticles;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbTotal;
         private System.Windows.Forms.Button btnNewArticle;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;

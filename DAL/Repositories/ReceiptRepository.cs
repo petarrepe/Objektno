@@ -152,7 +152,8 @@ namespace DAL.Repositories
                 Date = DateTime.Now,
                 Waiter = _currentWaiter,
                 PaymentMethod = _paymentMethods.FirstOrDefault(t => t.TypePaymentMethod.ToLower() == "gotovina"),
-                ArtRec = new List<ArticleReceiptModel>()
+                ArtRec = new List<ArticleReceiptModel>(),
+                Articles = new List<ArticleModel>()
             };
         }
 
@@ -171,11 +172,21 @@ namespace DAL.Repositories
                 throw new ArgumentException("Amount of articles in receipt cannot be less than 1.");
             }
             ArticleModel articleToAdd = _articles.FirstOrDefault(t => t.IDArticle == articleId);
+            ArticleReceiptModel artInCaff = new ArticleReceiptModel
+            {
+                IDArticle = articleToAdd.IDArticle,
+                Article = articleToAdd,
+                Quantity = amount,
+                PriceOfOne = articleToAdd.Price
+            };
             if (articleToAdd == null)
             {
                 return;
             }
             _currentReceipt.Articles.Add(articleToAdd);
+            _currentReceipt.ArtRec.Add(artInCaff);
+
+            NotifyObservers();
         }
 
         public void RemoveArticleFromCurrentReceipt(int articleId)
@@ -188,6 +199,7 @@ namespace DAL.Repositories
                 return;
             }
             _currentReceipt.Articles.Remove(articleToRemove);
+            NotifyObservers();
         }
 
         public void SetPaymentMethodToCurrentReceipt(int paymentMethodId)

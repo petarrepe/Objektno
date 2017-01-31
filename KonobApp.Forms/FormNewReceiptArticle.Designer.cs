@@ -45,7 +45,7 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(13, 19);
+            this.lblSearch.Location = new System.Drawing.Point(61, 15);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(67, 17);
             this.lblSearch.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(86, 16);
+            this.tbSearch.Location = new System.Drawing.Point(134, 12);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(243, 22);
             this.tbSearch.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(17, 286);
+            this.btnAccept.Location = new System.Drawing.Point(65, 286);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(154, 39);
             this.btnAccept.TabIndex = 2;
@@ -72,7 +72,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(177, 286);
+            this.btnCancel.Location = new System.Drawing.Point(225, 286);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(152, 39);
             this.btnCancel.TabIndex = 3;
@@ -86,17 +86,18 @@
             this.colId,
             this.colName,
             this.colPrice});
+            this.lvArticles.HideSelection = false;
             this.lvArticles.Location = new System.Drawing.Point(15, 102);
             this.lvArticles.MultiSelect = false;
             this.lvArticles.Name = "lvArticles";
-            this.lvArticles.Size = new System.Drawing.Size(314, 178);
+            this.lvArticles.Size = new System.Drawing.Size(419, 178);
             this.lvArticles.TabIndex = 4;
             this.lvArticles.UseCompatibleStateImageBehavior = false;
             this.lvArticles.View = System.Windows.Forms.View.Details;
             // 
             // colId
             // 
-            this.colId.Text = "(Id)";
+            this.colId.Text = "Id";
             this.colId.Width = 50;
             // 
             // colName
@@ -120,7 +121,7 @@
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(12, 53);
+            this.lblAmount.Location = new System.Drawing.Point(60, 49);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(61, 17);
             this.lblAmount.TabIndex = 6;
@@ -128,7 +129,7 @@
             // 
             // numAmount
             // 
-            this.numAmount.Location = new System.Drawing.Point(86, 51);
+            this.numAmount.Location = new System.Drawing.Point(134, 47);
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(243, 22);
             this.numAmount.TabIndex = 7;
@@ -139,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(343, 337);
+            this.ClientSize = new System.Drawing.Size(446, 347);
             this.ControlBox = false;
             this.Controls.Add(this.numAmount);
             this.Controls.Add(this.lblAmount);

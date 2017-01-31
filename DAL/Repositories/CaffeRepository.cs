@@ -7,6 +7,7 @@ using KonobApp.Interfaces;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace DAL.Repositories
 {
@@ -358,6 +359,20 @@ namespace DAL.Repositories
 
             return articlesCaffe;
         }
+
+        public IList<ArticleModel> ListFastSearchArticlesInCaffe(string searchItem, int caffeID)
+        {
+            int id;
+            if (Int32.TryParse(searchItem, out id))
+            {
+                return ListArticlesInCaffe(caffeID).Where(t => t.IDArticle == id).ToList();
+            }
+            else
+            {
+                return ListArticlesInCaffe(caffeID).Where(t => t.Name.ToLower().Contains(searchItem)).ToList();
+            }
+        }
+            
 
         public IList<ArticleModel> ListAvailableArticlesInCaffe(int caffeID)
         {

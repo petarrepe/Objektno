@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace KonobApp.Forms
 {
-    public partial class FormNewReceipt : Form
+    public partial class FormNewReceipt : Form, IObserver
     {
         IMainController _mainController;
         IReceiptRepository _receiptRepository;
@@ -31,6 +31,7 @@ namespace KonobApp.Forms
 
             tbWaiter.Text = _mainController.GetCurrentWaiter().GetFullName();
             tbUser.Text = "-";
+            refreshListView();
         }
 
         public FormNewReceipt(IMainController mainController, IReceiptRepository receiptRepository, ReceiptModel receipt)
@@ -86,13 +87,38 @@ namespace KonobApp.Forms
             {
                 case Keys.N:
                     btnNewArticle.PerformClick();
-                    e.SuppressKeyPress = true; ;
+                    e.SuppressKeyPress = true;
+                    e.Handled = true;
                     break;
                 case Keys.Delete:
                     btnDelete.PerformClick();
                     e.SuppressKeyPress = true;
+                    e.Handled = true;
                     break;
             }
+        }
+
+        public void UpdateView()
+        {
+            refreshListView();
+        }
+
+        private void refreshListView()
+        {
+            double total = 0;
+            lvArticles.Items.Clear();
+            foreach(ArticleReceiptModel artRec in _receiptRepository.CurrentReceipt.ArtRec)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = artRec.IDArticle.ToString();
+                item.SubItems.Add(artRec.Article.Name);
+                item.SubItems.Add(artRec.Quantity.ToString());
+                item.SubItems.Add(artRec.PriceOfOne.ToString("0.00"));
+                item.SubItems.Add((artRec.PriceOfOne * artRec.Quantity).ToString("0.00"));
+                lvArticles.Items.Add(item);
+                total += artRec.PriceOfOne * artRec.Quantity;
+            }
+            tbTotal.Text = total.ToString("0.00");
         }
     }
 }

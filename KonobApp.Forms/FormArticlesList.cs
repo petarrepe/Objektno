@@ -42,6 +42,7 @@ namespace KonobApp.Forms
                 ArticleInCaffeModel current = _artInCaffeList.FirstOrDefault(t => t.IDArticle == (int)row.Cells[0].Value);
                 if (current.IsAvailable != (bool)row.Cells[3].Value)
                 {
+                    current.IsAvailable = (bool)row.Cells[3].Value;
                     editList.Add(current);
                 }
             }
