@@ -233,6 +233,33 @@ namespace DAL.Repositories
             return _receipts.Where(r => r.IDReceipt == ID).First();
         }
 
+        public void AddReceipt(DateTime date, int waiterID, int paymentID, int userID, float totalCost, float discount)
+        {
+            ReceiptModel receipt = new ReceiptModel();
+
+            receipt.IDReceipt = GetNewReceiptID();
+            receipt.Date = date;
+            receipt.IDWaiter = waiterID;
+            receipt.IDPaymentMethod = paymentID;
+            receipt.IDUser = userID;
+            receipt.TotalCost = totalCost;
+            receipt.Discount = discount;
+
+            using (Facade facade = new Facade())
+            {
+                facade.InsertReceipt(receipt);
+            }
+
+            _receipts.Add(receipt);
+            NotifyObservers();
+        }
+
+        public int GetNewReceiptID()
+        {
+            if (_receipts.Count() == 0) LoadReceipts();
+            return _receipts.Last().IDReceipt + 1; //zadnji plus 1
+        }
+
         #endregion
 
         #region ArticleReceipt methods
