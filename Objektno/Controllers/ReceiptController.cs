@@ -9,11 +9,25 @@ namespace Objektno.Controllers
 {
     public class ReceiptController : Controller
     {
-        public ActionResult Create(int caffeID)
+        private  static ReceiptViewModel viewModel;
+        public ActionResult Create(int? IDCaffe)
         {
-            var viewModel = new ReceiptViewModel(caffeID);
+            viewModel = new ReceiptViewModel((int)IDCaffe);
 
             return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Create(int? IDArticle, int? quantity)
+        {
+            viewModel.addArticle((int)IDArticle);
+            return View(viewModel);
+        }
+
+        public ActionResult SendReceipt()
+        {
+            Notifications.NotificationService.SendReciept(viewModel.receipt);
+
+            return View();
         }
     }
 }
