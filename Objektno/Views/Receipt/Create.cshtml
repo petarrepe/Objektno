@@ -3,7 +3,7 @@
     ViewBag.Title = "Create";
 }
 <div class="container">
-    <div class="col-lg-9 col-md-auto">
+    <div class="col-lg-8 col-md-auto">
         @for (int i = 0; i < @Model.categories.Count; i++)
         {
             @Html.Raw("<div class=\"container\" id=\"categoryContainer\">")
@@ -12,15 +12,24 @@
             @Html.Raw("</h2>")
             var path = "~/Images/" + Model.categories.ElementAt(i).Key + ".jpg";
             <img src="@Url.Content(path)" width="700" height="250" id="picture" />
-
+            <br />
             foreach (var article in @Model.articlesInCaffe)
             {
                 if (Model.categories.ElementAt(i).Key == article.IDCategory)
                 {
+                    var routeValues = new RouteValueDictionary();
+                    routeValues.Add("IDArticle", article.IDArticle);
+                    //routeValues.Add("quantity",);
+
                     @Html.Raw("<p id=articleNameText><b>")
                     @Html.Raw(article.Name)
-                    @*@Html.Raw("<span class=\"pull-left\">" + article.Name + "</span>" + "<span class=\"pull-right\">" + article.Price + " kn </span>")*@
-                    @Html.Raw("<button type=\"button\" id = \"addButton\" class=\"btn btn - primary\">Dodaj</button>")
+
+                    using (Html.BeginForm(routeValues))
+                    {
+                        @*@Html.TextBox("Količina","quantity");*@
+                        <input type="submit" id="addButton" value="Dodaj">
+                    }
+
                     @Html.Raw("</p></b>")
 
                     @Html.Raw("<p id=articlePriceText><b>")
@@ -38,6 +47,18 @@
             @Html.Raw("</div>")
         }
     </div>
+</div>
+
+<div class="flex-container" id="receiptContainer">
+    <ul>
+        @foreach (var article in Model.receipt.Articles)
+        {
+            <li>
+                @article.Name
+            </li>
+        }
+    </ul>
+    @Html.ActionLink("Naruči", "SendReceipt", "Receipt")
 </div>
 
 <style>
@@ -58,8 +79,10 @@
     #articlePriceText {
         margin: 5px;
         font-size: medium;
-        float: right;
-        text-align: end;
+        position: absolute;
+        right: 80px;
+        /*float: right;
+        text-align: end;*/
         /*margin-right:80px;*/
     }
 
@@ -68,9 +91,17 @@
         position: absolute;
         right: 0px;
         background-color: darkorange;
+        font-size: medium;
     }
 
     #picture {
         margin: 20px;
+    }
+
+    #receiptContainer {
+        background-color: cornflowerblue;
+        width: auto;
+        height: auto;
+        margin: 10px;
     }
 </style>

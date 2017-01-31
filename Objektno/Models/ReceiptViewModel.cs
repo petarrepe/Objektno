@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using KonobApp.Model.Models;
 
@@ -8,6 +9,7 @@ namespace Objektno.Models
     {
         public List<ArticleModel> articlesInCaffe;
         public IDictionary<int, string> categories = new Dictionary<int,string>();
+        public ReceiptModel receipt = new ReceiptModel();
 
 
         internal ReceiptViewModel(int id)
@@ -28,7 +30,16 @@ namespace Objektno.Models
                     }
                 }
             }
+
+            receipt.Articles= new List<ArticleModel>();
+            receipt.ArtRec = new List<ArticleReceiptModel>();
         }
 
+        internal void addArticle(int iDArticle)
+        {
+            var article = articlesInCaffe.Where(t => t.IDArticle == iDArticle).First();
+
+            receipt.Articles.Add(article);
+        }
     }
 }

@@ -19,40 +19,64 @@
     <div class="container">
         <h3>Popis kafica</h3>
         @foreach (var caffe in Model.openCaffe)
-            {
+        {
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    @caffe.Name      @caffe.Adress
-                    <b class="caret"></b>
-                </button>
+                <button class="dropbtn">@caffe.Name</button>
+
                 @foreach (var table in caffe.Tables)
                 {
-                    <ul class="dropdown-menu">
-                        <li><a href="#">@table.IDTable</a></li>@*TODO: ActionLink ?caffeId=@caffe.IDCaffe*@
-                    </ul>
+                    <div class="dropdown-content">
+                        @Html.ActionLink(table.IDTable.ToString(),"Create", "Receipt", new { caffe.IDCaffe},null)
+                    </div>
                 }
             </div>
         }
-        @*<li class="dropdown" id="menu1">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-                    Dropdown
-                </a>
-            </li>*@
     </div>
 
+
     <style>
-        .dropdown-menu {
-            padding-top: 5px;
+        .dropbtn {
+            background-color: orangered;
+            margin:15px;
+            color: white;
+            padding: 16px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
         }
 
-            .dropdown-menu label {
-                padding: 0 10px;
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
             }
 
-            .dropdown-menu input {
-                margin-right: 5px;
-                float: left;
-            }
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
     </style>
 </body>
 </html>

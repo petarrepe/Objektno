@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.ReceiptModel, KonobApp.Model" table="Receipt" batch-size="25">
     <id name="IDReceipt">
-      <generator class="native" />
+      <generator class="assigned" />
     </id>
     <property name="IDWaiter" column="IDWaiter" not-null="true" />
     <property name="IDUser" column="IDUser" />
