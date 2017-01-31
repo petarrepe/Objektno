@@ -25,22 +25,17 @@ namespace KonobApp.Controller
 
         private FormMainWindow _formMainWindow;
 
-        public Form FormMainWindow
-        {
-            set
-            {
-                if (value.GetType() == typeof(FormMainWindow))
-                {
-                    _formMainWindow = (FormMainWindow)value;
-                }
-            }
-        }
+        
 
-
+        #region Constructors
         public MainController()
         {
             _notificationController = new NotificationController(this);
         }
+
+        #endregion
+
+        #region Public Variables
 
         public int GetCurrentCaffeId()
         {
@@ -58,12 +53,52 @@ namespace KonobApp.Controller
             return _currentWaiter;
         }
 
+        #endregion
+
+        
+
+        public Form FormMainWindow
+        {
+            set
+            {
+                if (value.GetType() == typeof(FormMainWindow))
+                {
+                    _formMainWindow = (FormMainWindow)value;
+                }
+            }
+        }
+
+        #region Load
+
+        public void InitialLoadAll()
+        {
+            FormInitialLoad initialForm = new FormInitialLoad(3);
+            initialForm.Show();
+
+            initialForm.SetInfoText("Učitavanje računa...");
+            _receiptRepository.LoadAll();
+            initialForm.IncrementProgressBar();
+
+            initialForm.SetInfoText("Učitavanje korisničkih računa...");
+            _accountRepository.LoadWaiters();
+            initialForm.IncrementProgressBar();
+
+            initialForm.SetInfoText("Učitavanje podataka o kafiću...");
+            _caffeRepository.LoadAll();
+            initialForm.IncrementProgressBar();
+
+            initialForm.SetInfoText("Gotovo!");
+            initialForm.Close();
+        }
+
         public void LoadAll()
         {
             _receiptRepository.LoadAll();
             _accountRepository.LoadWaiters();
             _caffeRepository.LoadAll();
         }
+
+        #endregion
 
         #region Login
 
@@ -171,41 +206,47 @@ namespace KonobApp.Controller
             formArticlesList.ShowDialog();
         }
 
-        public void SetArticleAvailable(int articleId)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void SetArticleUnavailable(int articleId)
+        #endregion
+
+        #region Tables
+        public void ShowTables()
         {
-            throw new NotImplementedException();
+            FormTablesList formTables = new FormTablesList(this, _caffeRepository);
+            formTables.ShowDialog();
         }
 
         #endregion
 
-        public void ShowTables()
-        {
-            throw new NotImplementedException();
-        }
 
-        #region Options
-
-        public void ShowOptions()
-        {
-
-        }
+        #region Notifications
         
 
         public void ChangeNotificationState()
         {
             if (_notificationController.IsStarted)
             {
-                _notificationController.StopListening();
-                _caffeRepository.SetCaffeClosed(_currentCaffe);
+                try
+                {
+                    _notificationController.StopListening();
+                    _caffeRepository.SetCaffeClosed(_currentCaffe);
+                } catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             } else
             {
-                _notificationController.StartListening();
-                _caffeRepository.SetCaffeOpened(_currentCaffe);
+                try
+                {
+                    _notificationController.StartListening();
+                    _caffeRepository.SetCaffeOpened(_currentCaffe);
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 

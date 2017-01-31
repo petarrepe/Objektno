@@ -55,6 +55,18 @@
     <Compile Include="FormArticlesList.Designer.cs">
       <DependentUpon>FormArticlesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInitialLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInitialLoad.Designer.cs">
+      <DependentUpon>FormInitialLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTablesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTablesList.Designer.cs">
+      <DependentUpon>FormTablesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReceiptsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,15 +97,15 @@
     <Compile Include="FormNewReceiptArticle.Designer.cs">
       <DependentUpon>FormNewReceiptArticle.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOptions.Designer.cs">
-      <DependentUpon>FormOptions.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormArticlesList.resx">
       <DependentUpon>FormArticlesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInitialLoad.resx">
+      <DependentUpon>FormInitialLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTablesList.resx">
+      <DependentUpon>FormTablesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReceiptsList.resx">
       <DependentUpon>FormReceiptsList.cs</DependentUpon>
@@ -109,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNewReceiptArticle.resx">
       <DependentUpon>FormNewReceiptArticle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormOptions.resx">
-      <DependentUpon>FormOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

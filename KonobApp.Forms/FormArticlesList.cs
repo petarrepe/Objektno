@@ -40,11 +40,8 @@ namespace KonobApp.Forms
             foreach (DataGridViewRow row in dgvArticles.Rows)
             {
                 ArticleInCaffeModel current = _artInCaffeList.FirstOrDefault(t => t.IDArticle == (int)row.Cells[0].Value);
-                if (current.IsAvailable != (bool)row.Cells[3].Value)
-                {
-                    current.IsAvailable = (bool)row.Cells[3].Value;
-                    editList.Add(current);
-                }
+                current.IsAvailable = (bool)row.Cells[3].Value;
+                editList.Add(current);
             }
             if (editList.Count > 0)
             {
@@ -65,6 +62,15 @@ namespace KonobApp.Forms
                 row.Cells[2].Value = item.Article.Price.ToString("0.00");
                 row.Cells[3].Value = item.IsAvailable;
                 dgvArticles.Rows.Add(row);
+            }
+        }
+
+        private void dgvArticles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                btnCloseAndSave.PerformClick();
             }
         }
     }

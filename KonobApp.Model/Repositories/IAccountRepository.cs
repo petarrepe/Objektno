@@ -19,6 +19,10 @@ namespace KonobApp.Model.Repositories
         void UpdateUser(int id, string name, string surname, string email, string cardNumber, string password, DateTime dateOfBirth, bool isAdmin);
         void UpdateWaiter(int id, string name, string surname, string username, string password, int caffeID);
 
+        bool VertifyUser(string email, string password);
+        bool IsUserAdmin(string email, string password);
+
+
         UserModel FindUserByID(int ID);
         WaiterModel FindWaiterByID(int ID);
         

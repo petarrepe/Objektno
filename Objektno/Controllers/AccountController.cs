@@ -9,6 +9,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Objektno.Models;
+using System.Web.Security;
+using DAL.Repositories;
+using KonobApp.Controller;
+using KonobApp.Model.Repositories;
+using KonobApp.Interfaces;
 
 namespace Objektno.Controllers
 {
@@ -17,6 +22,7 @@ namespace Objektno.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private AccountRepository _accountRepository = AccountRepository.GetInstance();
 
         public AccountController()
         {
@@ -53,7 +59,7 @@ namespace Objektno.Controllers
         }
 
         //
-        // GET: /Account/Login
+        // GET: /Account/Login //jep
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -62,29 +68,45 @@ namespace Objektno.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/Login //jep
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
+            var result = new SignInStatus();
+                // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            var result = SignInStatus.Success;
-            switch (result)//result
+            if (_accountRepository.VertifyUser(model.Email, model.Password))
+            {
+                result = SignInStatus.Success;
+            }
+            else
+            {
+                result = SignInStatus.Failure;
+            }
+            
+            switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home", null);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    {
+                        if (_accountRepository.IsUserAdmin(model.Email, model.Password))
+                        {
+                            Roles.AddUserToRole(model.Email, "Admin");
+                            return RedirectToAction("Index", "StartingPage", null);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home", null);
+                        }
+                    }
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");

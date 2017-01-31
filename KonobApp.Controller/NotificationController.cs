@@ -66,10 +66,14 @@ namespace KonobApp.Controller
             }
         }
 
+        /// <summary>
+        /// This method is called once a message is recieved.
+        /// </summary>
+        /// <param name="t">Message contents</param>
         private void RecieveReceipt(string t)
         {
             KonobApp.Model.Models.ReceiptModel receipt = JsonConvert.DeserializeObject<Model.Models.ReceiptModel>(t);
-            //ovdje nešto radiš sa receptom kojeg si dobio 
+            
             _mainController.AddNewOrder(receipt);
         }
     }

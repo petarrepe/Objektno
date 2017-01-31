@@ -252,26 +252,31 @@ namespace DAL.Repositories
 
         public void UpdateListArtInCaff(IList<ArticleInCaffeModel> ListArtCaff)
         {
-            for (int i = 0; i < ListArtCaff.Count(); i++)
+            List<ArticleInCaffeModel> updateList = new List<ArticleInCaffeModel>();
+            foreach(ArticleInCaffeModel artCaff in ListArtCaff)
             {
-                ArticleInCaffeModel artCaf = FindArtInCaffByID(ListArtCaff[i].ID);
+                ArticleInCaffeModel dbArtCaff = _artInCaf.FirstOrDefault(t => t.IDArticle == artCaff.IDArticle && t.IDCaffe == artCaff.IDCaffe);
+                dbArtCaff.IsAvailable = artCaff.IsAvailable;
+                updateList.Add(dbArtCaff);
+            }
 
-                if (ListArtCaff[i].IsAvailable != artCaf.IsAvailable)
+            if (updateList.Count > 0)
+            {
+                using (ISession session = OpenNHibernateSession.OpenSession())
                 {
-                    artCaf.IsAvailable = ListArtCaff[i].IsAvailable;
-
-                    using (ISession session = OpenNHibernateSession.OpenSession())
+                    using (ITransaction transaction = session.BeginTransaction())
                     {
-                        using (ITransaction transaction = session.BeginTransaction())
+                        foreach(ArticleInCaffeModel artCaff in updateList)
                         {
-                            session.Update(artCaf); //mislim da ce ovo raditi
-                            transaction.Commit();
+                            session.Update(artCaff);
                         }
+                        transaction.Commit();
                     }
-
-                    NotifyObservers();
                 }
             }
+            
+
+            NotifyObservers();
         }
 
         public void DeleteArticleInCaffe(int ID)
@@ -327,6 +332,36 @@ namespace DAL.Repositories
             }
 
             NotifyObservers();
+        }
+
+        public void UpdateListTables(IList<TableModel> tablesList)
+        {
+            List<TableModel> updateList = new List<TableModel>();
+            foreach(TableModel table in tablesList)
+            {
+                TableModel dbTable = _tables.FirstOrDefault(t => t.IDTable == table.IDTable);
+                if (table.IsOccupied != dbTable.IsOccupied)
+                {
+                    dbTable.IsOccupied = table.IsOccupied;
+                    
+                }
+                updateList.Add(dbTable);
+            }
+            if (updateList.Count > 0)
+            {
+                using (ISession session = OpenNHibernateSession.OpenSession())
+                {
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        foreach(TableModel table in updateList)
+                        {
+                            session.Update(table);
+                        }
+                        transaction.Commit();
+                    }
+                }
+            }
+            
         }
         public void DeleteTable(int tableID)
         {

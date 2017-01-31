@@ -46,9 +46,43 @@ namespace DAL
         }
         public void Insert<T>(T obj)
         {
-            _session.Save(obj);
+            try
+            {
+                _session.Save(obj);
+            }
+            catch
+            {
+                // If the object as a null identifier everything else fails. Remove from context
+                if (_session.GetIdentifier(this) == null)
+                {
+                    _session.Close();
+                    _session.Dispose();
+                    throw;
+                }
+            }
+            
         }
 
+        public void InsertReceipt<T>(T obj)
+        {
+            try
+            {
+                _session.CreateSQLQuery("SET IDENTITY_INSERT receipt ON").UniqueResult();
+                _session.Save(obj);
+
+            }
+            catch
+            {
+                // If the object as a null identifier everything else fails. Remove from context
+                if (_session.GetIdentifier(this) == null)
+                {
+                    _session.Close();
+                    _session.Dispose();
+                    throw;
+                }
+            }
+
+        }
         public void Insert<T>(List<T> obj)
         {
             for (int i = 0; i < obj.Count; i++)
