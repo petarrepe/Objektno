@@ -11,7 +11,9 @@ namespace KonobApp.Model.Models
     {
         [Key]
         public virtual int IDArticle { get; set; }
+        [Display(Name = "Naziv artikla")]
         public virtual string Name { get; set; }
+        [Display(Name = "Cijena")]
         public virtual float Price { get; set; } //trebat ce se prilagoditi tipu SmallMoney
         public virtual int IDCategory { get; set; }
 

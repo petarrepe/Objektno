@@ -11,6 +11,7 @@ namespace KonobApp.Model.Models
     {
         [Key]
         public virtual int IDCategory { get; set; }
+        [Display(Name = "Naziv kategorije")]
         public virtual string Name { get; set; }
 
         public virtual IList<ArticleModel> Articles { get; set; }

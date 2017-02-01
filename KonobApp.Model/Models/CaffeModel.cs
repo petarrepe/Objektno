@@ -11,8 +11,11 @@ namespace KonobApp.Model.Models
     {
         [Key]
         public virtual int IDCaffe { get; set; }
+        [Display(Name = "Naziv kafića")]
         public virtual string Name { get; set; }
+        [Display(Name = "Adresa")]
         public virtual string Adress { get; set; }
+        [Display(Name = "Otvoren")]
         public virtual bool IsOpen { get; set; }
 
         public virtual IList<TableModel> Tables { get; set; }

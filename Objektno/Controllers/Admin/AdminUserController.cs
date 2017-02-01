@@ -104,9 +104,9 @@ namespace Objektno.Controllers.Admin
             UserModel userModel = _userRepository.FindUserByID(Convert.ToInt32(id));
             if (_userRepository.IsUserAdmin(userModel.Email, userModel.Password))
             {
-                RedirectToAction("NoNoAdmin");
+                return RedirectToAction("NoNoAdmin");
             }
-                
+
             if (userModel == null)
             {
                 return HttpNotFound();
@@ -123,6 +123,10 @@ namespace Objektno.Controllers.Admin
             return RedirectToAction("Index");
         }
 
+        public ActionResult NoNoAdmin()
+        {
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

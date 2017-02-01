@@ -96,10 +96,16 @@ namespace DAL.Repositories
             _waiters.Add(waiter);
         }
 
+        public int GetNewUserID()
+        {
+            if (_users.Count() == 0) LoadUsers();
+            return _users.OrderBy(t => t.IDUser).Last().IDUser + 1; //zadnji plus 1
+        }
+
         public void AddUser(string name, string surname, string email, string cardNumber, string password, DateTime dateOfBirth, bool isAdmin)
         {
             UserModel user = new UserModel();
-
+            user.IDUser = GetNewUserID();
             user.Name = name;
             user.Surname = surname;
             user.Email = email;
