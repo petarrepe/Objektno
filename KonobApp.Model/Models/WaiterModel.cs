@@ -13,9 +13,13 @@ namespace KonobApp.Model.Models
         [Key]
         public virtual int IDWaiter { get; set; }
         public virtual int IDCaffe { get; set; }
+        [Display(Name = "Ime")]
         public virtual string Name { get; set; }
+        [Display(Name = "Prezime")]
         public virtual string Surname { get; set; }
+        [Display(Name = "Korisničko ime")]
         public virtual string Username { get; set; }
+        [Display(Name = "Lozinka")]
         public virtual string Password { get; set; }
 
         public virtual IList<ReceiptModel> Receipts { get; set; }

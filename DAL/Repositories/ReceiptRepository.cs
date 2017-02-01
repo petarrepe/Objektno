@@ -303,6 +303,23 @@ namespace DAL.Repositories
 
         #endregion
 
+        public void DeleteReceipt(int receiptID)
+        {
+            ReceiptModel receipt = FindReceiptByID(receiptID);
+
+            using (ISession session = OpenNHibernateSession.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Delete(receipt);
+                    transaction.Commit();
+                }
+            }
+
+            _receipts.Remove(receipt);
+            NotifyObservers();
+        }
+
         public void AddReceipt(DateTime date, int waiterID, int paymentID, int userID, float totalCost, float discount)
         {
             ReceiptModel receipt = new ReceiptModel();

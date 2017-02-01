@@ -14,12 +14,18 @@ namespace KonobApp.Model.Models
     {
         [Key]
         public virtual int IDUser { get; set; }
+        [Display(Name = "Ime")]
         public virtual string Name { get; set; }
+        [Display(Name = "Prezime")]
         public virtual string Surname { get; set; }
         public virtual string Email { get; set; }
+        [Display(Name = "Lozinka")]
         public virtual string Password { get; set; }
-        public virtual string CardNumber { get; set; } //NULLABLE
+        [Display(Name = "Broj kartice")]
+        public virtual string CardNumber { get; set; } //
+        [Display(Name = "Datum rođenja")]
         public virtual DateTime DateOfBirth { get; set; }
+        [Display(Name = "Admin")]
         public virtual bool IsAdmin { get; set; }
 
         public virtual IList<ReceiptModel> Receipts { get; set; }

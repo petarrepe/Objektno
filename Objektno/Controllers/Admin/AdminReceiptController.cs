@@ -116,7 +116,7 @@ namespace Objektno.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReceiptModel receiptModel = db.ReceiptModels.Find(id);
+            ReceiptModel receiptModel = _receiptRepository.FindReceiptByID(Convert.ToInt32(id));
             if (receiptModel == null)
             {
                 return HttpNotFound();
@@ -129,9 +129,7 @@ namespace Objektno.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ReceiptModel receiptModel = db.ReceiptModels.Find(id);
-            db.ReceiptModels.Remove(receiptModel);
-            db.SaveChanges();
+            _receiptRepository.DeleteReceipt(id);
             return RedirectToAction("Index");
         }
 

@@ -12,6 +12,7 @@ namespace KonobApp.Model.Models
     {
         [Key]
         public virtual int IDPaymentMethod { get; set; }
+        [Display(Name = "Vrsta plaćanja")]
         public virtual string TypePaymentMethod { get; set; }
 
         public virtual IList<ReceiptModel> Receipts { get; set; }
