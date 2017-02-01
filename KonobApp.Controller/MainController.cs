@@ -232,7 +232,6 @@ namespace KonobApp.Controller
 
         #endregion
 
-
         #region Notifications
         
 
@@ -270,7 +269,6 @@ namespace KonobApp.Controller
         }
 
         #endregion
-
 
         #region Orders
 
