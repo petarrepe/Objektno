@@ -53,7 +53,7 @@ namespace Objektno.Controllers.Admin
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDUser,Name,Surname,Email,Password,CardNumber,IsAdmin")] UserModel userModel)
+        public ActionResult Create([Bind(Include = "IDUser,Name,Surname,Email,Password,DateOfBirth,CardNumber,IsAdmin")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace Objektno.Controllers.Admin
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDUser,Name,Surname,Email,Password,CardNumber,IsAdmin")] UserModel userModel)
+        public ActionResult Edit([Bind(Include = "IDUser,Name,Surname,Email,Password,DateOfBirth,CardNumber,IsAdmin")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {

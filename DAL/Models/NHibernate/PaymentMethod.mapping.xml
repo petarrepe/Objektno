@@ -8,7 +8,7 @@ namespace="KonobApp.Model.Models">
     </id>
     <property name="TypePaymentMethod" not-null="true" />
 
-    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" >
       <key column="IDPaymentMethod" />
       <one-to-many class="ReceiptModel" />
     </bag>
