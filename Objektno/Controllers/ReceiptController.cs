@@ -25,6 +25,8 @@ namespace Objektno.Controllers
 
         public ActionResult SendReceipt()
         {
+            viewModel.ProcessRecieptBeforeSending(ref viewModel.receipt);
+
             Notifications.NotificationService.SendReciept(viewModel.receipt);
 
             return View();
