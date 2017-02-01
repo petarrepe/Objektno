@@ -14,12 +14,14 @@ using DAL.Repositories;
 using KonobApp.Controller;
 using KonobApp.Model.Repositories;
 using KonobApp.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Objektno.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private AccountRepository _accountRepository = AccountRepository.GetInstance();
@@ -80,6 +82,15 @@ namespace Objektno.Controllers
                 return View(model);
             }
 
+            //var user = new ApplicationUser() { UserName = model.Email };
+            ////var result = await UserManager.CreateAsync(user, model.Password);
+
+            //var roleStore = new RoleStore<IdentityRole>(db);
+            //var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            //var userStore = new UserStore<ApplicationUser>(db);
+            //var userManager = new UserManager<ApplicationUser>(userStore);
+            //userManager.AddToRole(user.Id, "User");
             var result = new SignInStatus();
                 // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -92,18 +103,19 @@ namespace Objektno.Controllers
             {
                 result = SignInStatus.Failure;
             }
-            
+
             switch (result)
             {
                 case SignInStatus.Success:
                     {
                         if (_accountRepository.IsUserAdmin(model.Email, model.Password))
                         {
-                            Roles.AddUserToRole(model.Email, "Admin");
+                            FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                             return RedirectToAction("Index", "StartingPage", null);
                         }
                         else
                         {
+                            FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                             return RedirectToAction("Index", "Home", null);
                         }
                     }

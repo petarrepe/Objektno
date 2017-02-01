@@ -109,31 +109,31 @@ namespace Objektno.Controllers.Admin
         //    return View(receiptModel);
         //}
 
-        //// GET: AdminReceipt/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    ReceiptModel receiptModel = db.ReceiptModels.Find(id);
-        //    if (receiptModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(receiptModel);
-        //}
+        // GET: AdminReceipt/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ReceiptModel receiptModel = db.ReceiptModels.Find(id);
+            if (receiptModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(receiptModel);
+        }
 
-        //// POST: AdminReceipt/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    ReceiptModel receiptModel = db.ReceiptModels.Find(id);
-        //    db.ReceiptModels.Remove(receiptModel);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // POST: AdminReceipt/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ReceiptModel receiptModel = db.ReceiptModels.Find(id);
+            db.ReceiptModels.Remove(receiptModel);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {
