@@ -12,7 +12,7 @@ namespace="KonobApp.Model.Models">
     <property name="Username" not-null="true" />
     <property name="Password" not-null="true" />
 
-    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" >
       <key column="IDWaiter" />
       <one-to-many class="ReceiptModel" />
     </bag>

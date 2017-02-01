@@ -46,20 +46,10 @@ namespace DAL
         }
         public void Insert<T>(T obj)
         {
-            try
-            {
+
                 _session.Save(obj);
-            }
-            catch
-            {
-                // If the object as a null identifier everything else fails. Remove from context
-                if (_session.GetIdentifier(this) == null)
-                {
-                    _session.Close();
-                    _session.Dispose();
-                    throw;
-                }
-            }
+
+
             
         }
 

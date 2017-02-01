@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.UserModel, KonobApp.Model" table="Korisnik" batch-size="25">
     <id name="IDUser">
-      <generator class="native" />
+      <generator class="increment" />
     </id>
     <property name="Name" not-null="true" />
     <property name="Surname" not-null="true" />
@@ -14,7 +14,7 @@ namespace="KonobApp.Model.Models">
     <property name="DateOfBirth" not-null="true" />
     <property name="IsAdmin" not-null="true" />
 
-    <bag name="Receipts" lazy="true" inverse="true" batch-size="25" cascade="all-delete-orphan">
+    <bag name="Receipts" lazy="true" inverse="true" batch-size="25">
       <key column="IDUser" />
       <one-to-many class="ReceiptModel" />
     </bag>
