@@ -102,6 +102,11 @@ namespace Objektno.Controllers.Admin
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserModel userModel = _userRepository.FindUserByID(Convert.ToInt32(id));
+            if (_userRepository.IsUserAdmin(userModel.Email, userModel.Password))
+            {
+                RedirectToAction("NoNoAdmin");
+            }
+                
             if (userModel == null)
             {
                 return HttpNotFound();

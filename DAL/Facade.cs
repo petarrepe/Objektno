@@ -71,7 +71,7 @@ namespace DAL
                 _session.Save(obj);
 
             }
-            catch
+            catch (Exception exc)
             {
                 // If the object as a null identifier everything else fails. Remove from context
                 if (_session.GetIdentifier(this) == null)

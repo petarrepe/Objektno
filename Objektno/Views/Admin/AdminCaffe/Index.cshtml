@@ -4,10 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stvori novi podatak", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,11 +33,12 @@
             @Html.DisplayFor(modelItem => item.IsOpen)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDCaffe }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDCaffe }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDCaffe })
+            @Html.ActionLink("Uredi", "Edit", new { id=item.IDCaffe }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.IDCaffe }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.IDCaffe })
         </td>
     </tr>
 }
 
 </table>
+@Html.ActionLink("Povratak na glavni meni", "Index", "StartingPage")
