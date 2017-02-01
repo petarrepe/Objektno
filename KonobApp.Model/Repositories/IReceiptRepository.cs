@@ -30,6 +30,7 @@ namespace KonobApp.Model
         void AddReceipt(DateTime date, int waiterID, int paymentID, int userID, float totalCost, float discount);
         ReceiptModel AddReceiptWithArticles(ReceiptModel receipt);
         int GetNewReceiptID();
+        void DeleteReceipt(int receiptID);
 
         void SetCurrentReceipt(int receiptId);
         void SetNewCurrentReceipt();

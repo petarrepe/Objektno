@@ -49,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.Discount)
         </td>
         <td>
-            @Html.ActionLink("Detalji", "Details", new { id=item.IDReceipt }) 
+            @Html.ActionLink("Detalji", "Details", new { id=item.IDReceipt }) | 
             @Html.ActionLink("obriši", "Delete", new { id = item.IDReceipt })
         </td>
     </tr>
