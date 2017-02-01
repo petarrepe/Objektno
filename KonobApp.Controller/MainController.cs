@@ -63,6 +63,7 @@ namespace KonobApp.Controller
             {
                 if (value.GetType() == typeof(FormMainWindow))
                 {
+                    
                     _formMainWindow = (FormMainWindow)value;
                 }
             }
@@ -127,6 +128,7 @@ namespace KonobApp.Controller
             {
                 _currentWaiter = current;
                 _currentCaffe = _caffeRepository.FindCaffeByID(current.IDCaffe);
+                _receiptRepository.CurrentWaiter = _currentWaiter;
                 LoginSuccessful = true;
                 formLogin.Close();
                 return true;
@@ -158,6 +160,18 @@ namespace KonobApp.Controller
             _receiptRepository.Attatch(newReceipt);
             newReceipt.ShowDialog();
             _receiptRepository.Delete(newReceipt);
+        }
+
+        public void SaveCurrentReceipt(Form form)
+        {
+            string message = _receiptRepository.ValidateCurrentReceipt();
+            if (!string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show(message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            _receiptRepository.SaveCurrentReceiptChanges();
+            form.Close();
         }
 
         public void NewReceipt(ReceiptModel receipt)

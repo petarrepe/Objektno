@@ -22,6 +22,7 @@ namespace KonobApp.Interfaces
 
         void ShowReceipts();
         void NewReceipt();
+        void SaveCurrentReceipt(Form form);
         void NewReceipt(ReceiptModel receipt);
         void ShowAddArticleToNewReceipt();
         int AddArticleToNewReceipt(Form form, int articleId, int amount);

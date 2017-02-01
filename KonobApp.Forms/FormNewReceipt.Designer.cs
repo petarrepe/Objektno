@@ -114,9 +114,11 @@
             this.numDiscount.Name = "numDiscount";
             this.numDiscount.Size = new System.Drawing.Size(295, 22);
             this.numDiscount.TabIndex = 7;
+            this.numDiscount.ValueChanged += new System.EventHandler(this.numDiscount_ValueChanged);
             // 
             // cbPaymentMethod
             // 
+            this.cbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentMethod.FormattingEnabled = true;
             this.cbPaymentMethod.Location = new System.Drawing.Point(134, 81);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
@@ -150,12 +152,18 @@
             this.colAmount,
             this.colPriceSingle,
             this.colTotal});
+            this.lvArticles.FullRowSelect = true;
+            this.lvArticles.GridLines = true;
+            this.lvArticles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvArticles.HideSelection = false;
             this.lvArticles.Location = new System.Drawing.Point(12, 183);
+            this.lvArticles.MultiSelect = false;
             this.lvArticles.Name = "lvArticles";
             this.lvArticles.Size = new System.Drawing.Size(435, 226);
             this.lvArticles.TabIndex = 5;
             this.lvArticles.UseCompatibleStateImageBehavior = false;
             this.lvArticles.View = System.Windows.Forms.View.Details;
+            this.lvArticles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvArticles_KeyDown);
             // 
             // colId
             // 
@@ -317,7 +325,6 @@
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.GroupBox gbGeneralData;
         private System.Windows.Forms.NumericUpDown numDiscount;
-        private System.Windows.Forms.ComboBox cbPaymentMethod;
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblPaymentMethod;
         private System.Windows.Forms.ListView lvArticles;
@@ -336,5 +343,6 @@
         private System.Windows.Forms.Button btnAmountPlus;
         private System.Windows.Forms.Button btnAmountMinus;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbPaymentMethod;
     }
 }

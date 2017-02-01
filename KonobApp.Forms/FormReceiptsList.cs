@@ -53,8 +53,8 @@ namespace KonobApp.Forms
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = receipt.IDReceipt.ToString();
-                    item.SubItems[0].Text = receipt.Date.ToString();
-                    item.SubItems[1].Text = receipt.TotalCost.ToString("0.00");
+                    item.SubItems.Add(receipt.Date.ToString());
+                    item.SubItems.Add(receipt.TotalCost.ToString("0.00"));
                     lvReceipts.Items.Add(item);
                     total += receipt.TotalCost;
                 }
@@ -76,14 +76,21 @@ namespace KonobApp.Forms
                 tbTotal.Text = string.Empty;
             } else
             {
+                string receiptIdString;
                 if (lvReceipts.SelectedItems.Count < 1)
                 {
+                    receiptIdString = lvReceipts.Items[0].Text;
                     lvReceipts.Items[0].Selected = true;
+                    lvReceipts.Items[0].Selected = true;
+                    lvReceipts.Refresh();
+                } else
+                {
+                    receiptIdString = lvReceipts.SelectedItems[0].Text;
                 }
                 
 
                 int receiptId;
-                if (!Int32.TryParse(lvReceipts.SelectedItems[0].Text, out receiptId))
+                if (!Int32.TryParse(receiptIdString, out receiptId))
                 {
                     MessageBox.Show("Greška prilikom učitavanja identifikacijskog broja računa sa popisa", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbWaiter.Text = string.Empty;
