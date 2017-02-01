@@ -280,6 +280,7 @@ namespace DAL.Repositories
             if (result.PaymentMethod == null) result.PaymentMethod = _paymentMethods.FirstOrDefault(t => t.IDPaymentMethod == result.IDPaymentMethod);
             if (result.ArtRec == null) result = fillReceiptWithArtRec(result);
             else if (result.ArtRec.Count < 1) result = fillReceiptWithArtRec(result);
+            else if (result.ArtRec.Count < 1) result = fillReceiptWithArtRec(result);
             
             return result;
         }
