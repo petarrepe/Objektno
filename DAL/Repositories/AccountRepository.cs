@@ -105,7 +105,7 @@ namespace DAL.Repositories
         public void AddUser(string name, string surname, string email, string cardNumber, string password, DateTime dateOfBirth, bool isAdmin)
         {
             UserModel user = new UserModel();
-            user.IDUser = GetNewUserID();
+            //user.IDUser = GetNewUserID();
             user.Name = name;
             user.Surname = surname;
             user.Email = email;
