@@ -4,11 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +49,11 @@
             @Html.DisplayFor(modelItem => item.Discount)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.IDReceipt }) 
+            @Html.ActionLink("Detalji", "Details", new { id=item.IDReceipt }) 
+            @Html.ActionLink("obriši", "Delete", new { id = item.IDReceipt })
         </td>
     </tr>
 }
 
 </table>
+@Html.ActionLink("Povratak na glavni meni", "Index", "StartingPage")
