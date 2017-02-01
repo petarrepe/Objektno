@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.TableModel, KonobApp.Model" table="Stol" batch-size="25">
     <id name="IDTable">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
     <property name="IDCaffe" column="IDCaffe" not-null="true" />
     <property name="IsOccupied" />

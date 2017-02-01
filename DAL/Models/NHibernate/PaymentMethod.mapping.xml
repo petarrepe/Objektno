@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.PaymentMethodModel, KonobApp.Model" table="Payment_Method" batch-size="25">
     <id name="IDPaymentMethod">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
     <property name="TypePaymentMethod" not-null="true" />
 

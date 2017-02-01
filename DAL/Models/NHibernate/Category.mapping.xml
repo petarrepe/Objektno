@@ -4,7 +4,7 @@ assembly="DAL"
 namespace="KonobApp.Model.Models">
   <class name="KonobApp.Model.Models.CategoryModel, KonobApp.Model" table="Category" batch-size="25">
     <id name="IDCategory">
-      <generator class="increment" />
+      <generator class="native" />
     </id>
     <property name="Name" not-null="true" />
 
