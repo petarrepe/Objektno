@@ -41,7 +41,7 @@ namespace KonobApp.Model.Models
     public virtual double SetTotal()
         {
             double result = 0.0;
-            foreach(ArticleModel art in _articles)
+            foreach(ArticleModel art in Articles)
             {
                 result += art.Price;
             }
