@@ -16,7 +16,7 @@ namespace KonobApp.Model
 
         ReceiptModel CurrentReceipt { get; }
         UserModel CurrentUser { get; }
-        WaiterModel CurrentWaiter { get; }
+        WaiterModel CurrentWaiter { get; set; }
 
         void LoadAll();
         void LoadArticles();
@@ -36,6 +36,8 @@ namespace KonobApp.Model
         void AddArticleToCurrentReceipt(int articleId, int amount);
         void RemoveArticleFromCurrentReceipt(int articleId);
         void SetPaymentMethodToCurrentReceipt(int paymentMethodId);
+        void SetDiscountToCurrentReceipt(float discount);
+        void AddAmountToArticleInReceipt(int idArticle, int value);
         string ValidateCurrentReceipt();
         void SaveCurrentReceiptChanges();
 

@@ -47,13 +47,12 @@ namespace KonobApp.Forms
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            PaymentMethodModel payMet = (PaymentMethodModel)cbPaymentMethod.SelectedItem;
+            _receiptRepository.SetPaymentMethodToCurrentReceipt(payMet.IDPaymentMethod);
+            _receiptRepository.SetDiscountToCurrentReceipt((float)numDiscount.Value / 100);
             string errorMessage = _receiptRepository.ValidateCurrentReceipt();
-            if (!String.IsNullOrEmpty(errorMessage))
-            {
-                MessageBox.Show(errorMessage, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            _receiptRepository.SaveCurrentReceiptChanges();
+
+            _mainController.SaveCurrentReceipt(this);
         }
 
         private void btnNewArticle_Click(object sender, EventArgs e)
@@ -63,39 +62,68 @@ namespace KonobApp.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lvArticles.SelectedItems.Count < 1) return;
 
+            int articleId;
+            if (!Int32.TryParse(lvArticles.SelectedItems[0].Text, out articleId))
+            {
+                MessageBox.Show("Greška prilikom učitavanja identifikacijskog broja artikla.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _receiptRepository.RemoveArticleFromCurrentReceipt(articleId);
         }
 
         private void btnAmountPlus_Click(object sender, EventArgs e)
         {
-
+            addAmountToCurrentlySelectedItem(1);
         }
 
         private void btnAmountMinus_Click(object sender, EventArgs e)
         {
+            addAmountToCurrentlySelectedItem(-1);
+        }
 
+        private void addAmountToCurrentlySelectedItem(int value)
+        {
+            if (lvArticles.SelectedItems.Count < 1) return;
+            int amount;
+            if (!Int32.TryParse(lvArticles.SelectedItems[0].SubItems[2].Text, out amount))
+            {
+                MessageBox.Show("Greška prilikom učitavanja trenutne vrijednosti količine.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (amount < 2 && value < 0) return;
+
+            int articleId;
+            if (!Int32.TryParse(lvArticles.SelectedItems[0].Text, out articleId))
+            {
+                MessageBox.Show("Greška prilikom učitavanja identifikacijskog broja artikla.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _receiptRepository.AddAmountToArticleInReceipt(articleId, value);
+
+            //if (value > 0) amount++;
+            //else if (value < 0) amount--;
+
+            //lvArticles.SelectedItems[0].SubItems[2].Text = amount.ToString();
+
+            //Refresh();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Jeste li sigurni da želite odbaciti trenutni unos?", "Potvrda", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                Close();
+            }
         }
 
         private void cbPaymentMethod_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.N:
-                    btnNewArticle.PerformClick();
-                    e.SuppressKeyPress = true;
-                    e.Handled = true;
-                    break;
-                case Keys.Delete:
-                    btnDelete.PerformClick();
-                    e.SuppressKeyPress = true;
-                    e.Handled = true;
-                    break;
-            }
+            checkUserInputForShortcuts(e);
         }
 
         public void UpdateView()
@@ -118,7 +146,63 @@ namespace KonobApp.Forms
                 lvArticles.Items.Add(item);
                 total += artRec.PriceOfOne * artRec.Quantity;
             }
+            if (lvArticles.Items.Count > 0)
+            {
+                lvArticles.Items[0].Selected = true;
+            }
             tbTotal.Text = total.ToString("0.00");
+        }
+
+        private void numDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            if (numDiscount.Value > 100) numDiscount.Value = 100;
+            if (numDiscount.Value < 0) numDiscount.Value = 0;
+        }
+
+        private void lvArticles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (checkUserInputForShortcuts(e)) e.Handled = true;
+        }
+
+        private bool checkUserInputForShortcuts(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Subtract)
+            {
+                btnAmountMinus.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            else if (e.KeyCode == Keys.Add)
+            {
+                btnAmountPlus.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            else if (e.KeyCode == Keys.N)
+            {
+                btnNewArticle.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                btnDelete.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                btnAccept.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                btnCancel.PerformClick();
+                e.Handled = true;
+                return true;
+            }
+            return false;
         }
     }
 }

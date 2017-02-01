@@ -35,6 +35,21 @@ namespace Objektno.Models
             receipt.ArtRec = new List<ArticleReceiptModel>();
         }
 
+        /// <summary>
+        /// Late night hotfix
+        /// </summary>
+        /// <param name="receipt"></param>
+        internal void ProcessRecieptBeforeSending(ref ReceiptModel receipt)
+        {
+            receipt.Date = DateTime.Now;
+            receipt.ArtRec = new List<ArticleReceiptModel>();
+            receipt.Discount = 0;
+            receipt.IDPaymentMethod = 1;
+            receipt.IDUser = 1;
+            receipt.IDWaiter = 1;
+            receipt.TotalCost = (float)receipt.SetTotal();
+        }
+
         internal void addArticle(int iDArticle)
         {
             var article = articlesInCaffe.Where(t => t.IDArticle == iDArticle).First();

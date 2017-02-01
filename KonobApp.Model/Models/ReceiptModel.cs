@@ -15,8 +15,8 @@ namespace KonobApp.Model.Models
         public virtual DateTime Date { get; set; }
         public virtual int IDWaiter { get; set; }
         public virtual int IDPaymentMethod { get; set; }
-        public virtual int IDUser { get; set; } //NULLABLE
-        public virtual float TotalCost { get; set; } //Trebat ce se pretvoriti u oblik tipa SmallMoney (00.000?)
+        public virtual int? IDUser { get; set; } //NULLABLE
+        public virtual float TotalCost { get; set; } //Trebat ce se pretvoriti u oblik tipa SmallMoney (00.000?) - iskoristi .ToString("0.00"); za ispis et vouila
         public virtual float Discount { get; set; } //NULLABLE
 
         public virtual IList<ArticleReceiptModel> ArtRec { get; set; }
